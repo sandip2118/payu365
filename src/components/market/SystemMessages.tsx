@@ -1,6 +1,6 @@
 import React from 'react';
 import Icons from '@/assets/icon';
-import Card from '@/components/common/Card'
+import Card from '../Common/Card';
 
 const SystemMessages = () => {
   const barsData = [

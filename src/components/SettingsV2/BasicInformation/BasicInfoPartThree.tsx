@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader'
-import InputField from '@/components/Common/InputField'
+import InputField from '../../Common/InputField'
 
 function BasicInfoPartThree() {
   const [email,setEmail] = useState<string>('');

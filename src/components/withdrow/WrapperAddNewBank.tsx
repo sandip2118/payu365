@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Page from "@/components/common/Page";
-import Card from '@/components/common/Card'
 import ImgBoxComp from '../Common/ImgBoxComp';
 import Icons from '@/assets/icon';
 import { colors } from '../../themes';
 import AddNewBank from './AddNewBank';
 import BankDetails from './BankDetails';
 import { WithdrawIsNew } from './type';
+import Card from '../Common/Card';
 
 
 const WrapperAddNewBank: React.FC<WithdrawIsNew> =({ IsNew, setIsNewUser }) => {

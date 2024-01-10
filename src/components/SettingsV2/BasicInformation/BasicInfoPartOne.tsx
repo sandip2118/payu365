@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import CountryInfo from './CountryInfo';
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader';
-import InputField from '@/components/Common/InputField';
 import { useState } from 'react';
+import InputField from '../../Common/InputField'
 
 function BasicInfoPartOne() {
   const[firstName,setFirstName]= useState<string>('');

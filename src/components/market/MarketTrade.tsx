@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import Page from '@/components/common/Page'
-import Card from '@/components/common/Card'
-import BuySale from '@/components/common/BuySale'
 import {
   TableContainer,
   TableHead,
@@ -16,6 +13,9 @@ import { colors } from '../../themes'
 import Image from 'next/image'
 import Candlestick from './TradingViewChart/Candlestick'
 import { MarketTradeProps } from "./type";
+import Page from '../Common/Page'
+import Card from '../Common/Card'
+import BuySale from '../Common/BuySale'
 
 const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
   const [isInrFirst, setIsInrFirst] = useState(true);

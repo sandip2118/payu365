@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { EmailVerificationProps } from '../types'
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader';
 import Image from 'next/image'
-import InputField from '@/components/Common/InputField'
+import InputField from '../../Common/InputField'
 
 const EmailVerification:React.FC<EmailVerificationProps> =({title,description,lastDate,buttonColor,borderColor,buttonIcon,buttonText})=> {
   const [email, setEmail] = useState<string | undefined>('');

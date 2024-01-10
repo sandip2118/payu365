@@ -1,16 +1,16 @@
 /* eslint-disable complexity */
 import React from 'react'
 import { useRouter } from 'next/router'
-import EsBalance from '@/components/Dashboard/EsBalance'
-import LetStart from '@/components/Dashboard/LetStart'
-import MarketRate from '@/components/Dashboard/MarketRate'
-import PaymentAccount from '@/components/Dashboard/PaymentAccount'
-import PaymentAnalytics from '@/components/Dashboard/PaymentAnalytics'
-import QuickTransfer from '@/components/Dashboard/QuickTransfer'
-import RecentTrans from '@/components/Common/RecentTrans'
 import { DashboardWrapper } from './types'
 import BuySale from '../Common/BuySale'
 import Page from '../Common/Page'
+import EsBalance from './EsBalance'
+import LetStart from './LetStart'
+import MarketRate from './MarketRate'
+import RecentTrans from '../Common/RecentTrans'
+import PaymentAnalytics from './PaymentAnalytics'
+import PaymentAccount from './PaymentAccount'
+import QuickTransfer from './QuickTransfer'
 
 function Wrapper({ title }: DashboardWrapper) {
   const router = useRouter()

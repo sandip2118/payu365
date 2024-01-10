@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import Icons from '@/assets/icon'
-import { OrDivider } from '@/components/Common/OrDivider'
 import { EnterOTP } from '@/components/Login/EnterOTP'
 import PhoneWithCountryCode from '@/components/Login/PhoneWithCountryCode'
 import { TEXT } from '@/Constants'
-import PasswordInput from '@/components/Common/PasswordInput'
+import PasswordInput from './../components/Common/PasswordInput'
+import { OrDivider } from './../components/Common/OrDivider'
 
 const ForgotPassword = () => {
   const router = useRouter()

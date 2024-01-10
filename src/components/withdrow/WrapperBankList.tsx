@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
-import Card from '@/components/common/Card'
 import ImgBoxComp from '../Common/ImgBoxComp';
 import Icons from '@/assets/icon';
 import HistoryList from './HistoryList';
 import WithdrawComp from './WithdrawComp';
 import { WithdrawIsNew } from './type';
+import Card from '../Common/Card';
 
 
 const WrapperBankList: FC<WithdrawIsNew> = ({ IsNew, setIsNewUser, isWithdraw, setIsWithdraw }) => {

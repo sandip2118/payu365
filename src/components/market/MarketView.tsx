@@ -1,8 +1,4 @@
 import React, { useState } from 'react'
-import Page from '@/components/common/Page'
-import Card from '@/components/common/Card'
-import CurrencyInfo from '@/components/common/CurrencyInfo'
-import { OutlinedButton } from '@/components/common/Button'
 import Icons from '@/assets/icon'
 import {
   Pagination,
@@ -17,6 +13,10 @@ import {
 } from '@mui/material'
 import { MarketViewProps } from './type';
 import Image from 'next/image';
+import Page from '../Common/Page';
+import Card from '../Common/Card';
+import CurrencyInfo from '../Common/CurrencyInfo';
+import { OutlinedButton } from '../Common/Button';
 
 const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
   const [order, setOrder] = useState<string>('asc')

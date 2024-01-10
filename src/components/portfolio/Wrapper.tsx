@@ -1,9 +1,9 @@
 import React from 'react';
-import Page from "@/components/common/Page";
 import EsBalance from '../dashboard/EsBalance';
 import MyAssets from './MyAssets';
 import PortSlider from './PortSlider';
 import RecentTrans from '../Common/RecentTrans';
+import Page from '../Common/Page';
 
 const Wrapper = () => {
   return (

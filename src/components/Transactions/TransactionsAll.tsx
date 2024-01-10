@@ -1,6 +1,6 @@
 import React from 'react'
-import Page from '@/components/common/Page'
-import ColorTabs from '@/components/common/Tabs'
+import Page from '../Common/Page'
+import ColorTabs from '../Common/Tabs'
 // import DateRange from '../common/DateRangePicker'
 
 const TransactionsAll = () => {

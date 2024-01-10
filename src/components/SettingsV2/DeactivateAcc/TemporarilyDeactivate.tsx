@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputField from '@/components/Common/InputField';     
+import InputField from '../../Common/InputField'
 
 
 function TemporarilyDeactivate() {
