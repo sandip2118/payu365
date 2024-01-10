@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '@/components/common/Page'
 import ColorTabs from '@/components/common/Tabs'
-import DateRange from '../common/DateRangePicker'
+// import DateRange from '../common/DateRangePicker'
 
 const TransactionsAll = () => {
   const TabsData = [
@@ -18,7 +18,7 @@ const TransactionsAll = () => {
       <div className="my-5 mx-5">
         <div className="topContent flex items-center w-full">
           <ColorTabs data={TabsData} />
-          <DateRange />
+          {/* <DateRange /> */}
         </div>
       </div>
     </Page>

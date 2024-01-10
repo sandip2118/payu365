@@ -17,6 +17,7 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   compiler: {
     emotion: true,
+    styledComponents: true,
   },
   peerDependencies: {
     react: '^17.0.0 || ^18.0.0',
@@ -25,11 +26,15 @@ module.exports = withBundleAnalyzer({
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    forceSwcTransforms: true,
+  },
 })
+
 // /* eslint-disable import/no-extraneous-dependencies */
 // const withBundleAnalyzer = require('@next/bundle-analyzer')({
 //   enabled: process.env.ANALYZE === 'true',
-// });
+// })
 
 // module.exports = withBundleAnalyzer({
 //   eslint: {
@@ -42,8 +47,8 @@ module.exports = withBundleAnalyzer({
 //   // So, the source code is "basePath-ready".
 //   // You can remove `basePath` if you don't need it.
 //   reactStrictMode: true,
-//   "peerDependencies": {
-//     "react": "^17.0.0 || ^18.0.0",
-//     "react-dom": "^17.0.0 || ^18.0.0"
+//   peerDependencies: {
+//     react: '^17.0.0 || ^18.0.0',
+//     'react-dom': '^17.0.0 || ^18.0.0',
 //   },
-// });
+// })
