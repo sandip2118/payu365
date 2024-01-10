@@ -1,5 +1,6 @@
 import React from 'react'
-import Wrapper from '@/components/Transactions/Wrapper'
+import Wrapper from '../../components/Transactions/Wrapper'
+
 
 const index = () => {
   return (

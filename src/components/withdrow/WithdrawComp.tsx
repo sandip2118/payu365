@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import Card from '../common/Card';
+import Card from '../Common/Card';
 import Icons from '@/assets/icon';
 import { colors } from '../../themes';
 import { Menu, MenuButton, MenuItem } from '@szhsin/react-menu';

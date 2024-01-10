@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import Card from '../common/Card';
+import Card from '../Common/Card';
 
 interface prop {
   onClick?: () => void
