@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+body {
+  font-family: Inter;
+}
+.active-icon path {
+  fill: #f526d6; /* Or any color you wish for the active state */
+}
+
+.PhoneInputInput {
+  display: flex;
+  padding: 0px 20px 0px 10px;
+  align-items: center;
+  gap: 15px;
+  flex: 1 0 0;
+  background-color: #292932;
+  color: white;
+  height: 48px !important;
+  border-radius: 5px;
+}
+.PhoneInputCountry {
+  display: flex;
+  /* background-color: #1C1C24;
+ padding: 15px 20px 16px 20px;  */
+  align-items: center;
+  gap: 15px;
+  background: #1c1c24;
+  padding: 0px 10px;
+  border-radius: 5px;
+}
+.PhoneInputCountrySelectArrow {
+  border-color: white !important;
+  border-width: 2px;
+}
+.PhoneInputCountryIconImg {
+  color: white !important;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #292932; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #777e90; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #292932;
+}
+
+.ag-theme-quartz {
+  --ag-background-color: transparent !important;
+  --ag-border-color: transparent !important;
+  --ag-color: '#fff' !important
+;
+}
+
+.ag-theme-quartz,
+.ag-theme-quartz-dark {
+  --ag-foreground-color: #fff !important;
+  /* --ag-background-color: rgb(249, 245, 227) !important; */
+  --ag-header-foreground-color: #fff !important;
+  /* --ag-header-background-color: rgb(209, 64, 129) !important; */
+  --ag-odd-row-background-color: rgb(0, 0, 0, 0.03) !important;
+  /* --ag-header-column-resize-handle-color: rgb(126, 46, 132) !important; */
+  /* --ag-grid-size: 12px !important; */
+  /* --ag-list-item-height: 40px !important; */
+  /* --ag-font-size: 17px !important; */
+  /* --ag-font-family: monospace !important; */
+}
+
+.ag-row .ag-cell {
+  display: flex !important;
+  /* justify-content: center !important; */
+  align-items: center !important;
+}
+/* .ag-cell{
+  line-height: 50px !important;
+  height: 100% !important;
+  vertical-align: middle !important;
+} */
+
+.css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root {
+  padding: 0px 6px !important;
+}
+
+.bChange .MuiTableCell-root {
+  border-bottom: 0px solid red !important;
+  padding: 10px 0px !important;
+}
+
+.no-input-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.no-input-arrow {
+  -moz-appearance: textfield !important;
+}
+.font11RB {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font12R {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.font13R {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.font14R {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.font12RB {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font13RN {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.font10RB {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font13RB {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font14RB {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font16RB {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.font12SB {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font13SB {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font14SN {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font14SB {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font16SB {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font20SN {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.font18SB {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font20SB {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font22SB {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font24SB {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.font12SMB {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.font16SMB {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.font30SMB {
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.market-table span {
+  color: #fff !important;
+}
+.market-table span:hover {
+  color: #fff !important;
+}
+
+/* pagination css start  */
+.pagination {
+  margin-top: 20px;
+}
+.pagination ul {
+  justify-content: end;
+}
+.pagination ul li button{
+  background-color: #1C1C24;
+  color: #777E90;
+  border: 1px solid #222;
+  border-radius: 8px;
+}
+.pagination ul li div{
+  background-color: #1C1C24;
+  color: #fff;
+  border: 1px solid #48546D;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.pagination ul li button.Mui-selected{
+  background-color: #267FF5 ;
+  color: #fff;
+}
+.pagination ul li:first-child button,
+.pagination ul li:last-child button {
+  color: #fff;
+}
+/* pagination css end  */
+
+.input-placeholder {
+  font-size: 13px;
+  font-weight: 400;
+  color: #777E90;
+}
+
+.input-placeholder:focus {
+outline: none;
+border: none;
+
+}
+
+.input-placeholder::placeholder {
+  color: #777E90;
+  font-size: 13px;
+  font-weight: 400;
+}
+.input-placeholder-hide {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777E90;
+}
+.input-placeholder-hide:focus {
+  outline: none;
+border: none;
+}
+.order-table thead tr th {
+  font-size: 11px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+} 
+.order-table tbody tr:first-child td{
+  padding-top: 18px !important;
+}
+.order-table tbody tr td {
+  padding: 0px;
+  padding-bottom: 12px;
+  font-size: 11px;
+}
+
+.open-order-table thead tr th {
+  font-size: 11px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+} 
+.open-order-table tbody tr td {
+  padding-left: 0px;
+  padding-bottom: 12px;
+  font-size: 11px;
+}
+
+.apexcharts-tooltip,
+.apexcharts-menu {
+  background: #ffffff;
+  color: #252930;
+}
