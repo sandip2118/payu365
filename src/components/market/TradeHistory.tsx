@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Card from '../Common/Card'
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
 import Page from '../Common/Page';
 import { FormControlLabel, Checkbox } from '@mui/material';
-import ColorTabs from '../common/Tabs';
+import ColorTabs from '../Common/Tabs';
 
 const TradeHistory = () => {
 

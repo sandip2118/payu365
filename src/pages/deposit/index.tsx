@@ -1,5 +1,5 @@
-import Wrapper from '../../components/Deposit/Wrapper'
 import React from 'react'
+import Wrapper from '../../components/Deposit/Wrapper'
 
 function Deposit() {
   return (
