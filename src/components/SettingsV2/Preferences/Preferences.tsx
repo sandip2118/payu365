@@ -23,7 +23,7 @@ const preferenceSettings = [
 
 const Preferences = () => {
   const [switchStates, setSwitchStates] = useState<SwitchStates>({
-    newsandupdates: true,
+    salesAndTips: true,
     tipsAndTutorials: true,
     reminders: true,
   });

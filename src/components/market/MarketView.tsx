@@ -5,7 +5,6 @@ import {
   TableContainer,
   TableHead,
   TableSortLabel,
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -13,10 +12,10 @@ import {
 } from '@mui/material'
 import { MarketViewProps } from './type';
 import Image from 'next/image';
+import { OutlinedButton } from '../Common/Button';
 import Page from '../Common/Page';
 import Card from '../Common/Card';
 import CurrencyInfo from '../Common/CurrencyInfo';
-import { OutlinedButton } from '../Common/Button';
 
 const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
   const [order, setOrder] = useState<string>('asc')
@@ -36,9 +35,9 @@ const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
   });
 
   const rows = [
-    { name: 'Spot', calories: 1.03038932, fat: 0.0012456, carbs: 0.0012456 },
-    { name: 'Earn', calories: 0.001541, fat: 0.0012456, carbs: 0.0012456 },
-  ]
+    { currency: 'USD', calories: 1.03038932, fat: 0.0012456, carbs: 0.0012456 },
+    { currency: 'INR', calories: 0.001541, fat: 0.0012456, carbs: 0.0012456 }
+  ];
 
   const column = Array.from(new Set(rows.flatMap(Object.keys)))
 
@@ -51,7 +50,7 @@ const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
   const sortedRows = rows.sort((a: any, b: any) => {
     const aValue = a[orderBy]
     const bValue = b[orderBy]
-    if (orderBy === 'name') {
+    if (orderBy === 'currency') {
       if (order === 'asc') {
         return aValue.localeCompare(bValue)
       } else {
@@ -71,21 +70,21 @@ const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
       <div className="my-5 mx-5">
         <Card title="Market View" isBorder={true}>
           <CurrencyInfo country={selecteCurrency} onSelect={(val) => setSelecteCurrency(val)}
-          width="w-full"
-          menuStyle='w-[250px] sm:w-[300px]'
-          RenderMenuBtn={
-            <div className={`flex justify-between bg-BLACK_304 p-3.5 rounded-lg items-center justify-center h-[45px]`}>
-              <div className='flex gap-2.5'>
-              <div className='w-[20px] h-[15px]'>
-                <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
+            width="w-full"
+            menuStyle='w-[250px] sm:w-[300px]'
+            RenderMenuBtn={
+              <div className={`flex justify-between bg-BLACK_304 p-3.5 rounded-lg items-center justify-center h-[45px]`}>
+                <div className='flex gap-2.5'>
+                  <div className='w-[20px] h-[15px]'>
+                    <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
+                  </div>
+                  <p className="font12R mx-[5px]">
+                    {selecteCurrency?.currency?.code} ({selecteCurrency?.currency?.name})
+                  </p>
+                </div>
+                <Icons.DownArrow />
               </div>
-              <p className="font12R mx-[5px]">
-                {selecteCurrency?.currency?.code} ({selecteCurrency?.currency?.name})
-              </p>
-              </div>
-              <Icons.DownArrow />
-            </div>
-          }/>
+            } />
           <TableContainer className="mt-5">
             <Table aria-label="simple table">
               <TableHead>
@@ -106,47 +105,57 @@ const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
                           {key} <Icons.TBArrowIcon />
                         </TableSortLabel>
                       ) : (
-                        key
+                        <p className='text-white'> {key} </p>
                       )}
                     </TableCell>
                   ))}
                   <TableCell
                     align="center"
-                    className="text-white w-[172px] border-none"
+                    className="w-[172px] border-none"
                   >
-                    Actions
+                    <p className='text-white'>
+                      Actions</p>
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {sortedRows.map((row) => (
-                  <TableRow key={row.name}>
+                  <TableRow key={row.currency}>
                     <TableCell
                       component="th"
                       scope="row"
                       className="border-b border-GRAY_101 dark:border-gray-700"
                     >
                       <div className="text-white flex items-center gap-2">
-                        <Icons.ArrowTop />
+                        {row.currency === "USD" &&
+                          <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+                        {row.currency === "INR" &&
+                          <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
                         <div className="font-medium">
-                          <p className="text-sm">{row.name}</p>
+                          <p className="text-sm">{row.currency}</p>
                           <p className="text-GRAY_101 text-xs">
                             United States Dollar
                           </p>
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell className="text-white border-b border-GRAY_101 border-solid">
-                      {row.calories}
+                    <TableCell className=" border-b border-GRAY_101 border-solid">
+                      <p className="text-white" >
+                        {row.calories}
+                      </p>
                     </TableCell>
                     <TableCell className="text-white border-b border-GRAY_101 border-solid">
-                      {row.fat}
+                      <p className='text-white'>
+                        {row.fat} </p>
                       <p className="flex text-RED_02 text-xs font-medium items-center">
                         0.0012456 <Icons.DownArrowRedIcon color={'red'} />
                       </p>
                     </TableCell>
                     <TableCell className="text-white border-b border-GRAY_101 border-solid">
-                      {row.carbs}
+                      <p className='text-white'>
+                        {row.carbs}</p>
                       <p className="flex text-GREEN_01 text-xs font-medium items-center">
                         0.0012456 <Icons.ArrowTop />
                       </p>
@@ -169,7 +178,7 @@ const MarketView: React.FC<MarketViewProps> = ({ handleTrade }) => {
                           br="10"
                           borderColor="BLACK_306"
                           padding="9px 21px 10px 21px"
-                          onClick={() => handleTrade(row.name)}
+                          onClick={() => handleTrade(row.currency)}
                         />
                       </div>
                     </TableCell>

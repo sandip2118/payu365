@@ -27,7 +27,7 @@ const ReferralComponent:React.FC<RefferalProps> =({title,description,referralDat
         <div className='flex justify-between w-full md:w-2/3 '>
           <div className='w-1/2 flex justify-start items-center gap-[8px] font12RB text-white'>
             <div><Image  src='/assets/icons/referralId.svg' alt='img' width={15} height={15}/></div>
-            <p>{referralData}</p>
+            <p className='referral-text'>{referralData}</p>
           </div>
           <div className='w-1/3 flex justify-end '>
           <button className='font12RB text-[#B1B5C3] bg-[#48546D] rounded-[5px] w-[96px] h-[28px] flex justify-center gap-[10px] items-center'>

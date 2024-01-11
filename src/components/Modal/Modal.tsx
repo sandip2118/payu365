@@ -1,4 +1,4 @@
-// File: src/components/Modal.tsx
+// // File: src/components/Modal.tsx
 
 import React, { useState, ReactNode, useEffect } from 'react';
 
@@ -18,19 +18,23 @@ const Modal= (props: ModalProps ) => {
   }, [props.isOpen]);
 
   const handleClose = () => {
-    setIsModalOpen(false);
     props.onClose();
   };
 
+
+const handleContentClick = (e: React.MouseEvent) => {
+  console.log("Modal content clicked");
+  e.stopPropagation(); 
+};
+
   return (
-    <div className={`fixed inset-0 z-50 ${isModalOpen ? 'block' : 'hidden'}`}>
+    <div className={`fixed inset-0 z-50 ${isModalOpen ? 'block' : 'hidden'}`}   onClick={handleClose}>
       <div
         className="fixed inset-0 bg-black opacity-50"
-        onClick={handleClose}
         aria-hidden="true"
       ></div>
       <div className="fixed inset-0 flex items-center justify-center">
-        <div className={props.modalClass}>
+        <div className={props.modalClass} onClick={handleContentClick}>
          
           {props.children}
         </div>

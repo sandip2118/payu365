@@ -7,8 +7,6 @@ import { DropDownProps } from './type'
 import { Box } from '@mui/material'
 import Icons from '@/assets/icon'
 
-// * Dropdown with border radius
-////////////////////////////////
 export const OutlinedDropdown: React.FC<DropDownProps> = ({
   selectLabel,
   w,
@@ -17,8 +15,6 @@ export const OutlinedDropdown: React.FC<DropDownProps> = ({
 }) => {
   const [value, setValue] = useState(data[0]?.value)
 
-  // * Function for getting value from dropdown
-  /////////////////////////////////////////////
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string)
   }
@@ -50,9 +46,6 @@ export const OutlinedDropdown: React.FC<DropDownProps> = ({
   )
 }
 
-// * Dropdown with sharp corners
-////////////////////////////////
-
 export const OutlinedDropdownSharp: React.FC<DropDownProps> = ({
   selectLabel,
   w,
@@ -67,8 +60,6 @@ export const OutlinedDropdownSharp: React.FC<DropDownProps> = ({
 
   const [value, setValue] = useState(data[0]?.value)
 
-  // * Function for getting value from dropdown
-  /////////////////////////////////////////////
   const handleChange = (event: SelectChangeEvent) => {
     setValue(event.target.value as string)
   }

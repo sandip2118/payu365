@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader'
-import InputField from '../../Common/InputField'
+import InputField from '../..//Common/InputField'
 
 function BasicInfoPartThree() {
   const [email,setEmail] = useState<string>('');
 
   return (
-<div className='bg-[#1C1C24] w-100% px-4 md:rounded-[5px]'>
+<div className='bg-[#1C1C24] w-100% px-4 rounded-[5px]'>
 <BasicInfoHeader title='Email Address' description='Use your email to protect your account and transactions.' buttonText='Manage' buttonColor='grey'/>
 
       <div className='flex justify-between items-center py-[20px]'>

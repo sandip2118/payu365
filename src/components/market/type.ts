@@ -3,5 +3,6 @@ export type MarketViewProps = {
 }
 
 export type MarketTradeProps = {
-  handleViewHistory?: () => void
+  handleViewHistory?: () => void;
+  handleBactToMarket?: () => void;
 }

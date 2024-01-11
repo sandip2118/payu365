@@ -14,7 +14,7 @@ const LoginWithPhone: React.FC<LoginWithPhoneProps> = (props) => {
   const [phoneCode, setPhoneCode] = useState<string | undefined>('');
 
   const handleClick = () => {
-    if (phone?.length <= 12) {
+    if (phone?.length <= 9) {
       toast.error('Enter a valid phone number');
     } else {
       props.onClick(phone);
@@ -46,6 +46,7 @@ const LoginWithPhone: React.FC<LoginWithPhoneProps> = (props) => {
               setPhoneCode(e?.phoneCode)
               setPhone(e?.value)
             }}
+            placeholder='Phone number'
           />
         </div>
         <button

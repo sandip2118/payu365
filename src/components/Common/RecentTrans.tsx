@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import Arrow from './Arrow';
 import moment from 'moment';
 import Card from './Card';
+import { ROUTE } from '@/Constants';
 
 function RecentTrans() {
   const router = useRouter();
@@ -31,7 +32,7 @@ function RecentTrans() {
   })
 
   return (
-    <Card title={'Recent Transactions'} cardTopBtnName={'View All'}>
+    <Card title={'Recent Transactions'} cardTopBtnName={'View All'} onclick={()=> router.push(ROUTE.TRANSACTIONS)}>
       <div className='mt-5 relative'>
         <TableContainer className="mt-5">
           <Table aria-label="simple table">

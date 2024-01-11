@@ -71,31 +71,31 @@ const SystemMessages = () => {
   ]
   return (
     <>
-    <Card title='System Messages' isBorder={true}>
-      <div className="main-container">
-        {barsData.map((bar) => (
-          <div
-            className="py-[10px] border-b border-GRAY_101 dark:border-gray-700 flex gap-[20px] items-center"
-            key={bar.id}
-          >
-            <div className="icon bg-BLACK_303 rounded-[30px] p-3 w-12 h-12 flex justify-center items-center hover:bg-BLACK_302">
-              {bar.icon}
-            </div>
-            <div className="details flex-col flex justify-evenly w-[95%]">
-              <div className="heading_with_time flex justify-between">
-                <h6 className="text-[14px]">{bar.heading}</h6>
-                <p className="text-[14px] text-GRAY_101">{bar.time}</p>
+      <Card title='System Messages' isBorder={true}>
+        <div className="main-container">
+          {barsData.map((bar) => (
+            <div
+              className="py-[10px] border-b border-GRAY_101 dark:border-gray-700 flex gap-[20px] items-center"
+              key={bar.id}
+            >
+              <div className="icon bg-BLACK_303 rounded-[30px] p-3 w-12 h-12 flex justify-center items-center hover:bg-BLACK_302">
+                {bar.icon}
               </div>
-              <p className="text-[12px] text-GRAY_101 line-clamp-1">
-                {bar.slug}
-              </p>
-              <a href="#" className="text-[10px] text-YELLOW_01">
-                {bar.link}
-              </a>
+              <div className="details flex-col flex justify-evenly w-[95%]">
+                <div className="heading_with_time flex justify-between">
+                  <h6 className="text-[14px]">{bar.heading}</h6>
+                  <p className="text-[14px] text-GRAY_101">{bar.time}</p>
+                </div>
+                <p className="text-[12px] text-GRAY_101 line-clamp-1">
+                  {bar.slug}
+                </p>
+                <a href="#" className="text-[10px] text-YELLOW_01">
+                  {bar.link}
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </Card>
     </>
   )

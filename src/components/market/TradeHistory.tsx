@@ -33,7 +33,7 @@ const TradeHistory = () => {
       <Page title={'Markets'}>
         <div className="my-5 mx-5">
           <Card>
-            <div className="header py-[7px] px-[1px]">
+            <div className="header ">
               <div className='tabs flex w-full justify-between border-b border-GRAY_101 dark:border-gray-700'>
                 <div className="tabs">
                   <ColorTabs data={data} />
@@ -42,7 +42,7 @@ const TradeHistory = () => {
                   <FormControlLabel
                     control={<Checkbox />}
                     label='Hide Other Pairs'
-                    className='leading-6 text-GRAY_101'
+                    className='leading-6 text-GRAY_101 text-[11px]'
                   />
                 </div>
               </div>

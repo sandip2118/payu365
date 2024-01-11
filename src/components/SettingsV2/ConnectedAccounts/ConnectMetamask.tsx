@@ -16,7 +16,7 @@ function ConnectMetamask() {
 
   return (
     <div className='grid lg:flex '>
-    <div className='w-full lg:w-1/2 grid gap-[10px]'>
+    <div className='w-full lg:w-1/2 grid gap-[10px] md:pr-5 xl:pr-0'>
       <div className='flex gap-[10px] items-center'>
             <Image src='/assets/icons/metamask.svg' alt='google' width={24} height={24} />
             <p className='font14RB text-white'> Connect with Metamask</p>

@@ -37,7 +37,7 @@ const SignupForm = (props: SignupFormProps) => {
         return toast.error('Enter first name')
       case !lastName:
         return toast.error('Enter last name')
-      case phone?.length <= 12:
+      case phone?.length <= 9:
         return toast.error('Please Enter valid phone number')
       case email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email):
         return toast.error('Enter valid email')
@@ -56,7 +56,7 @@ const SignupForm = (props: SignupFormProps) => {
   return (
     <div className=" w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%]">
       <div className="h-screen mx-5 md:mx-0 ">
-        <div className="md:bg-inherit mt-[61px] rounded-3xl md:rounded-none bg-BLACK_303 flex-col items-start px-5 pb-8 md:mt-[111px] md:w-full md:backdrop-blur-none">
+        <div className="md:bg-inherit mt-[61px] rounded-3xl md:rounded-none bg-BLACK_303 flex-col items-start px-5  pt-[32px] pb-8 md:mt-[111px] md:w-full md:backdrop-blur-none">
           <p className="text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
             Sign up
           </p>

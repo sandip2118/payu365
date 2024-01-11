@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Icons from '@/assets/icon';
 import { colors } from '../../themes';
-import { MR_TABS } from '@/Constants';
+import { MR_TABS, ROUTE } from '@/Constants';
 import { Box, TableCell, TableSortLabel } from '@mui/material';
 import CurrencyInfo from '../Common/CurrencyInfo';
 import Table from '@mui/material/Table';
@@ -35,33 +35,52 @@ function MarketRate() {
   });
 
   const rows = [
-    { currency: 'USD', 'Qty_Avl_Amount': 1.03038932, price: 0.0012456 },
-    { currency: 'INR', 'Qty_Avl_Amount': 0.001541000, price: 0.0012456 }
+    { currency: 'USD', 'Qty_Avl_Amount': 1.03038932, price: '0.0012456' },
+    { currency: 'INR', 'Qty_Avl_Amount': 0.001541000, price: '0.0012456' }
   ];
-
   const column = Array.from(new Set(rows.flatMap(Object.keys)))
-
   const sortedRows = rows.sort((a: any, b: any) => {
+    return a
+  })
+
+  const rowsHT = [
+    { currency: 'USD', price: '₹80.66', changes: '0.0012456' },
+    { currency: 'INR', price: '₹53.66', changes: '0.0012456' },
+    { currency: 'AUD', price: '₹60.66', changes: '0.0071781' }
+  ];
+  const columnHT = Array.from(new Set(rowsHT.flatMap(Object.keys)))
+  const sortedRowsHT = rowsHT.sort((a: any, b: any) => {
+    return a
+  })
+  const rowsFAV = [
+    { currency: 'USD', price: '₹80.66', changes: '0.0012456' },
+    { currency: 'INR', price: '₹53.66', changes: '0.0012456' },
+  ];
+  const columnFAV = Array.from(new Set(rowsFAV.flatMap(Object.keys)))
+  const sortedRowsFAV = rowsFAV.sort((a: any, b: any) => {
     return a
   })
 
   const PopupMenu = [
     {
       title: 'View Assets',
-      icon: <Icons.MyAsset color={colors.GRAY_101} />
+      icon: <Icons.MyAsset color={colors.GRAY_101} />,
+      route: ''
     },
     {
       title: 'Transfer',
-      icon: <Icons.TransferIcon color={colors.GRAY_101} />
+      icon: <Icons.TransferIcon color={colors.GRAY_101} />,
+      route: ROUTE.TRANSFER
     },
     {
       title: 'Deposit',
-      icon: <Icons.Deposit color={colors.GRAY_101} />
+      icon: <Icons.Deposit color={colors.GRAY_101} />,
+      route: ''
     },
   ]
-  return (
 
-    <Card title={'Market Rate'} cardTopBtnName={'View All'}>
+  return (
+    <Card title={'Market Rate'} cardTopBtnName={'View All'} onclick={() => router.push(ROUTE.MARKET)}>
       <div className='justify-end grid my-5 relative'>
         <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
           menuStyle='w-[250px] sm:w-[300px]'
@@ -107,129 +126,392 @@ function MarketRate() {
       </div>
 
       <div className='mt-5 relative'>
-        <TableContainer className="mt-5">
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow className='bChange'>
-                {column.map((key, index) => (
-                  <TableCell
-                    key={index}
-                    className="text-white border-none market-table capitalize"
-                  >
-                    {index < 3 ? (
-                      <TableSortLabel
-                        className="flex gap-1 font12RB"
-                        IconComponent={() => null}
-                      >
-                        {key} <Icons.TBArrowIcon />
-                      </TableSortLabel>
-                    ) : (
-                      key
-                    )}
-                  </TableCell>
-                ))}
-                <TableCell
-                  align="center"
-                  className=" w-[172px] border-none"
-                >
-                  <p className='font12RB text-white'>
-                    Actions
-                  </p>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {sortedRows.map((row, i) => (
-                <TableRow key={row.currency}
-                  className={` ${rows?.length == i + 1 ? 'border-[0px]' : 'border-b'} bChange border-BLACK_306 bChange`}
-                >
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    className="border-b border-GRAY_101 dark:border-gray-700"
-                  >
-                    <div className="flex items-center gap-2">
-                      {i === 0 &&
-                        <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
-                      }
-                      {i === 1 &&
-                        <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
-                      }
-
-                      <Box className='ml-[7px]'>
-                        <p className='font14RB text-white'>
-                          {row.currency}
-                        </p>
-                        <div className='font12RB flex items-center text-GRAY_101 mt-1'>
-                          {i ?
-                            'Indian Rupees'
-                            :
-                            'United States Dollar'
-                          }
-                        </div>
-                      </Box>
-                    </div>
-                  </TableCell>
-
-                  <TableCell className=" border-b border-GRAY_101 border-solid">
-                    <p className='font14RB text-white'>
-                      {row.Qty_Avl_Amount}
-                    </p>
-                    <p className='font12RB text-GRAY_101'>
-                      ₹80.03
-                    </p>
-                  </TableCell>
-                  <TableCell className="border-b border-GRAY_101 border-solid">
-                    <p className='font14RB text-white'>
-                      {row.price}
-                    </p>
-                    <p className="flex text-GREEN_01 text-xs font-medium items-center">
-                      0.0012456 <Icons.ArrowTop />
-                    </p>
-                  </TableCell>
+        {selectedTab === MR_TABS.My_ASSETS &&
+          <TableContainer className="mt-5">
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow className='bChange'>
+                  {column.map((key, index) => (
+                    <TableCell
+                      key={index}
+                      className="text-white border-none market-table capitalize"
+                    >
+                      {index < 3 ? (
+                        <TableSortLabel
+                          className="flex gap-1 font12RB"
+                          IconComponent={() => null}
+                        >
+                          {key} <Icons.TBArrowIcon />
+                        </TableSortLabel>
+                      ) : (
+                        key
+                      )}
+                    </TableCell>
+                  ))}
                   <TableCell
                     align="center"
-                    className="border-b border-GRAY_101 border-solid"
+                    className=" w-[172px] border-none"
                   >
-                    <Menu
-                      transition
-                      menuStyle={{ borderRadius: '7px' }}
-                      menuButton={
-                        <MenuButton
-                          className=""
-                          onClick={() => { }}
-                        >
-                          <div className="flex">
-                            <Icons.VerticalMore />
-                          </div>
-                        </MenuButton>
-                      }
-                    >
-                      <div className="bg-[#292932] cursor-pointer py-[20px] px-[24px] w-[200px] rounded-[7px]">
-                        {PopupMenu?.map((d) => {
-                          return (
-                            <MenuItem className="!p-0">
-                              <div className=" flex items-center h-[48px]"
-                              >
-                                {d.icon}
-                                <p className="font14R text-GRAY_101 ml-[15px]">
-                                  {d.title}
-                                </p>
-                              </div>
-                            </MenuItem>
-                          )
-                        })}
-
-                      </div>
-                    </Menu>
+                    <p className='font12RB text-white'>
+                      Actions
+                    </p>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {sortedRows.map((row, i) => (
+                  <TableRow key={row.currency}
+                    className={` ${rows?.length == i + 1 ? 'border-[0px]' : 'border-b'} bChange border-BLACK_306 bChange`}
+                  >
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      className="border-b border-GRAY_101 dark:border-gray-700"
+                    >
+                      <div className="flex items-center gap-2">
+                        {i === 0 &&
+                          <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+                        {i === 1 &&
+                          <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
 
-      </div >
+                        <Box className='ml-[7px]'>
+                          <p className='font14RB text-white'>
+                            {row.currency}
+                          </p>
+                          <div className='font12RB flex items-center text-GRAY_101 mt-1'>
+                            {i ?
+                              'Indian Rupees'
+                              :
+                              'United States Dollar'
+                            }
+                          </div>
+                        </Box>
+                      </div>
+                    </TableCell>
+
+                    <TableCell className=" border-b border-GRAY_101 border-solid">
+                      <p className='font14RB text-white'>
+                        {row.Qty_Avl_Amount}
+                      </p>
+                      <p className='font12RB text-GRAY_101'>
+                        ₹80.03
+                      </p>
+                    </TableCell>
+                    <TableCell className="border-b border-GRAY_101 border-solid">
+                      <p className='font14RB text-white'>
+                        {row.price}
+                      </p>
+                      <p className="flex text-GREEN_01 text-xs font-medium items-center">
+                        0.0012456 <Icons.ArrowTop />
+                      </p>
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      className="border-b border-GRAY_101 border-solid"
+                    >
+                      <Menu
+                        transition
+                        menuStyle={{ borderRadius: '7px' }}
+                        menuButton={
+                          <MenuButton
+                            className=""
+                            onClick={() => { }}
+                          >
+                            <div className="flex">
+                              <Icons.VerticalMore />
+                            </div>
+                          </MenuButton>
+                        }
+                      >
+                        <div className="bg-[#292932] cursor-pointer py-[20px] px-[24px] w-[200px] rounded-[7px]">
+                          {PopupMenu?.map((d) => {
+                            return (
+                              <MenuItem className="!p-0">
+                                <div className=" flex items-center h-[48px]"
+                                  onClick={() => router.push(d.route)}
+                                >
+                                  {d.icon}
+                                  <p className="font14R text-GRAY_101 ml-[15px]">
+                                    {d.title}
+                                  </p>
+                                </div>
+                              </MenuItem>
+                            )
+                          })}
+
+                        </div>
+                      </Menu>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        }
+        {selectedTab === MR_TABS.HOT_TRENDING &&
+          <TableContainer className="mt-5">
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow className='bChange'>
+                  {columnHT.map((key, index) => (
+                    <TableCell
+                      key={index}
+                      className="text-white border-none market-table capitalize"
+                    >
+                      {index < 2 ? (
+                        <TableSortLabel
+                          className="flex gap-1 font12RB"
+                          IconComponent={() => null}
+                        >
+                          {key} <Icons.TBArrowIcon />
+                        </TableSortLabel>
+                      ) : (
+                        <TableSortLabel
+                          className="flex gap-1 font12RB"
+                          IconComponent={() => null}
+                        >
+
+                          {key}
+                        </TableSortLabel>
+                      )}
+                    </TableCell>
+                  ))}
+                  <TableCell
+                    align="center"
+                    className=" w-[172px] border-none"
+                  >
+                    <p className='font12RB text-white'>
+                      Actions
+                    </p>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {sortedRowsHT.map((row, i) => (
+                  <TableRow key={row.currency}
+                    className={` ${rows?.length == i + 1 ? 'border-[0px]' : 'border-b'} bChange border-BLACK_306 bChange`}
+                  >
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      className="border-b border-GRAY_101 dark:border-gray-700"
+                    >
+                      <div className="flex items-center gap-2">
+                        {i === 0 &&
+                          <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+                        {i === 1 &&
+                          <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+                        {i === 2 &&
+                          <img src={'/assets/images/australia.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+
+                        <Box className='ml-[7px]'>
+                          <p className='font14RB text-white'>
+                            {row.currency}
+                          </p>
+                          <div className='font12RB flex items-center text-GRAY_101 mt-1'>
+                            {i === 0 &&
+                              'United States Dollar'
+                            }
+                            {i === 1 && 'Indian Rupees'}
+                            {i === 2 && 'Australian Dollar'}
+                          </div>
+                        </Box>
+                      </div>
+                    </TableCell>
+
+                    <TableCell className=" border-b border-GRAY_101 border-solid">
+                      <p className='font14RB text-white'>
+                        {row.price}
+                      </p>
+                      <p className="flex text-GREEN_01 text-xs font-medium items-center">
+                        0.0012456 <Icons.ArrowTop />
+                      </p>
+                    </TableCell>
+                    <TableCell className="border-b border-GRAY_101 border-solid">
+                      <p className={`${i === 1 ? 'text-GREEN_01' : 'text-RED_01'} flex font14RB items-center`}>
+                        {row.changes} <Icons.ArrowTop color={i === 1 ? colors.GREEN_01 : colors.RED_01} className={`${i === 1 ? 'rotate-0' : 'rotate-180'}`} />
+                      </p>
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      className="border-b border-GRAY_101 border-solid"
+                    >
+                      <Menu
+                        transition
+                        menuStyle={{ borderRadius: '7px' }}
+                        menuButton={
+                          <MenuButton
+                            className=""
+                            onClick={() => { }}
+                          >
+                            <div className="flex">
+                              <Icons.VerticalMore />
+                            </div>
+                          </MenuButton>
+                        }
+                      >
+                        <div className="bg-[#292932] cursor-pointer py-[20px] px-[24px] w-[200px] rounded-[7px]">
+                          {PopupMenu?.map((d) => {
+                            return (
+                              <MenuItem className="!p-0">
+                                <div className=" flex items-center h-[48px]"
+                                  onClick={() => router.push(d.route)}
+                                >
+                                  {d.icon}
+                                  <p className="font14R text-GRAY_101 ml-[15px]">
+                                    {d.title}
+                                  </p>
+                                </div>
+                              </MenuItem>
+                            )
+                          })}
+
+                        </div>
+                      </Menu>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        }
+        {selectedTab === MR_TABS.FAVORITE &&
+          <TableContainer className="mt-5">
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow className='bChange'>
+                  {columnFAV.map((key, index) => (
+                    <TableCell
+                      key={index}
+                      className="text-white border-none market-table capitalize"
+                    >
+                      {index < 2 ? (
+                        <TableSortLabel
+                          className="flex gap-1 font12RB"
+                          IconComponent={() => null}
+                        >
+                          {key} <Icons.TBArrowIcon />
+                        </TableSortLabel>
+                      ) : (
+                        <TableSortLabel
+                          className="flex gap-1 font12RB"
+                          IconComponent={() => null}
+                        >
+
+                          {key}
+                        </TableSortLabel>
+                      )}
+                    </TableCell>
+                  ))}
+                  <TableCell
+                    align="center"
+                    className=" w-[172px] border-none"
+                  >
+                    <p className='font12RB text-white'>
+                      Actions
+                    </p>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {sortedRowsFAV.map((row, i) => (
+                  <TableRow key={row.currency}
+                    className={` ${rows?.length == i + 1 ? 'border-[0px]' : 'border-b'} bChange border-BLACK_306 bChange`}
+                  >
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      className="border-b border-GRAY_101 dark:border-gray-700"
+                    >
+                      <div className="flex items-center gap-2">
+                        {i === 0 &&
+                          <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+                        {i === 1 &&
+                          <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+                        {i === 2 &&
+                          <img src={'/assets/images/australia.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
+                        }
+
+                        <Box className='ml-[7px]'>
+                          <p className='font14RB text-white'>
+                            {row.currency}
+                          </p>
+                          <div className='font12RB flex items-center text-GRAY_101 mt-1'>
+                            {i === 0 &&
+                              'United States Dollar'
+                            }
+                            {i === 1 && 'Indian Rupees'}
+                            {i === 2 && 'Australian Dollar'}
+                          </div>
+                        </Box>
+                      </div>
+                    </TableCell>
+
+                    <TableCell className=" border-b border-GRAY_101 border-solid">
+                      <p className='font14RB text-white'>
+                        {row.price}
+                      </p>
+                      <p className="flex text-GREEN_01 text-xs font-medium items-center">
+                        0.0012456 <Icons.ArrowTop />
+                      </p>
+                    </TableCell>
+                    <TableCell className="border-b border-GRAY_101 border-solid">
+                      <p className={`${i === 1 ? 'text-GREEN_01' : 'text-RED_01'} flex font14RB items-center`}>
+                        {row.changes} <Icons.ArrowTop color={i === 1 ? colors.GREEN_01 : colors.RED_01} className={`${i === 1 ? 'rotate-0' : 'rotate-180'}`} />
+                      </p>
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      className="border-b border-GRAY_101 border-solid"
+                    >
+                      <Menu
+                        transition
+                        menuStyle={{ borderRadius: '7px' }}
+                        menuButton={
+                          <MenuButton
+                            className=""
+                            onClick={() => { }}
+                          >
+                            <div className="flex">
+                              <Icons.VerticalMore />
+                            </div>
+                          </MenuButton>
+                        }
+                      >
+                        <div className="bg-[#292932] cursor-pointer py-[20px] px-[24px] w-[200px] rounded-[7px]">
+                          {PopupMenu?.map((d) => {
+                            return (
+                              <MenuItem className="!p-0">
+                                <div className=" flex items-center h-[48px]"
+                                  onClick={() => router.push(d.route)}
+                                >
+                                  {d.icon}
+                                  <p className="font14R text-GRAY_101 ml-[15px]">
+                                    {d.title}
+                                  </p>
+                                </div>
+                              </MenuItem>
+                            )
+                          })}
+
+                        </div>
+                      </Menu>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        }
+
+      </div>
     </Card>
   );
 }

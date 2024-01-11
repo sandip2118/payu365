@@ -26,7 +26,7 @@ function PartThree() {
                     <Image  src='/assets/icons/connections.svg'  alt='img' width={24} height={24}/>
                     <p>Accounts Connections</p>
                   </div>
-                  <div className='text-GRAY_101 font12R w-full md:w-5/6 lg:w-3/4 font14RB'>Use a third-party account, such as your AppleID or Google account to login to your DigiPay account</div>
+                  <div className='text-GRAY_101 text-[12px] font-[400] w-full md:w-5/6 lg:w-3/4 md:text-[14px]'>Use a third-party account, such as your AppleID or Google account to login to your DigiPay account</div>
                 </div>
 
        <div className=''>

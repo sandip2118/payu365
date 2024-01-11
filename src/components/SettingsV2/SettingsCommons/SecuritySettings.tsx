@@ -1,9 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
 import { SecuritySettingsProps } from '../types';
+import { useRouter } from 'next/router';
 
 
-const SecuritySettings:React.FC<SecuritySettingsProps>=({tag,icon,iconPath,title,description,extra,extraText,switch:isSwitchOn,switchIcon,switchText,buttonText ,isBorder,})=> {
+const SecuritySettings:React.FC<SecuritySettingsProps>=({tag,icon,iconPath,title,description,extra,extraText,switch:isSwitchOn,switchIcon,switchText,buttonText ,isBorder,component,tabTitle})=> {
+  const router = useRouter();
+  const navigateToPage = (component, tabTitle) => {
+    if (component) {
+      router.push(`/settings?component=${component}&tabTitle=${encodeURIComponent(tabTitle)}`);
+    } else {
+      console.log('You remain here');
+    }
+  };
+  
 
   return (
     <div className={`grid lg:flex gap-[10px] md:gap-[0px] py-5 ${isBorder ? 'border-b-[1px] border-[#44444F]': ''}`}>
@@ -30,7 +40,7 @@ const SecuritySettings:React.FC<SecuritySettingsProps>=({tag,icon,iconPath,title
     ) : null
    }
     <div className='flex justify-end'>
-          <button className='font12RB text-[#B1B5C3] bg-[#48546D] rounded-[5px] w-[87px] h-[28px]' >{buttonText}</button>
+          <button className='font12RB text-[#B1B5C3] bg-[#48546D] rounded-[5px] w-[87px] h-[28px]'onClick={()=>navigateToPage(component,tabTitle)} >{buttonText}</button>
         </div>
     </div>
     </div>

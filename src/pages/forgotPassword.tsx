@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import Icons from '@/assets/icon'
-import { EnterOTP } from '@/components/Login/EnterOTP'
-import PhoneWithCountryCode from '@/components/Login/PhoneWithCountryCode'
-import { TEXT } from '@/Constants'
-import PasswordInput from './../components/Common/PasswordInput'
 import { OrDivider } from './../components/Common/OrDivider'
+import { EnterOTP } from './../components/Login/EnterOTP'
+import PhoneWithCountryCode from './../components/Login/PhoneWithCountryCode'
+import { TEXT } from './../Constants'
+import PasswordInput from './../components/Common/PasswordInput'
 
 const ForgotPassword = () => {
   const router = useRouter()
@@ -53,7 +53,7 @@ const ForgotPassword = () => {
         setFlag('email')
       }
     } else if (phone !== '') {
-      if (phone?.length <= 12) {
+      if (phone?.length <= 9) {
         toast.error('Enter phone number')
       } else {
         setFlag('phone')

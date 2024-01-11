@@ -4,7 +4,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import SideBar from '@/components/Sidebar'
+import SideBar from './../components/Sidebar'
 import Login from '@/pages/Login'
 
 export const AppContext = createContext()

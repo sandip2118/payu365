@@ -11,12 +11,12 @@ const EmailVerification:React.FC<EmailVerificationProps> =({title,description,la
     <div>
     <BasicInfoHeader title={title} description={description} buttonColor={buttonColor} buttonText='Edit' />
     <div className='grid'>
-   <div className='flex justify-between items-center pt-5 w-[100%] pb-2.5  gap-5 md:gap-0'>
+   <div className='flex justify-between items-center pt-5 w-[100%] pb-2.5  gap-5  md:gap-0'>
         <div className='w-full md:w-1/2 '>
-            <div className='flex justify-between md:justify-start mb-[10px] md:mb-[20px] items-center'>
-              <div className='font12RB text-white   px-1 flex '>Email Address</div>
+            <div className='flex justify-between md:justify-start mb-[10px] md:mb-[10px] items-center'>
+              <div className='font12RB text-white px-1 flex '>Email Address</div>
               <div className='md:hidden flex'>
-                <button className={`font14SB rounded-[40px] flex items-center border place-content-center ${buttonIcon ? 'w-[max-content] px-[15px]' : 'w-[87px]'} h-[28px] ${(borderColor === 'green') ? 'border-GREEN_02 text-GREEN_02' :' border-GRAY_101 text-GRAY_101' }`}>
+                <button className={`text-[14px] font-[500] rounded-[40px] flex items-center border place-content-center ${buttonIcon ? 'w-[max-content] px-[15px]' : 'w-[87px]'} h-[28px] ${(borderColor === 'green') ? 'border-GREEN_02 text-GREEN_02' :' border-GRAY_101 text-GRAY_101' }`}>
                {buttonIcon ?
                <Image src={buttonIcon} alt='img' width={16} height={16} className='mr-2.5'/> 
                :
@@ -31,7 +31,7 @@ const EmailVerification:React.FC<EmailVerificationProps> =({title,description,la
             </div>
         </div>
        <div className='hidden md:flex'>
-        <button className={`font14SB rounded-[40px]  border flex items-center place-content-center  ${buttonIcon ? 'w-[max-content] px-[15px]' : 'w-[87px]'} h-[28px] ${(borderColor === 'green') ? 'border-GREEN_02 text-GREEN_02' :' border-GRAY_101 text-GRAY_101' }`}>
+        <button className={`text-[14px] font-[500]  rounded-[40px]  border flex items-center place-content-center  ${buttonIcon ? 'w-[max-content] px-[15px]' : 'w-[87px]'} h-[28px] ${(borderColor === 'green') ? 'border-GREEN_02 text-GREEN_02' :' border-GRAY_101 text-GRAY_101' }`}>
         {buttonIcon ?
                <Image src={buttonIcon} alt='img' width={16} height={16} className='mr-2.5'/> 
                :

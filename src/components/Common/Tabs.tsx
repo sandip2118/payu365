@@ -19,7 +19,7 @@ const ColorTabs: React.FC<TabsProps> = ({ data }) => {
         onChange={handleChange}
         textColor="orange"
         indicatorColor="primary"
-        aria-label="secondary tabs example"
+        aria-label="secondary tabs"
       >
         {data && data.map((tab: any) => (
           <Tab
@@ -27,7 +27,12 @@ const ColorTabs: React.FC<TabsProps> = ({ data }) => {
             value={tab.value}
             label={tab.label}
             className='text-GRAY_101 pb-6 leading-4 text-sm'
-            sx={{ textTransform: 'capitalize' }} />
+            sx={{
+              textTransform: 'capitalize', 
+              padding: "12px 0px",
+              minWidth: "unset",
+              marginRight: "20px"
+            }} />
         ))}
       </Tabs>
     </Box>

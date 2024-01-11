@@ -1,5 +1,5 @@
-import { EnterOTP } from "@/components/Login/EnterOTP";
-import { Modal } from "@/components/Modal/Modal";
+import { EnterOTP } from './../components/Login/EnterOTP'
+import { Modal } from "./../components/Modal/Modal";
 import { useState } from "react";
 
 const Verify = () => {

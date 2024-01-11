@@ -4,13 +4,13 @@ import { useRouter } from 'next/router'
 import { DashboardWrapper } from './types'
 import BuySale from '../Common/BuySale'
 import Page from '../Common/Page'
-import EsBalance from './EsBalance'
 import LetStart from './LetStart'
+import EsBalance from './EsBalance'
 import MarketRate from './MarketRate'
 import RecentTrans from '../Common/RecentTrans'
 import PaymentAnalytics from './PaymentAnalytics'
-import PaymentAccount from './PaymentAccount'
 import QuickTransfer from './QuickTransfer'
+import PaymentAccount from './PaymentAccount'
 
 function Wrapper({ title }: DashboardWrapper) {
   const router = useRouter()
@@ -33,7 +33,7 @@ function Wrapper({ title }: DashboardWrapper) {
             <PaymentAnalytics />
             <PaymentAccount />
             <QuickTransfer />
-            <BuySale />
+            <BuySale type="dashbord"/>
           </div>
         </div>
       </div>

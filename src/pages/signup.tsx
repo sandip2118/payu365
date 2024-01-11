@@ -1,4 +1,4 @@
-import { SignupForm } from '@/components/Signup/SignupForm'
+import { SignupForm } from './../components/Signup/SignupForm'
 
 const SignUp = () => {
   const handleSignupFormSubmit = () => { }
@@ -15,7 +15,7 @@ const SignUp = () => {
             </div>
             <div
               style={{
-                backgroundImage: 'url(/assets/images/nasa.png)',
+                backgroundImage: 'url(/assets/images/nasaSignup.png)',
                 backgroundSize: 'cover',
               }}
               className={`h-screen shrink-0 mix-blend-screen w-[50%] fixed lg:-mt-[4%] -mt-[8%]`}
@@ -35,7 +35,7 @@ const SignUp = () => {
       </div>
       <div className='block md:hidden'>
         <div style={{
-          backgroundImage: "url(/assets/images/nasa.png)",
+          backgroundImage: "url(/assets/images/nasaSignup.png)",
           backgroundSize: "cover",
         }}
           className={`h-screen shrink-0 mix-blend-screen w-[100%] fixed`}

@@ -24,7 +24,7 @@ export type countryValue = {
   className?: string
 }
 
-export type ButtonProps = {
+export type OutlinedButtonProps = {
   text?: string;
   color?: string;
   w?: string;
@@ -62,5 +62,18 @@ export type PasswordInputProps ={
   placeholder?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  border?:boolean;
   isValid?: boolean;
+}
+
+export type BuySaleProps = {
+  type?: string;
+  onClick?: () => void;
+}
+
+export type ContainedButtonProps = {
+  text?: string;
+  className?: string;
+  padding?: string; 
+  onClick?: () => void;
 }

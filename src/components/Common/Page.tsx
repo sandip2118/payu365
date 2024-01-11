@@ -1,7 +1,7 @@
 import React from 'react';
 import NextBreadcrumbs from './NextBreadcrumbs';
-import Header from '@/components/Header'
 import { PageProps } from './type';
+import Header from '../Header';
 
 const Page: React.FC<PageProps> = ({ title, children, className, isBreadcrumbs, balance }) => (
   <div className={`h-screen w-full overflow-y-auto bg-BLACK_303 text-white ${className}`}>

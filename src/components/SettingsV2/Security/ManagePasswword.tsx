@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import CardWrapper from '../SettingsCommons/CardWrapper'
 import Image from 'next/image'
-import { Button } from '@mui/material';
 import PasswordInput from '../../Common/PasswordInput'
 
 function ManagePasswword() {
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [matched, setMatched] = useState<boolean>(false);
 
   const validatePassword = (
     value: string
@@ -25,7 +25,7 @@ function ManagePasswword() {
   }
 
   return (
-    <div className='md:mx-5'>
+    <div className='md:mx-5 mb-[100px]'>
       <CardWrapper>
         <div className='grid mx-auto w-full md:w-1/2 md:pt-[50px] md:pb-[30px] py-5 md:py-0'>
           <p className='text-white md:text-[27px] font-[700] flex place-content-center py-[15px]'>Change Password</p>
@@ -35,9 +35,9 @@ function ManagePasswword() {
           </div>
 
           <div className='mt-[25px] w-full md:w-[85%] grid gap-[20px] mx-auto'>
-            {/* This div below */}
-            {(passwordValidation.hasLetter && passwordValidation.hasNumber && passwordValidation.isLengthValid) ? <div>
-              <PasswordInput placeholder='••••••••••' value={password} onChange={(e) => setPassword(e.target.value)} isValid={true} />
+
+            {(password === confirmPassword) ? <div>
+              <PasswordInput placeholder='••••••••••' value={password} onChange={(e) => setPassword(e.target.value)} border={true} />
               <label className='font12R text-GREEN_02'>Password matched</label>
             </div>
               :
@@ -88,14 +88,13 @@ function ManagePasswword() {
             </div>
 
             <div className='mt-2.5'>
-              <Button
-                variant="outlined"
+              <button
                 className='w-full rounded-[5px] py-[15px] flex place-content-center items-center font14SB bg-BLUE_201  border-none text-white capitalize'
                 onClick={updatePassword}
                 sx={{ padding: '0' }}
               >
                 Update New Password
-              </Button>
+              </button>
             </div>
           </div>
         </div>

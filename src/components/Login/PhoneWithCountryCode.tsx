@@ -10,9 +10,10 @@ interface prop {
   onSelect?: (val: any) => void,
   value?: any,
   onChange?: any
+  placeholder?: string
 }
 
-const PhoneWithCountryCodeProps = ({ value, onChange }: prop) => {
+const PhoneWithCountryCodeProps = ({ value, onChange ,placeholder}: prop) => {
   const [countries, setCountries] = useState<any[]>()
   const [selecteCurrency, setSelecteCurrency] = useState({
     "id": 98,
@@ -70,7 +71,7 @@ const PhoneWithCountryCodeProps = ({ value, onChange }: prop) => {
         }
       >
         <div className={`rounded-[4px] bg-BLACK_306 cursor-pointer w-[300px]`}>
-          <div className=" flex items-center px-[10px] bg-Neutral200 dark:bg-Neutral200Dark rounded-[5px] bg-BLACK_304">
+          <div className=" flex items-center px-[20px] bg-Neutral200 dark:bg-Neutral200Dark rounded-[5px] bg-BLACK_304">
             <Icons.Search w={13} h={13} />
             <DebounceInput
               autoFocus
@@ -84,8 +85,8 @@ const PhoneWithCountryCodeProps = ({ value, onChange }: prop) => {
             {/* {search.length > 0 && <icons.crossCircle onClick={searchClear} />} */}
           </div>
 
-          <div className={` overflow-auto max-h-[445px] sm:max-h-[300px] rounded-[4px] bg-BLACK_306 cursor-pointer px-7 py-2 focus-visible:border-none`}>
-            <MenuItem className="!p-0"
+          <div className={` overflow-auto sm:max-h-[400px] max-h-[300px] rounded-[4px] bg-BLACK_306 cursor-pointer px-7 py-2 focus-visible:border-none`}>
+            <MenuItem className="!p-0 outline-none"
             >
               {countries?.map((d: any, i) => {
                 return (
@@ -107,7 +108,7 @@ const PhoneWithCountryCodeProps = ({ value, onChange }: prop) => {
       </Menu >
       <InputField
         type='number'
-        placeholder="Phone number"
+        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange({ phoneCode: selecteCurrency?.code, value: e.target.value })}
       />

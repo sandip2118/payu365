@@ -12,13 +12,16 @@ import Icons from '@/assets/icon'
 import { colors } from '../../themes'
 import Image from 'next/image'
 import Candlestick from './TradingViewChart/Candlestick'
-import { MarketTradeProps } from "./type";
-import Page from '../Common/Page'
+import { MarketTradeProps } from './type'
 import Card from '../Common/Card'
 import BuySale from '../Common/BuySale'
+import Page from '../Common/Page'
+import { ContainedButton } from '../Common/Button'
+import ModalCommon from '../Common/Modal'
 
-const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
-  const [isInrFirst, setIsInrFirst] = useState(true);
+const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBactToMarket }) => {
+  const [isInrFirst, setIsInrFirst] = useState<boolean>(true)
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   const handleSwapClick = () => {
     setIsInrFirst((prev: any) => !prev)
@@ -69,34 +72,36 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
         <Table aria-label="simple table" className="order-table">
           <TableHead>
             <TableRow>
-              <TableCell className="text-GRAY_104 capitalize border-b-GRAY_104 border-b border-solid">
-                Price(USD)
+              <TableCell className="capitalize border-b-GRAY_104 border-b border-solid">
+                <p className="text-GRAY_104">Price(USD)</p>
               </TableCell>
-              <TableCell className="text-GRAY_104 capitalize border-b-GRAY_104 border-b border-solid">
-                Amount(INR)
+              <TableCell className="capitalize border-b-GRAY_104 border-b border-solid">
+                <p className="text-GRAY_104">Amount(INR)</p>
               </TableCell>
               <TableCell
                 align="right"
-                className="text-GRAY_104 capitalize border-b-GRAY_104 border-b border-solid"
+                className="capitalize border-b-GRAY_104 border-b border-solid"
               >
-                Time
+                <p className="text-GRAY_104">Time</p>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row: any) => (
               <TableRow key={row.Price}>
-                <TableCell
-                  className={`text-${name === 'buy' ? 'GREEN_02' : 'RED_02'
-                    } border-none`}
-                >
-                  {row.Price}
+                <TableCell className="border-none">
+                  <p
+                    className={`text-${name === 'buy' ? 'GREEN_02' : 'RED_02'
+                      } `}
+                  >
+                    {row.Price}
+                  </p>
                 </TableCell>
-                <TableCell className="text-GRAY_103 border-none ">
-                  {row.Amount}
+                <TableCell className="border-none ">
+                  <p className="text-GRAY_103">{row.Amount}</p>
                 </TableCell>
-                <TableCell align="right" className="text-GRAY_103 border-none ">
-                  {row.Time}
+                <TableCell align="right" className="border-none ">
+                  <p className="text-GRAY_103">{row.Time} </p>
                 </TableCell>
               </TableRow>
             ))}
@@ -106,21 +111,103 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
     )
   }
 
+  const handleOpen = () => {
+    setModalOpen(true)
+  }
+
+  const SuccessModalContent = () => {
+    return (
+      <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center text-[22px] text-center mb-4 w-10/12">
+          <Icons.SuccessfullyIcon />
+          <p className='mt-5'>Successfully Open a trade From USD to INR </p>
+        </div>
+        <div className='flex flex-col items-center w-3/5'>
+          <div className="flex items-center">
+            <div className="relative w-[34px] h-[34px]">
+              <div className="bg-BLACK_303 w-6 h-6 rounded-full flex items-center justify-center">
+                <img
+                  src={'/assets/images/us.png'}
+                  alt="profile"
+                  className="w-4 h-3 bg-GRAY_101"
+                />
+              </div>
+              <div className="bg-BLACK_303 w-6 h-6 rounded-full absolute -bottom-1 -right-1">
+                <div className="flex items-center justify-center w-full h-full">
+                  <img
+                    src={'/assets/images/India.png'}
+                    alt="profile"
+                    className="w-4 h-3 bg-GRAY_101"
+                  />
+                </div>
+              </div>
+            </div>
+            <p className="flex items-end text-sm ml-5">USD/INR</p>
+            <div className="ml-3.5">
+              <Icons.Envelope />
+            </div>
+          </div>
+          <div className='text-center text-xs font-medium text-GRAY_101 mt-4'>You have opened <span className='text-white'>$40 USD</span> to INR in your Wallet id(100100)</div>
+        </div>
+        <div className='mt-[25px] flex gap-[25px] w-full'>
+          <ContainedButton text="View History"
+            className="bg-BLACK_305 hover:bg-BLACK_305 rounded-[5px] pt-[11px] pb-3 w-full"
+            onClick={handleViewHistory}
+          />
+          <ContainedButton text="Back to Market"
+            className="bg-BLUE_201 hover:bg-BLUE_201 rounded-[5px] pt-[11px] pb-3 w-full"
+            onClick={handleBactToMarket}
+          />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <Page title={'Markets'}>
         <div className="my-5 mx-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div className="sm:col-span-2 md:col-span-2">
-
               <div className="w-full">
                 <div className="flex items-center justify-between bg-BLACK_301 space-x-4 p-5 rounded-t-lg">
                   <div className="flex-shrink">
-                    <div className="flex items-center" onClick={handleSwapClick}>
+                    <div
+                      className="flex items-center"
+                      onClick={handleSwapClick}
+                    >
                       <div className="relative w-[34px] h-[34px]">
-                        <div className="bg-BLACK_303 w-8 h-8 rounded-full flex items-center justify-center"><Icons.Envelope /></div>
+                        <div className="bg-BLACK_303 w-8 h-8 rounded-full flex items-center justify-center">
+                          {isInrFirst ? (
+                            <img
+                              src={'/assets/images/us.png'}
+                              alt="profile"
+                              className="w-5 h-4 bg-GRAY_101"
+                            />
+                          ) : (
+                            <img
+                              src={'/assets/images/India.png'}
+                              alt="profile"
+                              className="w-5 h-4 bg-GRAY_101"
+                            />
+                          )}
+                        </div>
                         <div className="bg-BLACK_303 w-8 h-8 rounded-full absolute -bottom-3 -right-3">
-                          <div className="flex items-center justify-center w-full h-full"><Icons.Envelope /></div>
+                          <div className="flex items-center justify-center w-full h-full">
+                            {isInrFirst ? (
+                              <img
+                                src={'/assets/images/India.png'}
+                                alt="profile"
+                                className="w-5 h-4 bg-GRAY_101"
+                              />
+                            ) : (
+                              <img
+                                src={'/assets/images/us.png'}
+                                alt="profile"
+                                className="w-5 h-4 bg-GRAY_101"
+                              />
+                            )}
+                          </div>
                         </div>
                       </div>
                       <p className="flex items-end text-sm ml-7">
@@ -165,7 +252,7 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
                   </div>
                 </div>
                 <div className="border-BLACK_307 border border-solid rounded-b-lg">
-                <Candlestick />
+                  <Candlestick />
                 </div>
               </div>
 
@@ -179,22 +266,30 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
               </div>
             </div>
             <div className="flex flex-col gap-5">
-              <BuySale type="market" />
-              <Card title="Open Orders (2)" cardTopBtnName="View Trade History" onclick={handleViewHistory}>
+              <BuySale type="market" onClick={handleOpen} />
+              <Card
+                title="Open Orders (2)"
+                cardTopBtnName="View Trade History"
+                onclick={handleViewHistory}
+              >
                 <TableContainer className="mt-5">
                   <Table aria-label="simple table" className="open-order-table">
                     <TableHead>
                       <TableRow>
-                        <TableCell className="text-GRAY_104 text-xs capitalize border-b-GRAY_104 border-b border-solid">
-                          Time
+                        <TableCell className="text-xs capitalize border-b-GRAY_104 border-b border-solid">
+                          <p className="text-GRAY_104">Time</p>
                         </TableCell>
-                        <TableCell className="text-GRAY_104 leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
-                          Filled Vol
-                          <p className="text-[8px]">Total Vol</p>
+                        <TableCell className=" leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
+                          <p className="text-GRAY_104">
+                            Filled Vol
+                            <p className="text-[8px]">Total Vol</p>
+                          </p>
                         </TableCell>
-                        <TableCell className="text-GRAY_104 leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
-                          Rate
-                          <p className="text-[8px]">per USD</p>
+                        <TableCell className="leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
+                          <p className="text-GRAY_104">
+                            Rate
+                            <p className="text-[8px]">per USD</p>
+                          </p>
                         </TableCell>
                         <TableCell
                           align="right"
@@ -205,7 +300,7 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
                     <TableBody>
                       {openOrdersRows.map((row: any) => (
                         <TableRow key={row.Price}>
-                          <TableCell className="text-GRAY_103 border-none">
+                          <TableCell className="border-none">
                             <Box
                               className="pl-2.5 "
                               sx={{
@@ -216,18 +311,22 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
                                   }`,
                               }}
                             >
-                              {row.Time}
-                              <p>{row.Date}</p>
+                              <p className="text-GRAY_103">
+                                {row.Time}
+                                <p>{row.Date}</p>
+                              </p>
                             </Box>
                           </TableCell>
-                          <TableCell
-                            className={`text-${row.status === 'buy' ? 'GREEN_02' : 'RED_02'
-                              } border-none`}
-                          >
-                            {row.FilledVol}
+                          <TableCell className="border-none">
+                            <p
+                              className={`text-${row.status === 'buy' ? 'GREEN_02' : 'RED_02'
+                                } `}
+                            >
+                              {row.FilledVol}
+                            </p>
                           </TableCell>
-                          <TableCell className="text-GRAY_103 border-none ">
-                            {row.Rate}
+                          <TableCell className="border-none ">
+                            <p className="text-GRAY_103">{row.Rate} </p>
                           </TableCell>
                           <TableCell
                             align="right"
@@ -260,6 +359,9 @@ const MarketTrade: React.FC<MarketTradeProps> = ({handleViewHistory}) => {
           </div>
         </div>
       </Page>
+      <ModalCommon modalOpen={modalOpen} setModalOpen={setModalOpen}>
+        {SuccessModalContent()}
+      </ModalCommon>
     </>
   )
 }

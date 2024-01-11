@@ -1,35 +1,23 @@
 import Image from 'next/image';
 import CountryInfo from './CountryInfo';
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader';
+import InputField from '../../Common/InputField';
 import { useState } from 'react';
-import InputField from '../../Common/InputField'
+import ImageUploader from './ImageUploader';
 
 function BasicInfoPartOne() {
   const[firstName,setFirstName]= useState<string>('');
   const [lastName, setLastName] = useState<string>('');
 
+  const defaultImage= '/assets/images/profile.png';
+
   return (
-    <div className='bg-[#1C1C24] px-4 md:rounded-[5px] pb-[20px]'>
+    <div className='bg-[#1C1C24] px-4 rounded-[5px] pb-[20px]'>
 
     <div className='grid md:gap-[20px]'>
    <BasicInfoHeader title='Basic Information' description='View and update your account details' buttonText='Manage' buttonColor='grey'/>
   
-      <div className='grid gap-[15px]  pb-[10px] md:pb-[0px]'> 
-        <div>
-          <p className='font14SB md:font14SB text-white'>Your Photo</p>
-        </div>
-      <div className='flex gap-[10px]'>
-        <div><Image  src='/assets/images/profile.png' alt='profile' width={50} height={50} className='rounded-full'/></div>
-        <div>
-          <div className='flex gap-[8px] items-center font14SN '>
-  <p className='text-[#267FF5] font14SB'>Upload new Photo</p>
-  <div className='w-[5px] h-[5px] rounded-full bg-GRAY_101 '></div>
-  <p className='text-[#FA6C4C]'>Remove photo</p>
-          </div>
-          <div><p className='font12R text-GRAY_101 py-2'>Photos help you other people trust</p></div>
-        </div>
-       </div>
-      </div>
+     <ImageUploader defaultImageUrl={defaultImage}  />
   
         <div className='grid md:flex md:justify-between gap-[25px]'>
           <div className='grid text-start gap-[10px] w-[100%]'>

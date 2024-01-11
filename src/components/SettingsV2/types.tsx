@@ -64,6 +64,8 @@ export interface SecuritySettingsProps{
   switchText:string;
   buttonText:string;
   isBorder :boolean;
+  component?:string;
+  tabTitle?:string;
 }
 
 export interface ComponentSetting {
@@ -103,4 +105,8 @@ export interface EmailVerificationProps{
   buttonText: string;
   buttonColor: string;
   borderColor: string;
+}
+export interface SecurityBreadCrumbsProps{
+  activeSubTab?:string;
+  title:string;
 }

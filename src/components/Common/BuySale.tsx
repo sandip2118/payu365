@@ -5,9 +5,9 @@ import Icons from '@/assets/icon'
 import { colors } from '../../themes'
 import { AgGridReact } from 'ag-grid-react'
 import { BS_TABS, MR_TABS } from '@/Constants'
-import { type } from 'os'
+import { BuySaleProps } from './type';
 
-function BuySale() {
+const BuySale: React.FC<BuySaleProps> = ({type, onClick}) => {
   const router = useRouter()
   const [selectedTab, setSelectedTab] = useState<string>(BS_TABS.BUY)
 
@@ -123,21 +123,27 @@ function BuySale() {
           </div>
         </>
         <div className="p-[10px] mt-[15px]">
-          <button className="w-full bg-GREEN_02 font14SB py-[15px] rounded-[5px]">
+          <button className="w-full bg-GREEN_02 font14SB py-[15px] rounded-[5px]" onClick={onClick}>
             {BS_TABS.BUY}
           </button>
-          {type === 'market' ? (
+          {type === 'market' &&
             <div className="flex gap-[22px] justify-between mt-[15px] items-center">
-              <div>
-                <p className="text-sm">USD</p>
-                <p className="text-xs text-RED_03"> Not enough money </p>
+              <div className='flex items-center gap-2.5'>
+                <div className='bg-BLACK_303 w-9 h-9 rounded-full flex items-center justify-center'>
+                <img src={'/assets/images/us.png'} alt='profile' className='w-5 h-4 bg-GRAY_101' />
+                </div>
+                <div>
+                  <p className="text-sm">USD</p>
+                  <p className="text-xs text-RED_03"> Not enough money </p>
+                </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <p className="text-sm">0 USD</p>
                 <p className="text-[10px] text-GREEN_02">+ DEPOSIT</p>
               </div>
             </div>
-          ) : (
+          }
+          {type === "dashbord" &&
             <div className="flex gap-[22px] justify-center mt-[15px]">
               <p className="text-RED_03 font14R">Not enough money</p>
               <div className="flex gap-[14.35px]">
@@ -145,7 +151,7 @@ function BuySale() {
                 <p className="font14SB">Deposit</p>
               </div>
             </div>
-          )}
+          }
         </div>
       </div>
     </div>

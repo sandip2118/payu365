@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react'
 
 function ConnectApple() {
-  const [isConnected, setIsConnected] = useState<boolean>(true);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
 
   const handleConnectClick = () => {
     setIsConnected(!isConnected);
@@ -14,7 +14,7 @@ function ConnectApple() {
   
   return (
     <div className='grid lg:flex '>
-    <div className='w-full lg:w-1/2 grid gap-[10px]'>
+    <div className='w-full lg:w-1/2 grid gap-[10px] md:pr-5 xl:pr-0'>
       <div className='flex gap-[10px] items-center'>
             <Image src='/assets/icons/apple.svg' alt='google' width={24} height={24} />
             <p className='font14RB text-white'> Connect with Apple</p>

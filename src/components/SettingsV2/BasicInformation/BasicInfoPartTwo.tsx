@@ -1,4 +1,4 @@
-import PhoneWithCountryCode from '@/components/Login/PhoneWithCountryCode';
+import PhoneWithCountryCode from '../../Login/PhoneWithCountryCode';
 import React, { useState } from 'react';
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader';
 
@@ -6,12 +6,9 @@ function BasicInfoPartTwo() {
   const [phone, setPhone] = useState<string | undefined>('');
   const [phoneCode, setPhoneCode] = useState<string | undefined>('');
 
-  const handlePhoneChange = (newValue: string | undefined) => {
-    setPhone(newValue);
-  };
   return (
-    <div className='bg-[#1C1C24]  px-4 md:rounded-[5px]'>
-      <BasicInfoHeader title='Mobile Number' description='Verify & Edit your personal number for protection.' buttonText='Manage' />
+    <div className='bg-[#1C1C24]  px-4 rounded-[5px]'>
+      <BasicInfoHeader title='Mobile Number' description='Verify & Edit your personal number for protection.' buttonText='Manage' buttonColor='grey' />
       <div className='flex justify-between items-center py-[20px] w-[100%]'>
         <div className='w-full'>
           <div className='flex justify-between md:justify-start mb-[10px] md:mb-[20px] items-center'>
@@ -27,6 +24,7 @@ function BasicInfoPartTwo() {
                     setPhoneCode(e?.phoneCode)
                     setPhone(e?.value)
                   }}
+                  placeholder='81*** ***88'
                 />
               </div>
               <div className='hidden md:flex'><button className='font12RB text-[#23C38E] rounded-[40px]  border border-[#23C38E] w-[87px] h-[28px]'>Verified</button></div>

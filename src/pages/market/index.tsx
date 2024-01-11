@@ -1,6 +1,5 @@
 import React from 'react';
-import Wrapper from '../../components/market/Wrapper'
-
+import Wrapper from '../../components/market/Wrapper';
 
 function Market() {
   return (

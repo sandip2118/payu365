@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Card from '../Common/Card';
+import Card from '../Common/Card'
 
 const bankArr = [
   { id: 1, name: 'ICICI Bank', branch: 'Gujarat Branch' },

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 
 function ConnectGoogle() {
-  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [isConnected, setIsConnected] = useState<boolean>(true);
 
   const handleConnectClick = () => {
     setIsConnected(!isConnected);
@@ -14,7 +14,7 @@ function ConnectGoogle() {
 
   return (
     <div className='grid lg:flex gap-[10px] md:gap-[0px] '>
-      <div className='w-full lg:w-1/2 grid gap-[10px]'>
+      <div className='w-full lg:w-1/2 grid gap-[10px] md:pr-5 xl:pr-0'>
         <div className='flex gap-[10px] items-center'>
               <Image src='/assets/icons/google.svg' alt='google' width={24} height={24} />
               <p className='font14RB  text-white'> Connect with google</p>

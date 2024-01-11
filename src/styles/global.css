@@ -43,17 +43,17 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 12px; /* width of the entire scrollbar */
+  width: 8px; /* width of the entire scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #292932; /* color of the tracking area */
+  /* background: #292932;  */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #777e90; /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid #292932;
+  /* border: 3px solid #292932; */
 }
 
 .ag-theme-quartz {
@@ -261,22 +261,22 @@ body {
 .pagination ul {
   justify-content: end;
 }
-.pagination ul li button{
-  background-color: #1C1C24;
-  color: #777E90;
+.pagination ul li button {
+  background-color: #1c1c24;
+  color: #777e90;
   border: 1px solid #222;
   border-radius: 8px;
 }
-.pagination ul li div{
-  background-color: #1C1C24;
+.pagination ul li div {
+  background-color: #1c1c24;
   color: #fff;
-  border: 1px solid #48546D;
+  border: 1px solid #48546d;
   min-width: 32px;
   height: 32px;
   border-radius: 8px;
 }
-.pagination ul li button.Mui-selected{
-  background-color: #267FF5 ;
+.pagination ul li button.Mui-selected {
+  background-color: #267ff5;
   color: #fff;
 }
 .pagination ul li:first-child button,
@@ -288,36 +288,35 @@ body {
 .input-placeholder {
   font-size: 13px;
   font-weight: 400;
-  color: #777E90;
+  color: #777e90;
 }
 
 .input-placeholder:focus {
-outline: none;
-border: none;
-
+  outline: none;
+  border: none;
 }
 
 .input-placeholder::placeholder {
-  color: #777E90;
+  color: #777e90;
   font-size: 13px;
   font-weight: 400;
 }
 .input-placeholder-hide {
   font-size: 14px;
   font-weight: 500;
-  color: #777E90;
+  color: #777e90;
 }
 .input-placeholder-hide:focus {
   outline: none;
-border: none;
+  border: none;
 }
 .order-table thead tr th {
   font-size: 11px;
   padding-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
-} 
-.order-table tbody tr:first-child td{
+}
+.order-table tbody tr:first-child td {
   padding-top: 18px !important;
 }
 .order-table tbody tr td {
@@ -331,13 +330,47 @@ border: none;
   padding-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
-} 
+}
 .open-order-table tbody tr td {
   padding-left: 0px;
   padding-bottom: 12px;
   font-size: 11px;
 }
 
+.permanently-delete-modal{
+  border-radius: 5px;
+  background: rgba(250, 108, 76, 0.20);
+  padding: 20px;
+  gap: 20px;
+  width:470px;
+}
+@media (max-width: 768px) {
+  .permanently-delete-modal{
+    width:70%;
+  }
+}
+@media (max-width: 520px) {
+  .permanently-delete-modal{
+    width:80%;
+  }
+}
+
+.referral-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (min-width: 1293px) {
+  .referral-text {
+    overflow: visible; 
+    text-overflow: clip;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1292px) {
+  .referral-text {
+    max-width: 100px; 
+  }
+}
 .apexcharts-tooltip,
 .apexcharts-menu {
   background: #ffffff;

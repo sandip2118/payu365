@@ -3,7 +3,7 @@ import EmailVerification from "./EmailVerification"
 
 function ManageEmail() {
   return (
-   <div className="md:mx-[20px]">
+   <div className="md:mx-[20px] mb-[100px]">
     <CardWrapper>
   <EmailVerification  title="Email Verification (Unverified)" description="Email verification adds another layer of security to your withdrawals and Binance account." buttonColor="grey" buttonText="Verify Email" borderColor="grey" buttonIcon='/assets/icons/exclamation.svg'/>
   </CardWrapper>
@@ -15,7 +15,7 @@ function ManageEmail() {
  </div>
 
   <CardWrapper>
-  <EmailVerification  title="Email Verification (Verified)" description="Email verification adds another layer of security to your withdrawals and Binance account." buttonColor="green" buttonText="Verified" borderColor="grey"  lastDate="Added: April 4, 2021"/>
+  <EmailVerification  title="Email Verification (Verified)" description="Email verification adds another layer of security to your withdrawals and Binance account." buttonColor="green" buttonText="Verified" borderColor="green"  lastDate="Added: April 4, 2021"/>
     </CardWrapper>
     </div>
   )

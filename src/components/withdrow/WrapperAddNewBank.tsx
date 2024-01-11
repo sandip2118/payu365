@@ -8,7 +8,7 @@ import { WithdrawIsNew } from './type';
 import Card from '../Common/Card';
 
 
-const WrapperAddNewBank: React.FC<WithdrawIsNew> =({ IsNew, setIsNewUser }) => {
+const WrapperAddNewBank: React.FC<WithdrawIsNew> = ({ IsNew, setIsNewUser }) => {
   // const [IsNew, setStep] = useState(steps)
 
   return (

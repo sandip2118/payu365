@@ -1,7 +1,6 @@
 /* eslint-disable complexity */
 import React from 'react';
-import Wrapper from '../../components/portfolio/Wrapper'
-
+import Wrapper from '../../components/portfolio/Wrapper';
 
 function Portfolio() {
   return (

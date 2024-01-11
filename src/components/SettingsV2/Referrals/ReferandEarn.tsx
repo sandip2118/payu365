@@ -6,7 +6,7 @@ function ReferandEarn() {
       <div className='grid  md:justify-between gap-[20px] md:gap-[0px]'>
         <div className='grid gap-[10px]'>  
           <p className=' font-[500] text-[18px] md:text-[20px] text-white'>Refer Friends. Earn Money Together.</p>
-          <p className='font-[500] text-[13px] md:text-[14px] text-GRAY_101'>Earn up to 40% commission on every trade across Digipay.</p>
+          <p className='font-[400] md:font-[500] text-[13px] md:text-[14px] text-GRAY_101'>Earn up to 40% commission on every trade across Digipay.</p>
           </div>
         </div>
 
