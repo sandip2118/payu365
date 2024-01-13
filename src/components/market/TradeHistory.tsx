@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Card from '../common/Card'
 import Page from '../Common/Page';
-import ColorTabs from '../common/Tabs';
+import ColorTabs from '../Common/Tabs';
 import {
   TableContainer,
   TableHead,
