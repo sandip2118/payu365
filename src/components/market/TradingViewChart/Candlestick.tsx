@@ -309,7 +309,7 @@ const Candlestick = () => {
         options={options}
         series={series}
         type="candlestick"
-        height="350"
+        height="480"
       />
     </div>
   );

@@ -14,10 +14,17 @@ function PaymentAccount() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    // centerMode: true,
+    className: "center",
+    centerPadding: "45px",
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />
   };
 
+  const slider = React.useRef(null);
+
   return (
-    <div className=" bg-BLACK_301 rounded-[10px] mt-[12px] py-[17px] px-5">
+    <div className=" bg-BLACK_301 rounded-[10px] mt-[20px] p-5">
       <div className='mb-5 flex justify-between'>
         <p className='font20SB'>
           Payment Account
@@ -27,21 +34,20 @@ function PaymentAccount() {
         </button>
       </div>
 
-      <div className='px-5'>
-        <Slider {...settings}>
+      <div>
+        <Slider
+          ref={slider}
+          {...settings} >
           {Array(5).fill(0).map((d, i) => {
             return (
-              <div className=''>
-                <Cards
-                  number={'1111 1111 1111 1111'}
-                  name={'sandip'}
-                  expiry={i}
-                  cvc={i}
-                // focused={focused}
-                // callback={this.handleCallback}
-                />
-              </div>
-
+              <Cards
+                number={'1111 1111 1111 1111'}
+                name={'sandip'}
+                expiry={i}
+                cvc={i}
+              // focused={focused}
+              // callback={this.handleCallback}
+              />
             )
           })}
         </Slider>

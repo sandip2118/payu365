@@ -3,7 +3,7 @@ import React from 'react'
 import { RefferalProps } from '../types';
 
 
-const ReferralComponent:React.FC<RefferalProps> =({title,description,referralData,onClick}) =>{
+const ReferralComponent:React.FC<RefferalProps> =({title,description,referralData,onClick,iconString}) =>{
   const handleCopyClick = () => {
     navigator.clipboard.writeText(referralData)
       .then(() => {
@@ -26,7 +26,7 @@ const ReferralComponent:React.FC<RefferalProps> =({title,description,referralDat
         </div>
         <div className='flex justify-between w-full md:w-2/3 '>
           <div className='w-1/2 flex justify-start items-center gap-[8px] font12RB text-white'>
-            <div><Image  src='/assets/icons/referralId.svg' alt='img' width={15} height={15}/></div>
+            <div><Image  src={iconString} alt='img' width={15} height={15}/></div>
             <p className='referral-text'>{referralData}</p>
           </div>
           <div className='w-1/3 flex justify-end '>

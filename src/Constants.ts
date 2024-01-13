@@ -47,6 +47,10 @@ const ROUTE = {
   ADDRESS_BOOK: '/addressBook',
   WITHDROW: '/withdraw',
   SETTINGS: '/settings',
+  WALLET_TO_WALLET: '/walletToWallet',
+  INSTA_TRANSFER: '/instaTransfer',
+  MONEY_TRANSFER: '/moneyTransfer',
+  REQUEST_PAYMENT: '/requestPayment',
 }
 
 export { ROUTE, TEXT, MR_TABS, BS_TABS, PR_MA_TABS }

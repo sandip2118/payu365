@@ -18,10 +18,8 @@ function ManagePasswword() {
   }
 
   const passwordValidation = validatePassword(password)
-  console.log(passwordValidation)
 
   const updatePassword = () => {
-    console.log(password, 'password updated')
   }
 
   return (
@@ -29,7 +27,7 @@ function ManagePasswword() {
       <CardWrapper>
         <div className='grid mx-auto w-full md:w-1/2 md:pt-[50px] md:pb-[30px] py-5 md:py-0'>
           <p className='text-white md:text-[27px] font-[700] flex place-content-center py-[15px]'>Change Password</p>
-          <div className='flex  px-4 py-2.5 bg-YELLOW_03 gap-[15px] rounded-[8px]'>
+          <div className='flex  px-4 py-2.5 bg-YELLOW_03 gap-[15px] rounded-[8px] items-start'>
             <Image src='/assets/icons/exclamationPassword.svg' alt='' className='' width={16} height={16} />
             <p className='font14SN text-WHITE_101'>In order to protect your account, withdrawals, P2P selling, payment services will be disabled for 24 hours after you change your password.</p>
           </div>
@@ -54,8 +52,8 @@ function ManagePasswword() {
               <ul className="list-disc py-[5px] text-xs">
                 <li
                   className={`${passwordValidation.hasNumber
-                      ? 'text-GREEN_02'
-                      : 'text-GRAY_101'
+                    ? 'text-GREEN_02'
+                    : 'text-GRAY_101'
                     } font12R flex items-center py-[5px]`}
                 >
                   <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />{' '}
@@ -63,8 +61,8 @@ function ManagePasswword() {
                 </li>
                 <li
                   className={`${passwordValidation.hasLetter
-                      ? 'text-GREEN_02'
-                      : 'text-GRAY_101'
+                    ? 'text-GREEN_02'
+                    : 'text-GRAY_101'
                     } font12R flex items-center py-[5px]`}
                 >
                   <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />
@@ -72,8 +70,8 @@ function ManagePasswword() {
                 </li>
                 <li
                   className={`${passwordValidation.isLengthValid
-                      ? 'text-GREEN_02'
-                      : 'text-GRAY_101'
+                    ? 'text-GREEN_02'
+                    : 'text-GRAY_101'
                     } font12R flex items-center py-[5px]`}
                 >
                   <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />

@@ -46,9 +46,15 @@ import {
   DownArrowRedIcon,
   Envelope,
   DropDownArrow,
+  List,
+  Receiver,
+  Download,
   Spot,
   Earn,
   Search,
+  DownCaret,
+  CheckFillSquare,
+  CurrencyRevert,
 } from './svgIcons'
 const Icons = {
   Logo: Logo,
@@ -98,8 +104,14 @@ const Icons = {
   DownArrowRedIcon: DownArrowRedIcon,
   Envelope: Envelope,
   DropDownArrow: DropDownArrow,
+  List: List,
+  Receiver: Receiver,
+  Download: Download,
   Spot: Spot,
   Earn: Earn,
   Search: Search,
+  DownCaret: DownCaret,
+  CheckFillSquare: CheckFillSquare,
+  CurrencyRevert: CurrencyRevert,
 }
 export default Icons

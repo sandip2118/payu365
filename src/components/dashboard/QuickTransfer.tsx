@@ -16,7 +16,7 @@ function QuickTransfer() {
 
   return (
 
-    <div className=" bg-BLACK_301 rounded-[10px] mt-[12px] py-[17px] px-5">
+    <div className=" bg-BLACK_301 rounded-[10px] mt-[20px] p-5">
       <p className='font20SB'>
         Quick Transfer
       </p>

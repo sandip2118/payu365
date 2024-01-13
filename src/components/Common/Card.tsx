@@ -1,9 +1,9 @@
 import React from 'react';
 import { CardProps } from './type';
 
-const Card: React.FC<CardProps> = ({ title, subTitle, cardTopBtnName, children, isBorder, onclick }) => {
+const Card: React.FC<CardProps> = ({ title, subTitle, cardTopBtnName, children, isBorder, onclick, className }) => {
   return (
-    <div className="block bg-BLACK_301 w-full rounded-[10px] p-5">
+    <div className={`block bg-BLACK_301 w-full rounded-[10px] p-5 ${className}`}>
       <div className="flex justify-between">
         <div className="leading-none ">
           <p className="text-[10px]">{subTitle}</p>

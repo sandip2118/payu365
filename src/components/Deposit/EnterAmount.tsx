@@ -1,9 +1,14 @@
 import React from 'react'
+import Page from '../Common/Page';
 
 function EnterAmount() {
   return (
-    <div>EnterAmount</div>
+    <div>
+      <Page  isBreadcrumbs title='Amount'>
+   amount input
+      </Page>
+    </div>
   )
 }
 
-export default EnterAmount
+export default EnterAmount;

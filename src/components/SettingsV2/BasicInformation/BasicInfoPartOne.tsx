@@ -43,21 +43,21 @@ function BasicInfoPartOne() {
         <div className='grid md:flex md:justify-between gap-[25px]'>
           <div className='grid text-start gap-[10px] w-[100%] pt-[25px] md:pt-[0px]'>
             <label className='font12RB text-GRAY_101 px-1 '> Country of Origin *</label>
-            <div className=' flex items-center bg-[#292932] place-content-center rounded-[5px] '>
+            <div className=' flex items-center bg-[#292932] place-content-center rounded-[5px] px-5 sm:px-4'>
             <CountryInfo />
         </div>
           </div>
           <div className='grid text-start gap-[10px] w-[100%]'>
             <label className='font12RB text-white px-1 '>Language</label>
-        <div className=' flex items-center bg-[#292932] place-content-center rounded-[5px]'>
-        <select className='w-[95%] md:w-[85%] h-[47px] font12R  flex items-center bg-[#292932] text-white focus:outline-none focus:border-none'>
-          <option>English</option>
+        <div className=' flex items-center bg-[#292932] place-content-center rounded-[5px] px-5 sm:px-4'>
+        <select className='w-full h-[47px] font12R  flex items-center bg-[#292932] text-white focus:outline-none focus:border-none'>
+          <option className=''>English</option>
          </select>
         </div>
           </div>
           <div className='grid text-start gap-[10px] w-[100%]'>
             <label className='font12RB text-white  px-1'>Account Status</label>
-            <div  className='text-[#23C38E] px-4 h-[47px] font12R rounded-[5px]  flex items-center bg-[#292932]'>Active</div>
+            <div  className='text-[#23C38E] px-5 sm:px-4 h-[47px] font12R rounded-[5px]  flex items-center bg-[#292932]'>Active</div>
           </div>
         </div>
     </div>

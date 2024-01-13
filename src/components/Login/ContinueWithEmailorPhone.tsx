@@ -4,14 +4,14 @@ import { OrDivider } from "../Common/OrDivider";
 
 
 type ContinueWithEmailorPhoneProps = {
-  onClick: (data?: string) => void;
+  onClick?: (data?: any) => void;
   currentSelection?: string;
 };
 
 const ContinueWithEmailorPhone: React.FC<ContinueWithEmailorPhoneProps> = (props) => {
   const router = useRouter();
   const handleContinueWithEmailorPhoneClick = () => {
-    props.onClick(props.currentSelection);
+    props.onClick && props.onClick(props.currentSelection);
   };
   return (
     <>
@@ -27,7 +27,7 @@ const ContinueWithEmailorPhone: React.FC<ContinueWithEmailorPhoneProps> = (props
       </button>
       <p className="text-white w-full text-[13px] not-italic mt-[30px] text-center font13RB">
         Not registered yet? {" "}
-        <span onClick={() => router.push("/signup")} className="font13SB !font-semibold text-BLUE_201 leading-[normal] underline cursor-pointer">
+        <span onClick={() => router.push("/signup")} className="!font-semibold text-BLUE_201 leading-[normal] underline cursor-pointer">
           Create an Account
         </span>
       </p>

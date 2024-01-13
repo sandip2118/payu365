@@ -6,8 +6,12 @@ import { SecurityBreadCrumbsProps } from '../types';
 
 const Securitybreadcrumbs:React.FC<SecurityBreadCrumbsProps> = ({ activeSubTab ,title}) => {
   const router = useRouter();
+  const isSettingsPath = router.asPath.includes('settings');
 
-  const isSettingsPath = router.asPath.includes('/settings');
+  const handleBackClick = () => {
+    router.back();
+  };
+
 
   return (
     <nav aria-label="breadcrumb" className="mt-5 mx-5">
@@ -16,12 +20,12 @@ const Securitybreadcrumbs:React.FC<SecurityBreadCrumbsProps> = ({ activeSubTab ,
         <>
         <Icons.BreadcrumbsHome />
         <p className='text-white'>Settings</p>
-      
         
          <Icons.RightArrow />
-         <li className="breadcrumb-item active">
+      <div onClick={handleBackClick}>
+      <li className="breadcrumb-item active">
             <span>{activeSubTab}</span>
-          </li>
+          </li></div>
          
        </>
       )}

@@ -9,7 +9,7 @@ const NextBreadcrumbs: React.FC<NextBreadcrumbsProps> = ({ activeSubTab }) => {
   const router = useRouter();
   const breadcrumbs = createBreadcrumbs(router.asPath);
 
-  const isSettingsPath = router.asPath.includes('/settings');
+  const isSettingsPath = router.asPath.includes('settings');
 
   return (
     <nav aria-label="breadcrumb" className="mt-5 mx-5">

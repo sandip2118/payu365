@@ -10,10 +10,11 @@ interface prop {
   onSelect?: (val: any) => void,
   value?: any,
   onChange?: any
-  placeholder?: string
+  placeholder?: string,
+  className?: any
 }
 
-const PhoneWithCountryCodeProps = ({ value, onChange ,placeholder}: prop) => {
+const PhoneWithCountryCodeProps = ({ value, onChange, placeholder, className }: prop) => {
   const [countries, setCountries] = useState<any[]>()
   const [selecteCurrency, setSelecteCurrency] = useState({
     "id": 98,
@@ -58,7 +59,7 @@ const PhoneWithCountryCodeProps = ({ value, onChange ,placeholder}: prop) => {
         menuStyle={{ borderRadius: '7px', zIndex: 999 }}
         menuButton={
           <MenuButton className={` relative`}>
-            <div className={`flex bg-BLACK_301 w-[116px] rounded-[5px] items-center justify-center h-[48px]`}>
+            <div className={` ${className} flex bg-BLACK_301 w-[116px] rounded-[5px] items-center justify-center h-[48px]`}>
               <div className='w-[20px] h-[15px]'>
                 <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
               </div>

@@ -1,8 +1,11 @@
 import React from 'react'
+import Page from '../Common/Page'
 
 function Confirm() {
   return (
-    <div>Confirm</div>
+    <div>
+      <Page title='Confirm' isBreadcrumbs> Confirm</Page>
+    </div>
   )
 }
 

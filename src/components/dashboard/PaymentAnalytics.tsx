@@ -3,17 +3,42 @@ import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Doughnut } from 'react-chartjs-2';
 import { colors } from '../../themes';
-import Icons from '@/assets/icon';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { DatePicker } from '@mui/x-date-pickers';
-import { Box } from '@mui/material';
+import { Box, ThemeProvider, createTheme } from '@mui/material';
 import dayjs from 'dayjs';
 import { Chart, ArcElement } from 'chart.js'
 Chart.register(ArcElement);
 
+const changetheme = createTheme({
+  typography: {
+    fontFamily: "Inter",
+  },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-root': {
+            color: '#777E90',
+            '& fieldset': {
+              borderColor: 'transparent',
+              borderRadius: '5px',
+            },
+            '&:hover fieldset': {
+              borderColor: 'transparent',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'transparent',
+            },
+          }
+        }
+      }
+    },
+  },
+})
 
 function PaymentAnalytics() {
   const router = useRouter();
@@ -69,56 +94,58 @@ function PaymentAnalytics() {
   };
 
   return (
-    <div className=" bg-BLACK_301 rounded-[10px] mt-[20px] py-[17px] px-5" >
-      <div className='flex justify-between items-center'>
-        <p className='font20SB'>
-          Payment Analytics
-        </p>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            name="startDate"
-            value={dayjs(dateValue)}
-            onClose={() => setOpen(false)}
-            onChange={(newValue: any) => {
-              setDateValue(newValue);
-            }}
-            open={open}
-            format={'MMMM YYYY'}
-            slotProps={{
-              textField: {
-                sx: {
-                  background: colors.BLACK_304,
-                  borderRadius: 2,
-                  '& input': { color: colors.GRAY_101, fontSize: 12, fontWeight: '500', width: 100, pl: 1, cursor: 'pointer' }
-                },
-                size: 'small',
-                onClick: () => setOpen(true),
-                InputProps: {
-                  startAdornment: (<Box onClick={() => setOpen(true)} sx={{ '&:hover': { cursor: 'pointer' } }}><CalendarMonthIcon sx={{ color: colors.GRAY_101, width: 13, height: 14 }} /></Box>),
-                  endAdornment: (<Box onClick={() => setOpen(true)} sx={{ '&:hover': { cursor: 'pointer' } }}><ArrowDropDownIcon sx={{ color: colors.GRAY_101 }} /></Box>),
+    <ThemeProvider theme={changetheme}>
+      <div className=" bg-BLACK_301 rounded-[10px] mt-[20px] p-5" >
+        <div className='flex justify-between items-center'>
+          <p className='font20SB'>
+            Payment Analytics
+          </p>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              name="startDate"
+              value={dayjs(dateValue)}
+              onClose={() => setOpen(false)}
+              onChange={(newValue: any) => {
+                setDateValue(newValue);
+              }}
+              open={open}
+              format={'MMMM YYYY'}
+              slotProps={{
+                textField: {
+                  sx: {
+                    background: colors.BLACK_304,
+                    borderRadius: 2,
+                    '& input': { color: colors.GRAY_101, fontSize: 12, fontWeight: '500', width: 96, pl: 1, cursor: 'pointer' }
+                  },
+                  size: 'small',
+                  onClick: () => setOpen(true),
+                  InputProps: {
+                    startAdornment: (<Box onClick={() => setOpen(true)} sx={{ '&:hover': { cursor: 'pointer' } }}><CalendarMonthIcon sx={{ color: colors.GRAY_101, width: 13, height: 14 }} /></Box>),
+                    endAdornment: (<Box onClick={() => setOpen(true)} sx={{ '&:hover': { cursor: 'pointer' } }}><ArrowDropDownIcon sx={{ color: colors.GRAY_101 }} /></Box>),
+                  }
                 }
-              }
-            }}
-          />
-        </LocalizationProvider>
-      </div>
-      <div className='flex mt-5 justify-between'>
-        <div className='h-[115px]'>
-          <Doughnut data={data} options={options} />
+              }}
+            />
+          </LocalizationProvider>
         </div>
-        <div className={`grid xl:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 grid-cols-1 gap-2 `}>
-          {chartData?.map((d, i) => {
-            return (
-              <div key={i} className='flex gap-2 items-center'>
-                <div className='w-[10px] h-[10px] rounded-full' style={{ background: d.color }} />
-                <p className='font12RB text-GRAY_101'>{d.label}</p>
-                <p className='font12RB'>${d.data}</p>
-              </div>
-            )
-          })}
+        <div className='flex mt-5 justify-between'>
+          <div className='h-[115px]'>
+            <Doughnut data={data} options={options} />
+          </div>
+          <div className={`grid xl:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 grid-cols-1 gap-2 `}>
+            {chartData?.map((d, i) => {
+              return (
+                <div key={i} className='flex gap-2 items-center'>
+                  <div className='w-[10px] h-[10px] rounded-full' style={{ background: d.color }} />
+                  <p className='font12RB text-GRAY_101'>{d.label}</p>
+                  <p className='font12RB'>${d.data}</p>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    </div >
+      </div >
+    </ThemeProvider>
   );
 }
 

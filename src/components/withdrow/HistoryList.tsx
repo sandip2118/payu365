@@ -19,6 +19,7 @@ const bankArr = [
 interface prop {
   onClick?: () => void,
   addNew?: () => void,
+  setIsNewUser?: () => void,
 }
 
 function HistoryList({ onClick, addNew, setIsNewUser }: prop) {

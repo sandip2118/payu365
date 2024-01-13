@@ -20,56 +20,70 @@ import { ContainedButton } from '../Common/Button'
 import ModalCommon from '../Common/Modal'
 
 const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBactToMarket }) => {
-  const [isInrFirst, setIsInrFirst] = useState<boolean>(true)
-  const [modalOpen, setModalOpen] = useState<boolean>(false)
-
-  const handleSwapClick = () => {
-    setIsInrFirst((prev: any) => !prev)
-  }
 
   const buyRows = [
+    { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
     { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
     { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
   ]
   const sellRows = [
     { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
     { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 1.13624, Time: '18:43:07' },
+    { Price: '19,965.74', Amount: 0.13624, Time: '18:43:07' },
   ]
-  const openOrdersRows = [
-    {
-      Time: '18:43:07',
-      Date: '28 Jul',
-      FilledVol: '19,965.74',
-      Rate: '0.13624',
-      status: 'sell',
-    },
-    {
-      Time: '18:43:07',
-      Date: '28 Jul',
-      FilledVol: '19,965.74',
-      Rate: '0.13624',
-      status: 'buy',
-    },
-    {
-      Time: '18:43:07',
-      Date: '28 Jul',
-      FilledVol: '19,965.74',
-      Rate: '0.13624',
-      status: 'buy',
-    },
-    {
-      Time: '18:43:07',
-      Date: '28 Jul',
-      FilledVol: '19,965.74',
-      Rate: '0.13624',
-      status: 'sell',
-    },
-  ]
+
+  const [isInrFirst, setIsInrFirst] = useState<boolean>(true);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [openOrdersRows, setOpenOrdersRows] = useState<any>(
+    [
+      {
+        Time: '18:43:07',
+        Date: '28 Jul',
+        FilledVol: '19,965.74',
+        Rate: '0.13624',
+        status: 'sell',
+      },
+      {
+        Time: '18:43:07',
+        Date: '28 Jul',
+        FilledVol: '19,965.74',
+        Rate: '0.13624',
+        status: 'buy',
+      },
+      {
+        Time: '18:43:07',
+        Date: '28 Jul',
+        FilledVol: '19,965.74',
+        Rate: '0.13624',
+        status: 'buy',
+      },
+      {
+        Time: '18:43:07',
+        Date: '28 Jul',
+        FilledVol: '19,965.74',
+        Rate: '0.13624',
+        status: 'sell',
+      },
+    ]);
+
+  const handleSwapClick = () => {
+    setIsInrFirst((prev: any) => !prev)
+  }
 
   const orderTable = (name: string, rows: any) => {
     return (
-      <TableContainer className="mt-5">
-        <Table aria-label="simple table" className="order-table">
+      <TableContainer className="mt-5" sx={{ maxHeight: 230 }}>
+        <Table stickyHeader aria-label="simple table" className="order-table">
           <TableHead>
             <TableRow>
               <TableCell className="capitalize border-b-GRAY_104 border-b border-solid">
@@ -89,18 +103,15 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
           <TableBody>
             {rows.map((row: any) => (
               <TableRow key={row.Price}>
-                <TableCell className="border-none">
-                  <p
-                    className={`text-${name === 'buy' ? 'GREEN_02' : 'RED_02'
-                      } `}
-                  >
+                <TableCell className="border-b-0">
+                  <p className={`text-${name === 'buy' ? 'GREEN_02' : 'RED_02'} `} >
                     {row.Price}
                   </p>
                 </TableCell>
-                <TableCell className="border-none ">
+                <TableCell className="border-b-0 ">
                   <p className="text-GRAY_103">{row.Amount}</p>
                 </TableCell>
-                <TableCell align="right" className="border-none ">
+                <TableCell align="right" className="border-b-0 ">
                   <p className="text-GRAY_103">{row.Time} </p>
                 </TableCell>
               </TableRow>
@@ -162,6 +173,12 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
       </div>
     )
   }
+
+  const handleDelete = (index: any) => {
+    const newOpenOrdersRows = [...openOrdersRows];
+    newOpenOrdersRows.splice(index, 1);
+    setOpenOrdersRows(newOpenOrdersRows);
+  };
 
   return (
     <>
@@ -257,10 +274,10 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                <Card title="Buy Order" subTitle="Orderbook Realtime">
+                <Card title="Buy Order" subTitle="Orderbook Realtime" className="max-h-80">
                   {orderTable('buy', buyRows)}
                 </Card>
-                <Card title="Sell Order" subTitle="Orderbook Realtime">
+                <Card title="Sell Order" subTitle="Orderbook Realtime" className="max-h-80">
                   {orderTable('sell', sellRows)}
                 </Card>
               </div>
@@ -270,10 +287,11 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
               <Card
                 title="Open Orders (2)"
                 cardTopBtnName="View Trade History"
+                className="max-h-98"
                 onclick={handleViewHistory}
               >
-                <TableContainer className="mt-5">
-                  <Table aria-label="simple table" className="open-order-table">
+                <TableContainer className="mt-5" sx={{ maxHeight: 300 }}>
+                  <Table stickyHeader aria-label="simple table" className="open-order-table">
                     <TableHead>
                       <TableRow>
                         <TableCell className="text-xs capitalize border-b-GRAY_104 border-b border-solid">
@@ -298,9 +316,9 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {openOrdersRows.map((row: any) => (
+                      {openOrdersRows && openOrdersRows !== undefined && openOrdersRows.map((row: any, index: any) => (
                         <TableRow key={row.Price}>
-                          <TableCell className="border-none">
+                          <TableCell className="border-b-0">
                             <Box
                               className="pl-2.5 "
                               sx={{
@@ -317,7 +335,7 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
                               </p>
                             </Box>
                           </TableCell>
-                          <TableCell className="border-none">
+                          <TableCell className="border-b-0">
                             <p
                               className={`text-${row.status === 'buy' ? 'GREEN_02' : 'RED_02'
                                 } `}
@@ -325,19 +343,21 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
                               {row.FilledVol}
                             </p>
                           </TableCell>
-                          <TableCell className="border-none ">
+                          <TableCell className="border-b-0 ">
                             <p className="text-GRAY_103">{row.Rate} </p>
                           </TableCell>
                           <TableCell
                             align="right"
-                            className="text-GRAY_103 border-none "
+                            className="text-GRAY_103 border-b-0 "
                           >
-                            <Image
-                              src="/assets/icons/notChecked.svg"
-                              alt="Not Checked"
-                              width={15}
-                              height={15}
-                            />
+                            <button onClick={() => handleDelete(index)}>
+                              <Image
+                                src="/assets/icons/notChecked.svg"
+                                alt="Not Checked"
+                                width={15}
+                                height={15}
+                              />
+                            </button>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -366,4 +386,4 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
   )
 }
 
-export default MarketTrade
+export default MarketTrade;

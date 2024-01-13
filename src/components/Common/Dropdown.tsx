@@ -69,7 +69,7 @@ export const OutlinedDropdownSharp: React.FC<DropDownProps> = ({
       <FormControl fullWidth>
         <Select
           style={style}
-          IconComponent={() => <Icons.DropDownArrow />}
+          IconComponent={() => <Icons.DropDownArrow width="7" height="4"/>}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}

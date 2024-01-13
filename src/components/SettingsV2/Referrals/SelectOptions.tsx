@@ -15,8 +15,8 @@ function SelectOptions() {
         <Header title='Select your Options' description='Earn up to 40% commission on every trade across Digipay.' />
       </div>
       
-     <ReferralComponent    onClick={handleClick}  title='Referral ID'   description="Share your Referral ID to your network"  referralData='748219454' />
-     <ReferralComponent    onClick={handleClick}   title='Referral Link'   description="Share your Referral Link to your anyone of your network"  referralData='https://accoubt...=748219454' />
+     <ReferralComponent iconString='/assets/icons/referralId.svg'   onClick={handleClick}  title='Referral ID'   description="Share your Referral ID to your network"  referralData='748219454' />
+     <ReferralComponent iconString='/assets/icons/referralLink.svg'    onClick={handleClick}   title='Referral Link'   description="Share your Referral Link to your anyone of your network"  referralData='https://accoubt...=748219454' />
 
       <div className='flex gap-[20px] mt-[20px]'>
       <button className='font12RB text-white bg-[#F59C26] rounded-[5px] w-full md:w-[140px] h-[40px] flex justify-center items-center'>

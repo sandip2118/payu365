@@ -95,12 +95,12 @@ const ForgotPassword = () => {
         {!isSuccess ? (
           <>
             {flag === 'email' ? (
-              <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center rounded-[10px] bg-BLACK_303 px-[20px] py-[50px] sm:m-auto sm:px-[61px]">
+              <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center sm:rounded-[10px] rounded-[24px] bg-BLACK_303 px-[20px] sm:py-[50px] py-[32px] sm:m-auto sm:px-[61px]">
                 <div className=" md:bg-inherit flex-col items-start rounded-3xl bg-BLACK_303 md:w-full md:rounded-none md:backdrop-blur-none">
                   <p className="text-center text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
                     {TEXT.CREATE_NEW_PASSWORD}
                   </p>
-                  <p className="font14RB mt-[13px] text-center leading-[22px] text-GRAY_101">
+                  <p className="font14RB mt-[15px] text-center leading-[22px] text-GRAY_101">
                     {TEXT.YOUR_NEW_PASS}
                   </p>
                   <p className="font14RB mt-[5px] text-center leading-[22px] text-GRAY_101">
@@ -176,28 +176,32 @@ const ForgotPassword = () => {
                 </div>
               </div>
             ) : flag === 'phone' ? (
-              <div className=" mx-[20px] my-auto flex h-[498px] w-[527px] items-center justify-center rounded-[10px] bg-BLACK_303 px-[20px] sm:m-auto sm:px-[61px]">
+              <div className=" mx-[20px] my-auto flex sm:py-[60px] py-[32px] w-[527px] items-center justify-center sm:rounded-[10px] rounded-[24px] bg-BLACK_303 px-[20px] sm:m-auto sm:px-[61px]">
                 <div className=" md:bg-inherit flex-col items-start rounded-3xl bg-BLACK_303 md:w-full md:rounded-none md:backdrop-blur-none">
-                  <p className="text-center text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+                  <p className="sm:text-center text-left text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
                     {TEXT.ENTER_OTP_VERIFICATION}
                   </p>
-                  <p className="font14RB mt-[13px] text-center leading-[22px] text-GRAY_101">
-                    {TEXT.WE_SENT_4_DIGIT}
-                  </p>
-                  <p className="font14RB mt-[5px] text-center leading-[22px] text-GRAY_101">
-                    your given phone number
-                  </p>
-                  <p className="font14RB mt-[5px] text-center leading-[22px] text-white">
-                    +91 *********97 / Email
-                  </p>
+                  <div className='block sm:hidden'>
+                    <p className="font14RB mt-[13px] sm:text-center text-left !leading-[22px] text-GRAY_101 sm:mx-[20%] mx-0">
+                      {TEXT.WE_SENT_4_DIGIT} your given phone number <span className='text-white'> +91 *********97 / Email</span>
+                    </p>
+                  </div>
+                  <div className='sm:block hidden'>
+                    <p className="font14RB mt-[15px] text-center leading-[22px] text-GRAY_101 sm:mx-[20%] mx-0">
+                      {TEXT.WE_SENT_4_DIGIT} your given phone number
+                    </p>
+                    <p className="font14RB mt-[5px] text-center leading-[22px] text-white">
+                      +91 *********97 / Email
+                    </p>
+                  </div>
 
-                  <div className="mt-[30px]">
+                  <div className="mt-[40.5px]">
                     <EnterOTP OTP={(val: any) => setOtp(val)} />
                   </div>
                   <div>
                     <button
                       onClick={() => _otp()}
-                      className="font14SB mt-[25px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
+                      className="font14SB mt-[30px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
                     >
                       {TEXT.SUBMIT}
                     </button>
@@ -215,7 +219,7 @@ const ForgotPassword = () => {
 
                   <button
                     onClick={() => router.back()}
-                    className="font16RB mt-[25px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
+                    className="font16RB mt-[30px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
                   >
                     {TEXT.BACK_SIGN_IN}
                   </button>
@@ -245,7 +249,7 @@ const ForgotPassword = () => {
                     />
                   </div>
                   <OrDivider />
-                  <div className='w-full mt-[40px] md:mt-[50px]'>
+                  <div className='w-full mt-[30px]'>
                     <PhoneWithCountryCode
                       value={phone}
                       onChange={(e) => {
@@ -257,7 +261,7 @@ const ForgotPassword = () => {
                   <div>
                     <button
                       onClick={() => _onEmailSubmit()}
-                      className="font14SB mt-[25px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
+                      className="font14SB mt-[30px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
                     >
                       {TEXT.SUBMIT}
                     </button>
@@ -265,7 +269,7 @@ const ForgotPassword = () => {
 
                   <button
                     onClick={() => router.back()}
-                    className="font16RB mt-[25px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
+                    className="font16RB mt-[30px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
                   >
                     {TEXT.BACK_SIGN_IN}
                   </button>
@@ -274,15 +278,15 @@ const ForgotPassword = () => {
             )}
           </>
         ) : (
-          <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center rounded-[10px] bg-BLACK_303 px-[20px] py-[50px] sm:m-auto sm:px-[61px]">
+          <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center sm:rounded-[10px] rounded-[24px] bg-BLACK_303 px-[20px] sm:py-[50px] py-[32px] sm:m-auto sm:px-[61px]">
             <div className=" md:bg-inherit flex-col items-center rounded-3xl bg-BLACK_303 md:w-full md:rounded-none md:backdrop-blur-none">
-              <div className="mb-[20px] flex w-full justify-center">
+              <div className="sm:mb-[20px] mb-[40px] flex w-full justify-center">
                 <Icons.SuccessfullyIcon />
               </div>
-              <p className="text-center text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+              <p className="text-center text-[22px] font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
                 {TEXT.SUCCESS_RESTE_PASS}
               </p>
-              <p className="font14RB mt-[13px] text-center leading-[22px] text-GRAY_101">
+              <p className="font14RB sm:mt-[20px] mt-[10px] text-center leading-[22px] text-GRAY_101">
                 {TEXT.YOU_CAN_NOW}
               </p>
               <p className="font14RB mt-[5px] text-center leading-[22px] text-GRAY_101">
@@ -292,7 +296,7 @@ const ForgotPassword = () => {
               <div>
                 <button
                   onClick={() => router.push('/Login')}
-                  className="font14SB mt-[25px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
+                  className="font14SB sm:mt-[30px] mt-[20px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
                 >
                   {TEXT.LOGIN}
                 </button>

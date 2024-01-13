@@ -64,18 +64,20 @@ const Login = () => {
           className={`h-screen shrink-0 mix-blend-screen w-[100%] fixed`}
         >
           <div
-            className="pt-[7%] overflow-y-auto h-screen">
-            <div className="flex flex-col items-center gap-8 px-11 py-0">
-              <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-center text-[30px] not-italic font-extrabold leading-[120.023%]">
-                Step into a world of secure transactions.
-              </p>
-              <div className="flex items-center gap-2">
-                <p className="overflow-hidden text-[color:var(--Pure-White,#FFF)] text-ellipsis text-sm not-italic font-medium leading-[22px]">
-                  Your journey begins here.
+            className={` ${login !== 1 ? 'pt-[7%]' : 'pt-[0%]'} overflow-y-auto h-screen`}>
+            {login !== 1 &&
+              <div className="flex flex-col items-center gap-8 px-11 py-0">
+                <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-center text-[30px] not-italic font-extrabold leading-[120.023%]">
+                  Step into a world of secure transactions.
                 </p>
-                <img src="/assets/images/arrow_right.svg" className="h-6 w-6" />
+                <div className="flex items-center gap-2">
+                  <p className="overflow-hidden text-[color:var(--Pure-White,#FFF)] text-ellipsis text-sm not-italic font-medium leading-[22px]">
+                    Your journey begins here.
+                  </p>
+                  <img src="/assets/images/arrow_right.svg" className="h-6 w-6" />
+                </div>
               </div>
-            </div>
+            }
 
             <div className='w-[100%]'>
               {login === 0 &&

@@ -1,9 +1,10 @@
 import React from 'react';
+import EsBalance from '../Dashboard/EsBalance';
+import MyAssets from './MyAssets';
 import PortSlider from './PortSlider';
 import RecentTrans from '../Common/RecentTrans';
 import Page from '../Common/Page';
-import EsBalance from '../dashboard/EsBalance';
-import MyAssets from './MyAssets';
+import BottomSpace from '../Common/BottomSpace';
 
 const Wrapper = () => {
   return (
@@ -14,6 +15,7 @@ const Wrapper = () => {
         <PortSlider />
         <RecentTrans />
       </div>
+      <BottomSpace />
     </Page>
   )
 }

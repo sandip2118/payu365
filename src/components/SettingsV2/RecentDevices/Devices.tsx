@@ -10,7 +10,7 @@ function Devices({sessions,device,platform,onClick,isActive}: DevicesProps) {
           <div className='w-[30px] h-[30px] md:w-[40px] md:h-[40px] bg-[#44444F] justify-center items-center flex rounded-full md:rounded-[100px]'>
           <Image  src='/assets/icons/devices.svg' alt='profile' width={14} height={19} className='md:w-[14px] md:h-[19px] h-[15px] w-[15px]' />
           </div>
-       <div className='grid gap-[3px] md:gap-[10px]'>
+       <div className='grid gap-[3px] md:gap-[6px]'>
           <p className='text-[13px] md:text-[14px] text-white  font-[600] '>{platform}</p>
           <p className='text-[11px] md:text-[12px]  text-GRAY_101 font-[400]'>{sessions} session on {platform} </p>
        </div>

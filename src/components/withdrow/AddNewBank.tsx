@@ -222,6 +222,7 @@ function AddNewBank({ onClick }: prop) {
                 setPhoneCode(e?.phoneCode)
                 setPhone(e?.value)
               }}
+              placeholder='Phone number'
             />
           </div>
 

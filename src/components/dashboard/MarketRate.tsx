@@ -16,9 +16,39 @@ import { Menu, MenuButton, MenuItem } from '@szhsin/react-menu';
 import Image from 'next/image';
 import Card from '../Common/Card';
 
+const hourArr = [
+  { name: '1h', },
+  { name: '2h', },
+  { name: '3h', },
+  { name: '4h', },
+  { name: '5h', },
+  { name: '6h', },
+  { name: '7h', },
+  { name: '8h', },
+  { name: '9h', },
+  { name: '10h', },
+  { name: '11h', },
+  { name: '12h', },
+  { name: '13h', },
+  { name: '14h', },
+  { name: '15h', },
+  { name: '16h', },
+  { name: '17h', },
+  { name: '18h', },
+  { name: '19h', },
+  { name: '20h', },
+  { name: '21h', },
+  { name: '22h', },
+  { name: '23h', },
+  { name: '24h', }
+]
+
+
 function MarketRate() {
   const router = useRouter();
-
+  const [selectHours, setSelectHours] = useState({ name: '24h', })
+  const [order, setOrder] = useState<string>('asc')
+  const [orderBy, setOrderBy] = useState<string>('name')
   const [selectedTab, setSelectedTab] = useState<string>(MR_TABS.My_ASSETS);
   const [selecteCurrency, setSelecteCurrency] = useState({
     "id": 98,
@@ -35,12 +65,33 @@ function MarketRate() {
   });
 
   const rows = [
-    { currency: 'USD', 'Qty_Avl_Amount': 1.03038932, price: '0.0012456' },
-    { currency: 'INR', 'Qty_Avl_Amount': 0.001541000, price: '0.0012456' }
+    { currency: 'USD', Qty_Avl_Amount: 1.03038932, price: '0.0012456' },
+    { currency: 'INR', Qty_Avl_Amount: 0.001541000, price: '0.0012456' }
   ];
   const column = Array.from(new Set(rows.flatMap(Object.keys)))
+
+  const handleSortRequest = (property: any) => {
+    const isAsc = orderBy === property && order === 'asc'
+    setOrder(isAsc ? 'desc' : 'asc')
+    setOrderBy(property)
+  }
+
   const sortedRows = rows.sort((a: any, b: any) => {
-    return a
+    const aValue = a[orderBy]
+    const bValue = b[orderBy]
+    if (orderBy === 'currency') {
+      if (order === 'asc') {
+        return aValue.localeCompare(bValue)
+      } else {
+        return bValue.localeCompare(aValue)
+      }
+    } else {
+      if (order === 'asc') {
+        return aValue - bValue
+      } else {
+        return bValue - aValue
+      }
+    }
   })
 
   const rowsHT = [
@@ -50,15 +101,44 @@ function MarketRate() {
   ];
   const columnHT = Array.from(new Set(rowsHT.flatMap(Object.keys)))
   const sortedRowsHT = rowsHT.sort((a: any, b: any) => {
-    return a
+    const aValue = a[orderBy]
+    const bValue = b[orderBy]
+    if (orderBy === 'currency') {
+      if (order === 'asc') {
+        return aValue.localeCompare(bValue)
+      } else {
+        return bValue.localeCompare(aValue)
+      }
+    } else {
+      if (order === 'asc') {
+        return aValue - bValue
+      } else {
+        return bValue - aValue
+      }
+    }
   })
+
   const rowsFAV = [
     { currency: 'USD', price: '₹80.66', changes: '0.0012456' },
     { currency: 'INR', price: '₹53.66', changes: '0.0012456' },
   ];
   const columnFAV = Array.from(new Set(rowsFAV.flatMap(Object.keys)))
   const sortedRowsFAV = rowsFAV.sort((a: any, b: any) => {
-    return a
+    const aValue = a[orderBy]
+    const bValue = b[orderBy]
+    if (orderBy === 'currency') {
+      if (order === 'asc') {
+        return aValue.localeCompare(bValue)
+      } else {
+        return bValue.localeCompare(aValue)
+      }
+    } else {
+      if (order === 'asc') {
+        return aValue - bValue
+      } else {
+        return bValue - aValue
+      }
+    }
   })
 
   const PopupMenu = [
@@ -79,26 +159,11 @@ function MarketRate() {
     },
   ]
 
+
   return (
     <Card title={'Market Rate'} cardTopBtnName={'View All'} onclick={() => router.push(ROUTE.MARKET)}>
-      <div className='justify-end grid my-5 relative'>
-        <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
-          menuStyle='w-[250px] sm:w-[300px]'
-          RenderMenuBtn={
-            <div className={`flex bg-BLACK_304 px-3 rounded-lg items-center justify-center w-[130px] h-[30px]`}>
-              <div className='w-[20px] h-[15px]'>
-                <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
-              </div>
-              <p className="font12R mx-[5px]">
-                {selecteCurrency?.currency?.symbol} ({selecteCurrency?.currency?.code})
-              </p>
-              <Icons.DownArrow />
-            </div>
-          }
-        />
-      </div>
 
-      <div className="border-b border-GRAY_101 dark:border-gray-700">
+      <div className="border-b border-BLACK_306 mt-[20px]">
         <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400 gap-5">
           <li>
             <button className={`${selectedTab === MR_TABS.My_ASSETS ? 'border-b-[3px] border-BLUE_201 text-BLUE_201' : 'text-GRAY_101 border-transparent'} font16RB inline-flex items-center justify-center p-2  border-transparent rounded-t-lg hover:text-gray-600 group`}
@@ -119,10 +184,27 @@ function MarketRate() {
             <button className={`${selectedTab === MR_TABS.FAVORITE ? 'border-b-[3px] border-BLUE_201 text-BLUE_201' : 'text-GRAY_101'} font16RB inline-flex items-center justify-center p-2 border-transparent rounded-t-lg hover:text-gray-600 group`}
               onClick={() => { setSelectedTab(MR_TABS.FAVORITE) }}
             >
-              <Icons.Favourite color={selectedTab === MR_TABS.FAVORITE ? colors.BLUE_201 : colors.GRAY_101} className='mr-[10px]' />Favorite
+              <Icons.Favourite color={selectedTab === MR_TABS.FAVORITE ? colors.BLUE_201 : colors.BLACK_308} className='mr-[10px]' />Favorite
             </button>
           </li>
         </ul>
+      </div>
+
+      <div className='justify-end grid my-[20px] relative'>
+        <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
+          menuStyle='w-[250px] sm:w-[300px]'
+          RenderMenuBtn={
+            <div className={`flex bg-BLACK_304 px-3 rounded-lg items-center justify-center w-[130px] h-[30px]`}>
+              <div className='w-[20px] h-[15px]'>
+                <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
+              </div>
+              <p className="font12R mx-[5px]">
+                {selecteCurrency?.currency?.symbol} ({selecteCurrency?.currency?.code})
+              </p>
+              <Icons.DownArrow />
+            </div>
+          }
+        />
       </div>
 
       <div className='mt-5 relative'>
@@ -140,8 +222,9 @@ function MarketRate() {
                         <TableSortLabel
                           className="flex gap-1 font12RB"
                           IconComponent={() => null}
+                          onClick={() => handleSortRequest(key)}
                         >
-                          {key} <Icons.TBArrowIcon />
+                          {key === 'Qty_Avl_Amount' ? 'Qty/Avl. Amount' : key} <Icons.TBArrowIcon />
                         </TableSortLabel>
                       ) : (
                         key
@@ -150,7 +233,7 @@ function MarketRate() {
                   ))}
                   <TableCell
                     align="center"
-                    className=" w-[172px] border-none"
+                    className=" w-[100px] border-none"
                   >
                     <p className='font12RB text-white'>
                       Actions
@@ -168,11 +251,11 @@ function MarketRate() {
                       scope="row"
                       className="border-b border-GRAY_101 dark:border-gray-700"
                     >
-                      <div className="flex items-center gap-2">
-                        {i === 0 &&
+                      <div className="flex items-center">
+                        {row.currency === "USD" &&
                           <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
-                        {i === 1 &&
+                        {row.currency === "INR" &&
                           <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
 
@@ -264,6 +347,7 @@ function MarketRate() {
                         <TableSortLabel
                           className="flex gap-1 font12RB"
                           IconComponent={() => null}
+                          onClick={() => handleSortRequest(key)}
                         >
                           {key} <Icons.TBArrowIcon />
                         </TableSortLabel>
@@ -272,7 +356,42 @@ function MarketRate() {
                           className="flex gap-1 font12RB"
                           IconComponent={() => null}
                         >
+                          {index === 2 &&
+                            <div className='w-[45px] z-50'>
+                              <Menu
+                                transition
+                                menuStyle={{ borderRadius: '7px', marginRight: '4px' }}
+                                menuButton={<MenuButton
+                                  className="relative w-full"
+                                  onClick={() => { }}
+                                >
+                                  <div className='flex border rounded border-GRAY_105 px-1 items-center justify-between'>
+                                    <p className="font12RB text-white">
+                                      {selectHours.name}
+                                    </p>
 
+                                    <Icons.DownCaret />
+                                  </div>
+                                </MenuButton>}
+                              >
+                                <div className={` overflow-auto max-h-[150px] rounded-[4px] bg-BLACK_306 cursor-pointer px-2 py-2 `}>
+                                  <MenuItem className="!p-0 w-[30px] " >
+                                    {hourArr?.map((d, i) => {
+                                      return (
+                                        <div key={i} className='flex py-[10px] gap-5'
+                                          onClick={() => setSelectHours(d)}
+                                        >
+                                          <p className="font14R text-white">
+                                            {d.name}
+                                          </p>
+                                        </div>
+                                      )
+                                    })}
+                                  </MenuItem>
+                                </div>
+                              </Menu>
+                            </div>
+                          }
                           {key}
                         </TableSortLabel>
                       )}
@@ -299,13 +418,13 @@ function MarketRate() {
                       className="border-b border-GRAY_101 dark:border-gray-700"
                     >
                       <div className="flex items-center gap-2">
-                        {i === 0 &&
+                        {row.currency === "USD" &&
                           <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
-                        {i === 1 &&
+                        {row.currency === "INR" &&
                           <img src={'/assets/images/India.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
-                        {i === 2 &&
+                        {row.currency === "AUD" &&
                           <img src={'/assets/images/australia.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
 
@@ -394,6 +513,7 @@ function MarketRate() {
                         <TableSortLabel
                           className="flex gap-1 font12RB"
                           IconComponent={() => null}
+                          onClick={() => handleSortRequest(key)}
                         >
                           {key} <Icons.TBArrowIcon />
                         </TableSortLabel>
@@ -402,7 +522,42 @@ function MarketRate() {
                           className="flex gap-1 font12RB"
                           IconComponent={() => null}
                         >
+                          {index === 2 &&
+                            <div className='w-[45px] z-50'>
+                              <Menu
+                                transition
+                                menuStyle={{ borderRadius: '7px', marginRight: '4px' }}
+                                menuButton={<MenuButton
+                                  className="relative w-full"
+                                  onClick={() => { }}
+                                >
+                                  <div className='flex border rounded border-GRAY_105 px-1 items-center justify-between'>
+                                    <p className="font12RB text-white">
+                                      {selectHours.name}
+                                    </p>
 
+                                    <Icons.DownCaret />
+                                  </div>
+                                </MenuButton>}
+                              >
+                                <div className={` overflow-auto max-h-[150px] rounded-[4px] bg-BLACK_306 cursor-pointer px-2 py-2 `}>
+                                  <MenuItem className="!p-0 w-[30px] " >
+                                    {hourArr?.map((d, i) => {
+                                      return (
+                                        <div key={i} className='flex py-[10px] gap-5'
+                                          onClick={() => setSelectHours(d)}
+                                        >
+                                          <p className="font14R text-white">
+                                            {d.name}
+                                          </p>
+                                        </div>
+                                      )
+                                    })}
+                                  </MenuItem>
+                                </div>
+                              </Menu>
+                            </div>
+                          }
                           {key}
                         </TableSortLabel>
                       )}

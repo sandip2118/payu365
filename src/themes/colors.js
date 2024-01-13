@@ -1,12 +1,11 @@
 module.exports = {
   white: '#fff',
-  WHITE_101:'#FEF5E9',
+  WHITE_101: '#FEF5E9',
   GRAY_101: '#777E90',
-  GRAY_104: '#848E9C',
-  GRAY_103: '#B7BDC6',
   GRAY_102: '#B1B5C3',
   GRAY_103: '#B7BDC6',
   GRAY_104: '#848E9C',
+  GRAY_105: '#959EAE',
 
   BLUE_201: '#267FF5',
 
@@ -17,10 +16,11 @@ module.exports = {
   BLACK_305: '#48546D',
   BLACK_306: '#44444F',
   BLACK_307: '#252930',
+  BLACK_308: '#323232',
 
   YELLOW_01: '#F59D31',
   YELLOW_02: '#F59C26',
-  YELLOW_03:"#FDEBD41A",
+  YELLOW_03: '#FDEBD41A',
 
   RED_01: '#FA6C4C',
   RED_02: '#FC5555',
@@ -29,4 +29,3 @@ module.exports = {
   GREEN_01: '#29CC6A',
   GREEN_02: '#23C38E',
 }
-

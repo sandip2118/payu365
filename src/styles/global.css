@@ -142,6 +142,12 @@ body {
   font-weight: 400;
   line-height: normal;
 }
+.font10R {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 .font10RB {
   font-size: 10px;
   font-style: normal;
@@ -167,6 +173,12 @@ body {
   line-height: normal;
 }
 
+.font12400 {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 .font12SB {
   font-size: 12px;
   font-style: normal;
@@ -186,6 +198,12 @@ body {
   line-height: normal;
 }
 .font14SB {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font14700 {
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -222,6 +240,12 @@ body {
   line-height: normal;
 }
 .font24SB {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.font24SMB {
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -315,6 +339,7 @@ body {
   padding-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: #1C1C24;
 }
 .order-table tbody tr:first-child td {
   padding-top: 18px !important;
@@ -330,6 +355,7 @@ body {
   padding-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: #1C1C24;
 }
 .open-order-table tbody tr td {
   padding-left: 0px;
@@ -375,4 +401,58 @@ body {
 .apexcharts-menu {
   background: #ffffff;
   color: #252930;
+}
+
+/* trade-history-table */
+.trade-history-table thead tr th {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: unset;
+}
+.trade-history-table thead tr th:first-child {
+  padding-left: 0px;
+}
+.trade-history-table thead tr th:last-child {
+  padding-right: 0px;
+}
+
+/* Add these styles to customize the next and prev buttons */
+.slick-arrow.slick-prev,
+.slick-arrow.slick-prev:hover {
+  background-color: white; 
+  color: white; 
+  height: 17px;
+  width: 17px;
+  border-radius: 50%; 
+  left: 0;
+  z-index: 99;
+}
+
+.slick-arrow.slick-next,
+.slick-arrow.slick-next:hover {
+  background-color: white; 
+  color: white; 
+  height: 17px;
+  width: 17px;
+  border-radius: 50%; 
+  right: 0;
+  z-index: 99;
+}
+
+.slick-arrow.slick-next:before {
+  position: relative;
+  color: #292932;
+  left: -2px;
+  top: -1px;
+}
+.slick-arrow.slick-prev:before {
+  position: relative;
+  color: #292932;
+  left: -2px;
+  top: -1px;
+}
+
+.slick-arrow.slick-prev:hover:before ,
+.slick-arrow.slick-next:hover:before {
+  opacity: .75 !important;
 }

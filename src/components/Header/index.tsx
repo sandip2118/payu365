@@ -8,10 +8,11 @@ import { AppContext } from "@/context/AppProvider";
 interface HeaderProps {
   title?: string,
   balance?: string
+  
 }
 
 
-const Header: FC<HeaderProps> = ({ title, balance }) => {
+const Header: FC<HeaderProps> = ({ title, balance, }) => {
   const context = useContext(AppContext);
 
   const [selLang, setSelLang] = useState<string | undefined>()
@@ -46,11 +47,9 @@ const Header: FC<HeaderProps> = ({ title, balance }) => {
     );
   };
 
-  console.log('title', title);
-
   return (
     <>
-      <div className='flex md:hidden justify-between h-[70px] items-center px-5 bg-BLACK_301 sticky top-0 border-b border-[#292932] z-50'>
+      <div className='flex md:hidden justify-between h-[11vh] items-center px-5 bg-BLACK_301 sticky top-0 border-b border-[#292932] z-50'>
         <button onClick={() => {
           context?.setSidebarOpen(!context?.sidebarOpen)
         }}
@@ -60,13 +59,19 @@ const Header: FC<HeaderProps> = ({ title, balance }) => {
         <div className='flex h-[48px] items-center my-[20px]'>
           <Icons.Logo />
         </div>
-        <Icons.Setting />
+      <button
+      onClick={() => {
+        context?.setMobileMenuOpen(!context?.mobileMenuOpen)
+      }}
+      >
+      <Icons.Setting />
+      </button>
       </div>
       <div className='md:flex hidden justify-between h-[70px] items-center px-5 bg-BLACK_301 sticky top-0 z-10 border-b border-[#292932]'>
         <p className='font-[600] text-[22px] text-white'>{title}</p>
         <div className='flex items-center gap-[10px]'>
           <p className='font14R text-GRAY_101'>
-            {title === 'Withdraw' ? 'Balance' : 'Language'}:
+            {title === 'Withdraw' || 'Deposit' ? 'Balance' : 'Language'}:
           </p>
           {balance ?
             <p className="font16SMB text-white">{balance}</p>

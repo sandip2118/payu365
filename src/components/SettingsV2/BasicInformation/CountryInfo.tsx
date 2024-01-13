@@ -37,7 +37,7 @@ const CountryInfo = ({ height = '47px' }) => {
     setSelectedCountry(selected || null);
   };
   return (
-    <div className='flex w-[95%] md:w-85% items-center rounded-[5px] h-[47px]'>
+    <div className='flex w-full  items-center rounded-[5px] h-[47px]'>
     <div className='flex'>
       <img src={selectedCountry?.flag || '/assets/icons/caret-active.svg'} alt={`${selectedCountry?.name || ''} Flag`} style={{ width: '17px', height: '17px', marginRight: '20px' }} />
     </div>

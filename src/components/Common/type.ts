@@ -2,6 +2,7 @@ export type CardProps = {
   title?: string;
   subTitle?: string;
   cardTopBtnName?: string;
+  className?: string;
   children?: any;
   isBorder?: boolean;
   onclick?: () => void;
@@ -43,7 +44,12 @@ export type DropDownProps = {
 }
 
 export type TabsProps = {
-  data: { id: number, label: string, value: string }[] | undefined;
+  data: {
+    id: string;
+    label: string;
+    value: string;
+    content: React.ReactNode;
+  }[] | undefined;
 };
 
 export type NextBreadcrumbsProps = {
@@ -53,12 +59,12 @@ export type NextBreadcrumbsProps = {
 export type InputTypeProps = {
   type?: string;
   placeholder?: string;
-  disabled?:boolean;
+  disabled?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export type PasswordInputProps ={
+export type PasswordInputProps = {
   placeholder?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -66,14 +72,30 @@ export type PasswordInputProps ={
   isValid?: boolean;
 }
 
+export type InputProps = {
+  w?: string;
+  placeholder?: string;
+}
+
+export type TableCardProps = {
+  children?: any;
+}
+
+export type SearchBarProps = {
+  placeholder?: string;
+  searchValue?: string;
+  setSearchValue?: any;
+}
+
 export type BuySaleProps = {
   type?: string;
+  className?: string;
   onClick?: () => void;
 }
 
 export type ContainedButtonProps = {
   text?: string;
   className?: string;
-  padding?: string; 
+  padding?: string;
   onClick?: () => void;
 }

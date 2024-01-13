@@ -17,18 +17,18 @@ export interface SwitchStates {
 export interface DevicesProps {
   sessions: number;
   device: string;
-  platform: string; 
+  platform: string;
   onClick: () => void;
   isActive: boolean;
 }
 
 export interface specificDevices {
-  device:string;
-  location :string;
+  device: string;
+  location: string;
   platform: string;
-  tag:boolean;
+  tag: boolean;
   activeSession: boolean;
-  isActive: boolean; 
+  isActive: boolean;
 }
 
 export interface BasicInfoHeaderProps {
@@ -38,34 +38,35 @@ export interface BasicInfoHeaderProps {
   buttonColor: string;
 }
 
-export interface HeaderProps{
-  title:string;
-  description?:string;
-  isBorder?:boolean;
+export interface HeaderProps {
+  title: string;
+  description?: string;
+  isBorder?: boolean;
 }
 
-export interface RefferalProps{
-  title:string;
-  description:string;
-  referralData:string;
-  onClick:()=>void;
+export interface RefferalProps {
+  title: string;
+  description: string;
+  referralData: string;
+  iconString: string;
+  onClick: () => void;
 }
 
-export interface SecuritySettingsProps{
-  icon:true;
-  iconPath:string;
-  tag:boolean;
-  title:string;
-  description:string;
-  extra:boolean;
-  extraText:string;
-  switch:boolean;
-  switchIcon:boolean;
-  switchText:string;
-  buttonText:string;
-  isBorder :boolean;
-  component?:string;
-  tabTitle?:string;
+export interface SecuritySettingsProps {
+  icon: true;
+  iconPath: string;
+  tag: boolean;
+  title: string;
+  description: string;
+  extra: boolean;
+  extraText: string;
+  switch: boolean;
+  switchIcon: boolean;
+  switchText: string;
+  buttonText: string;
+  isBorder: boolean;
+  route?: string;
+  tabTitle?: string;
 }
 
 export interface ComponentSetting {
@@ -81,7 +82,7 @@ export interface SwitchComponentProps {
 }
 
 export interface settingsTabItem {
-  itemId: number;
+  itemId: any;
   title: string;
   icon: string;
   component: React.FC;
@@ -97,16 +98,16 @@ export interface SettingsContentProps {
   activeComponent?: string;
 }
 
-export interface EmailVerificationProps{
+export interface EmailVerificationProps {
   title: string;
   description: string;
-  lastDate?:string;
+  lastDate?: string;
   buttonIcon?: string;
   buttonText: string;
   buttonColor: string;
   borderColor: string;
 }
-export interface SecurityBreadCrumbsProps{
-  activeSubTab?:string;
-  title:string;
+export interface SecurityBreadCrumbsProps {
+  activeSubTab?: string;
+  title: string;
 }
