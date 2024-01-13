@@ -1,6 +1,6 @@
 import { Card } from '@mui/material'
 import React from 'react'
-import { TableCardProps } from '../common/type'
+import { TableCardProps } from '../Common/type'
 
 const TableRowCard: React.FC<TableCardProps> = ({ children }) => {
   return (

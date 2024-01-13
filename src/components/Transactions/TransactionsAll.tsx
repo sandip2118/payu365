@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Page from '@/components/common/Page'
+import Page from '@/components/Common/Page'
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import Card from '../Common/Card'
-import SearchBar from '../common/SearchBar'
-import Input from '../common/Input'
+import SearchBar from '../Common/SearchBar'
+import Input from '../Common/Input'
 import TransactionTable from './Table'
 
 interface TabData {
