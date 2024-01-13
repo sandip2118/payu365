@@ -112,7 +112,6 @@ const StepComponent = ({ activeStep, _activeStep }: any) => {
     <div className='min-w-full lg:min-w-[780px]'>
       <Stepper connector={<Connector color={'#48546D'} />} activeStep={activeStep} className='stepper' alternativeLabel={true}>
         {steps.map((label: any, index: any) => {
-          console.log('===>', activeStep, index, completed[index]);
           return (
             <Step key={label} completed={completed[index + 1]} sx={stepStyle} className='relative'>
               <StepLabel icon={index + 1} StepIconComponent={(props: any) => {
