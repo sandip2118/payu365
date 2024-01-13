@@ -6,7 +6,7 @@ import { SecurityBreadCrumbsProps } from '../types';
 
 const Securitybreadcrumbs:React.FC<SecurityBreadCrumbsProps> = ({ activeSubTab ,title}) => {
   const router = useRouter();
-  const isSettingsPath = router.asPath.includes('settings');
+  const isSettingsPath = router.asPath.includes('/settings');
 
   const handleBackClick = () => {
     router.back();
@@ -14,7 +14,7 @@ const Securitybreadcrumbs:React.FC<SecurityBreadCrumbsProps> = ({ activeSubTab ,
 
 
   return (
-    <nav aria-label="breadcrumb" className="mt-5 mx-5">
+    <nav aria-label="breadcrumb" className=" mx-5">
     <ol className="breadcrumbs flex items-center gap-2.5 w-full text-GRAY_101 text-sm font-semibold capitalize">
       {isSettingsPath && activeSubTab && (
         <>

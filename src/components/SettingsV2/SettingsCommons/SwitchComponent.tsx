@@ -31,7 +31,7 @@ const SwitchComponent: React.FC<SwitchComponentProps> = ({
   return (
     <div className='grid'>
       {settings.map(({ key, title, description }) => (
-        <div key={key} className='border-t-[1px] border-[#44444F] pt-[30px] pb-4 flex justify-between items-center'>
+        <div key={key} className='border-t-[1px] border-[#44444F] pt-[30px] pb-[10px] flex justify-between items-center'>
           <div className='w-1/2 grid gap-[10px]'>
             <p className='font14SN text-[white]'>{title}</p>
             <p className='font12R text-GRAY_101'>{description}</p>

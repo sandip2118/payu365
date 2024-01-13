@@ -210,7 +210,7 @@ const ForgotPassword = () => {
                   <p className="font12RB mt-[30px] w-full text-center text-[13px] not-italic text-GRAY_101">
                     Didn’t receive code?{' '}
                     <span
-                      onClick={() => router.push('/signup')}
+                      onClick={() => {router.push('')}}
                       className="font13SB cursor-pointer !font-semibold leading-[normal] text-BLUE_201"
                     >
                       Resend

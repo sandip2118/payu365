@@ -35,7 +35,7 @@ const Preferences = () => {
  
 
   return (
-    <div className='bg-[#1C1C24] px-4 md:rounded-[5px] md:mx-[20px] pb-[20px]'>
+    <div className='bg-[#1C1C24] px-4 rounded-[5px] md:mx-[20px] pb-[20px] md:mb-[343px]'>
     <Header  title='Transaction & History' description='Manage your transection and history '/>
     <SwitchComponent settings={preferenceSettings}  switchStates={switchStates} onSwitchChange={handleChange}/>
     </div>

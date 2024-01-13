@@ -10,6 +10,7 @@ import DetailsAmount from './DetailsAmount';
 function Wrapper({ title }: any) {
   const router = useRouter()
   const [activeStep, _activeStep] = useState<any>(0);
+  console.log('activeStep', activeStep);
 
   return (
     <Page title={title} isBreadcrumbs>

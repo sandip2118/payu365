@@ -23,7 +23,7 @@ function TemporarilyDeactivate() {
 
     </div>
 
-    <div className='grid md:flex md:justify-between gap-[25px]'>
+    <div className='grid md:flex md:justify-between gap-5 md:gap-[25px]'>
           <div className='grid text-start gap-[10px] w-[100%] mt-5'>
             <label className='font12RB text-white px-1'>To confirm this, type “DEACTIVATE”</label>
             <InputField 
@@ -33,7 +33,7 @@ function TemporarilyDeactivate() {
         value={deactivateInput} 
       />
           </div>
-          <div className='grid text-start gap-[10px] w-[100%] mt-5'>
+          <div className='grid text-start gap-[10px] w-[100%] md:mt-5'>
             <label className='font12RB text-white px-1 '>Password</label>
             <InputField 
         type="text" 

@@ -13,6 +13,7 @@ interface prop {
 
 const CurrencyInfo = ({ onSelect, menuStyle, RenderMenuBtn, bank, width }: prop) => {
   const [countries, setCountries] = useState<any[]>()
+console.log('width', width);
 
   useEffect(() => {
     if (countryData) {

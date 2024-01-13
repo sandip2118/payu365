@@ -66,6 +66,7 @@ function SideBar() {
   const handleTransfer = (val) => {
     setOpen(val)
   };
+  console.log('pathname', pathname);
 
   return (
     <div className={`${!context.sidebarOpen ? 'md:block hidden' : 'block md:hidden'} bg-BLACK_301 relative h-[100%] border-r border-[#292932]`}>

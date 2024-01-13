@@ -5,7 +5,7 @@ import DeactivateAlert from './DeactivateAlert'
 
 function DeactivateAcc() {
   return (
-    <div className='grid gap-[35px] md:mx-[20px] pb-[120px]'>
+    <div className='grid gap-[35px] md:mx-[20px] md:pb-[200px] mb-[200px]'>
       <DeactivateAlert />
     <TemporarilyDeactivate />
     <PermanentlyDeactivate />

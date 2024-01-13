@@ -13,15 +13,15 @@ function ConnectedAccounts() {
    <Header title='Connect account with third-party Account' description='Allow or Disable some feature'/>
     </div>
 
-    <div className='  py-[15px] border-b-[1px] border-[#44444F] '>
+    <div className='  pb-5 md:pb-2.5 border-b-[1px] border-[#44444F] '>
      <ConnectGoogle />
     </div>
 
-     <div className='  py-[15px] border-b-[1px] border-[#44444F] '>
+     <div className='  pb-5 md:pb-2.5 border-b-[1px] border-[#44444F] '>
       <ConnectApple />
      </div>
 
-    <div className='  py-[15px]  '>
+    <div className='  pb-5 md:pb-2.5  '>
       <ConnectMetamask />
       </div>
   

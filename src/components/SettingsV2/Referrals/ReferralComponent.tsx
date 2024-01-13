@@ -19,7 +19,7 @@ const ReferralComponent:React.FC<RefferalProps> =({title,description,referralDat
   };
 
   return (
-    <div className=' grid md:flex md:justify-between items-center py-[20px] border-b-[1px] border-[#44444F] gap-[17px] md:gap-[0px]'>
+    <div className=' grid md:flex md:justify-between items-center py-5 md:py-2.5 md:my-5 border-b-[1px] border-[#44444F] gap-[17px] md:gap-[0px]'>
       <div className='md:w-2/3 w-full grid gap-[10px]'>
           <p className='font14RB text-white'>{title}</p>
           <p className='text-GRAY_101 font12R'>{description}</p>

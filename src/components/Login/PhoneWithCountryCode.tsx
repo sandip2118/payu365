@@ -77,7 +77,7 @@ const PhoneWithCountryCodeProps = ({ value, onChange, placeholder, className }: 
             <DebounceInput
               autoFocus
               // value={search}
-              placeholder="Search posts"
+              placeholder="Search country code"
               // minLength={2}
               debounceTimeout={700}
               className="no-input-arrow w-full font14R h-[44px] pl-[10px] bg-BLACK_304 focus:text-white text-white focus:outline-none focus-visible:border-none rounded-[5px] placeholder-GRAY_101 "

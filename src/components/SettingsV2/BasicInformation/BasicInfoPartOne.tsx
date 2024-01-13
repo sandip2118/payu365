@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import CountryInfo from './CountryInfo';
 import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader';
 import InputField from '../../Common/InputField';

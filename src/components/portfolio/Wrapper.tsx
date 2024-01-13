@@ -1,10 +1,10 @@
 import React from 'react';
+import EsBalance from '../Dashboard/EsBalance';
 import MyAssets from './MyAssets';
 import PortSlider from './PortSlider';
 import RecentTrans from '../Common/RecentTrans';
 import Page from '../Common/Page';
 import BottomSpace from '../Common/BottomSpace';
-import EsBalance from '../dashboard/EsBalance';
 
 const Wrapper = () => {
   return (

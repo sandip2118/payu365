@@ -51,6 +51,7 @@ const SignupForm = (props: SignupFormProps) => {
     toast.success('User Created')
     router.push('/dashboard')
   }
+  console.log('phone', phoneCode, phone);
 
   return (
     <div className=" w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%]">

@@ -270,6 +270,7 @@ const TransactionsAll = () => {
   const filteredRows0Data = foundRows && foundRows !== undefined && foundRows[data].filter((row: any) =>
     row?.Name?.toLowerCase().includes(searchValue)
   );
+  console.log('console_filteredRows0Data', filteredRows0Data)
 
 
   function a11yProps(index: number) {
