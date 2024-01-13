@@ -52,7 +52,7 @@ function DetailsAmount({ activeStep, _activeStep }: any) {
     //     return toast.error('Enter branch name')
     // }
     _activeStep(activeStep + 1)
-    toast.success('Add details and amountsuccessfully')
+    // toast.success('Add details and amountsuccessfully')
   }
 
   return (
