@@ -6,8 +6,7 @@ import { colors } from '../../../../themes';
 import CurrencyInfo from '../../../Common/CurrencyInfo';
 import Image from 'next/image';
 import Card from '../../../Common/Card'
-import InputField from '@/components/Common/InputField';
-import { ROUTE } from '@/Constants';
+import { ROUTE } from '../../../../Constants';
 
 function VerifyAmount({ activeStep, _activeStep }: any) {
   const router = useRouter();

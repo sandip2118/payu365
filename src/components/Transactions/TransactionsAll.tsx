@@ -3,15 +3,15 @@ import { Box, Typography } from '@mui/material'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import PersonIcon from '@mui/icons-material/Person'
 import CopyAllRounded from '@mui/icons-material/CopyAllRounded';
-import ColorTabs from '@/components/common/Tabs'
-import Card from '@/components/common/Card'
-import SearchBar from '@/components/common/SearchBar'
-import Input from '@/components/common/Input'
-import { ContainedButton } from '@/components/Common/Button'
-import DateRangePicker from '@/components/Common/DateRangePicker'
-import Modal from '@/components/Common/Modal'
+import Input from '../Common/Input'
+import DateRangePicker from '../Common/DateRangePicker'
+import Modal from '../Common/Modal'
 import TransactionTable from './Table'
 import MobileTransactions from './MobileTransactions'
+import ColorTabs from '../Common/Tabs';
+import Card from '../Common/Card';
+import SearchBar from '../Common/SearchBar';
+import { ContainedButton } from '../Common/Button';
 
 interface TabPanelProps {
   children?: React.ReactNode

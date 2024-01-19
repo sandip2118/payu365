@@ -10,7 +10,7 @@ import DetailsAmount from './DetailsAmount';
 import SuccessBox from '../SuccessBox';
 import { Dialog, useMediaQuery } from '@mui/material';
 import moment from 'moment';
-import BottomSpace from '@/components/Common/BottomSpace';
+import BottomSpace from '../../Common/BottomSpace';
 
 function Wrapper({ title }: any) {
   const router = useRouter()

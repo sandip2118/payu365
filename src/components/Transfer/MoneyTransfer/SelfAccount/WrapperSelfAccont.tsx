@@ -5,7 +5,7 @@ import QuickBank from './QuickBank';
 import StepComponent from '../../StepComponent';
 import BankDetailsComp from './BankDetailsComp';
 import DetailsAmount from './VerifyAmount';
-import BottomSpace from '@/components/Common/BottomSpace';
+import BottomSpace from '../../../Common/BottomSpace';
 import { toast } from 'react-toastify';
 import SuccessBox from '../../SuccessBox';
 import { Dialog, useMediaQuery } from '@mui/material';

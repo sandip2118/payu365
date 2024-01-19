@@ -6,7 +6,7 @@ import { colors } from '../../../themes'
 import CurrencyInfo from '../../Common/CurrencyInfo'
 import Image from 'next/image'
 import InputField from '../../Common/InputField'
-import { ContainedButton } from '@/components/Common/Button'
+import { ContainedButton } from '../../Common/Button'
 
 function RequestAmount({ activeStep, _activeStep }: any) {
   const [notes, setNotes] = useState('')

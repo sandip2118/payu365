@@ -4,7 +4,7 @@ import Card from '../../Common/Card'
 import Icons from '@/assets/icon'
 import { DebounceInput } from 'react-debounce-input'
 import TransferComp from '../TransferComp'
-import { ContainedButton } from '@/components/Common/Button'
+import { ContainedButton } from '../../Common/Button'
 import { SelectUserComponentProps, MobileNumberAndUpiProps } from './type'
 
 const SelectUserComponent: React.FC<SelectUserComponentProps> = ({
@@ -94,11 +94,10 @@ const SelectUserComponent: React.FC<SelectUserComponentProps> = ({
         <ul className="flex w-full -mb-px text-sm font-medium text-center text-gray-500">
           <li className="w-1/2">
             <button
-              className={`${
-                selectedTab === 'Mobile Number'
+              className={`${selectedTab === 'Mobile Number'
                   ? 'border-b-[3px] border-BLUE_201 text-white'
                   : 'border-b-[1px] border-BLACK_306 text-GRAY_101'
-              } w-full font14R inline-flex items-center justify-center p-4  border-transparent rounded-t-md  group`}
+                } w-full font14R inline-flex items-center justify-center p-4  border-transparent rounded-t-md  group`}
               onClick={() => {
                 setSelectedTab('Mobile Number')
               }}
@@ -109,11 +108,10 @@ const SelectUserComponent: React.FC<SelectUserComponentProps> = ({
           <div className="w-[1px] bg-BLACK_306" />
           <li className="w-1/2">
             <button
-              className={`${
-                selectedTab == 'UPI'
+              className={`${selectedTab == 'UPI'
                   ? 'border-b-[3px] border-BLUE_201 text-white'
                   : 'border-b-[1px] border-BLACK_306 text-GRAY_101'
-              } w-full font14R inline-flex items-center justify-center p-4  border-transparent rounded-t-md  group`}
+                } w-full font14R inline-flex items-center justify-center p-4  border-transparent rounded-t-md  group`}
               onClick={() => {
                 setSelectedTab('UPI')
               }}

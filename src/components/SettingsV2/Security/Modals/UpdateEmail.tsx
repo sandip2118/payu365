@@ -1,4 +1,4 @@
-import InputField from '@/components/Common/InputField';
+import InputField from '../../../Common/InputField';
 import React, { useState } from 'react'
 
 function UpdateEmail({onContinue}) {

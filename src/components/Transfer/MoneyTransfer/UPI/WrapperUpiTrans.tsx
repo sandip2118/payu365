@@ -7,7 +7,7 @@ import { Dialog, useMediaQuery } from '@mui/material';
 import Icons from '@/assets/icon';
 import UpiComp from './UpiComp';
 import VerifyAmount from './VerifyAmount';
-import BottomSpace from '@/components/Common/BottomSpace';
+import BottomSpace from '../../../Common/BottomSpace';
 import moment from 'moment';
 import SuccessBox from '../../SuccessBox';
 

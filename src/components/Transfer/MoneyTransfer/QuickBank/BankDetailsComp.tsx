@@ -8,7 +8,7 @@ import InputField from '../../../Common/InputField';
 import { toast } from 'react-toastify';
 import { Box, Dialog, MenuItem, Select, SelectChangeEvent, TextField, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
-import BottomSpace from '@/components/Common/BottomSpace';
+import BottomSpace from '../../../Common/BottomSpace';
 import { changetheme } from '@/components/Dashboard/PaymentAnalytics';
 
 const bankList = [
