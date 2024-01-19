@@ -1,10 +1,11 @@
 import React from 'react'
 import Page from '../Common/Page'
+import TransactionsAll from './TransactionsAll'
 
 const Wrapper = () => {
   return (
     <Page title={'Transactions'}>
-      <h1>TransactionsAll</h1>
+      <TransactionsAll />
     </Page>
   )
 }

@@ -36,6 +36,7 @@ export interface BasicInfoHeaderProps {
   description: string;
   buttonText: string;
   buttonColor: string;
+  onClick:()=>void;
 }
 
 export interface HeaderProps{
@@ -85,6 +86,7 @@ export interface settingsTabItem {
   itemId: number;
   title: string;
   icon: string;
+  titleOnBar?: string;
   component: React.FC;
 }
 
@@ -106,8 +108,16 @@ export interface EmailVerificationProps{
   buttonText: string;
   buttonColor: string;
   borderColor: string;
+  onClick:()=>void;
 }
 export interface SecurityBreadCrumbsProps{
   activeSubTab?:string;
   title:string;
 }
+export interface SuccessComponentProps {
+  title:string;
+  description:string;
+  route: string;
+  buttonText:string;
+}
+

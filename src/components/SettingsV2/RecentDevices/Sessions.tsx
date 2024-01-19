@@ -3,7 +3,7 @@ import React from 'react'
 import { specificDevices } from '../types'
 
 
-function Sessions({location,platform,tag,device,isActive,activeSession }:specificDevices) {
+function Sessions({location,platform,tag,device,activeSession }:specificDevices) {
   return (
     <div className='grid border-[1px] bg-[#292932] border-[#44444F] py-[10px] px-[15px] gap-[10px] rounded-[10px] mt-[20px]'  onClick={(e: React.MouseEvent) => e.stopPropagation()}>
       <div className='flex justify-between items-center'>

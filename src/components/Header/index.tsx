@@ -4,16 +4,19 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import Icons from '@/assets/icon';
 import { colors } from './../../themes';
 import { AppContext } from "@/context/AppProvider";
+import { useRouter } from "next/router";
 
 interface HeaderProps {
   title?: string,
   balance?: string
-  
-}
 
+}
+ 
 
 const Header: FC<HeaderProps> = ({ title, balance, }) => {
   const context = useContext(AppContext);
+  const router = useRouter();
+  const isSettingsPath = router.asPath.includes('/settings'); 
 
   const [selLang, setSelLang] = useState<string | undefined>()
 
@@ -49,7 +52,8 @@ const Header: FC<HeaderProps> = ({ title, balance, }) => {
 
   return (
     <>
-      <div className='flex md:hidden justify-between h-[11vh] items-center px-5 bg-BLACK_301 sticky top-0 border-b border-[#292932] z-50'>
+      {/* <div className='flex md:hidden justify-between h-[7vh] items-center px-5 bg-BLACK_301 sticky top-0 border-b border-[#292932] z-50'> */}
+      <div className={`${isSettingsPath ? 'flex lg:hidden' : 'flex md:hidden'} justify-between h-[7vh] items-center px-5 bg-BLACK_301 sticky top-0 border-b border-[#292932] z-50`}>
         <button onClick={() => {
           context?.setSidebarOpen(!context?.sidebarOpen)
         }}
@@ -59,15 +63,16 @@ const Header: FC<HeaderProps> = ({ title, balance, }) => {
         <div className='flex h-[48px] items-center my-[20px]'>
           <Icons.Logo />
         </div>
-      <button
-      onClick={() => {
-        context?.setMobileMenuOpen(!context?.mobileMenuOpen)
-      }}
-      >
-      <Icons.Setting />
-      </button>
+        <button
+          onClick={() => {
+            context?.setMobileMenuOpen(!context?.mobileMenuOpen)
+          }}
+        >
+          <Icons.Setting />
+        </button>
       </div>
-      <div className='md:flex hidden justify-between h-[70px] items-center px-5 bg-BLACK_301 sticky top-0 z-10 border-b border-[#292932]'>
+      {/* <div className='md:flex hidden justify-between h-[70px] items-center px-5 bg-BLACK_301 sticky top-0 z-10 border-b border-[#292932]'> */}
+      <div className={`${isSettingsPath ? 'lg:flex hidden' : 'md:flex  hidden'} justify-between h-[7vh] items-center px-5 bg-BLACK_301 sticky top-0 z-10 border-b border-[#292932]`}>
         <p className='font-[600] text-[22px] text-white'>{title}</p>
         <div className='flex items-center gap-[10px]'>
           <p className='font14R text-GRAY_101'>
@@ -105,4 +110,4 @@ const Header: FC<HeaderProps> = ({ title, balance, }) => {
     </>
   )
 }
-export default Header
+export default Header;

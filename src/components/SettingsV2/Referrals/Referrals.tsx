@@ -4,7 +4,7 @@ import SelectOptions from './SelectOptions'
 
 function Referrals() {
   return (
-    <div className='grid gap-[35px] md:mx-[20px] pb-[120px]'>
+    <div className='grid gap-[35px] md:mx-[20px] mb-[60px]'>
     <ReferandEarn />
     <SelectOptions />
   </div>

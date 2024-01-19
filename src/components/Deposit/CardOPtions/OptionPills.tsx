@@ -6,8 +6,14 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import NoCardAdded from './NoCardAdded';
 import CardComponent from '../DepositCommons/CardComponent';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { cards } from '../data/cards';
+import { upis } from '../data/upis';
+import AddNweCard from '../DepositCommons/AddNweCard';
+import NetBankingComponent from '../NetBankingComponent';
+import DepositButton from '../DepositCommons/DepositButton';
+import { toast } from 'react-toastify';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -30,18 +36,18 @@ function TabPanel(props: TabPanelProps) {
       {value === index && (
         <Box sx={{
           paddingLeft:{
-          xs:"10px",
+          xs:"15px",
           md:"25px",
           lg:"30px",
         },
         paddingRight:{
-          xs:"10px",
+          xs:"15px",
           md:"25px",
           lg:"30px",
         },
         marginTop:"30px",
         }}>
-          <Typography>{children}</Typography>
+          <Box>{children}</Box>
         </Box>
       )}
     </div>
@@ -59,7 +65,44 @@ export default function OptionPills() {
   const router = useRouter();
   const theme = useTheme();
   const [value, setValue] = useState(0);
-  const [haveCard,setHaveCard] = useState(false)
+  const [haveCard,setHaveCard] = useState(false);
+  const [haveUpi,setHaveUpi] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  // const [selected,setSelected] =useState(false);
+  const [selectedCardId, setSelectedCardId] = useState(null);
+  const [selectedUpiId, setSelectedUpiId] = useState(null);
+
+
+  const handleCardClick = (card) => {
+    setSelectedItem(card);
+    setSelectedCardId(card.id);
+  };
+  
+  const handleUpiClick = (upi) => {
+    setSelectedItem(upi);
+    setSelectedUpiId(upi.id);
+    
+  };
+
+  const handleNextButtonClick = () => {
+    if (selectedItem) {
+      router.push({
+        pathname: 'amount',
+        query: { details: JSON.stringify(selectedItem) }
+      });
+    } else {
+      toast.error('Please select a card or UPI ID')
+    }
+  };
+
+  useEffect(()=>{
+    if (cards.length  > 0){
+      setHaveCard(true)
+    }
+    if(upis.length > 0){
+      setHaveUpi(true)
+    }
+  },[])
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -70,8 +113,9 @@ export default function OptionPills() {
   };
 
   return (
-    <Box sx={{ bgcolor: '#1C1C24', width: '100%',marginTop:"30px" ,borderRadius:"10px"}}>
-      <AppBar position="static" sx={{ backgroundColor: '#1C1C24', boxShadow: 'none',borderRadius:"10px"}}>
+<>
+<Box sx={{ bgcolor: '#1C1C24', width: '100%',marginTop:"30px" ,borderRadius:"10px",cursor:"pointer"}}>
+      <AppBar position="static" sx={{ backgroundColor: '#1C1C24', boxShadow: 'none',borderRadius:"10px",width:'100%'}}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -130,26 +174,55 @@ export default function OptionPills() {
       </AppBar>
    
         <TabPanel value={value} index={0} dir={theme.direction} >
-          {haveCard 
-          ?
+          {haveCard ?
           <div className='grid gap-5'>
-          <CardComponent name="Payoneer Master Card" logo='/assets/images/masterCard.png' accNo='69689'  expiry='5/12/2028' background={true} cvv={true} cvvBg={false}  />
-          <CardComponent name="VISA Card" logo='/assets/images/visa.png' accNo='12547'  expiry='5/12/2028' background={true} cvv={true} cvvBg={false}  />
+             {cards?.map((card)=>(
+              <div className={`${selectedCardId === card.id  ? 'border-[1px] border-BLUE_201 rounded-[10px]' :''}`} onClick={()=>handleCardClick(card)}>
+                   <CardComponent name={card?.name} logo={card?.cardType} accNo={card?.accountNumber}  expiry={card?.expiryDate} background={true} cvv={card?.cvv} cvvBg={false}  />
+              </div>
+                  
+             ))}
+          <AddNweCard  wording='Add new card' />
           </div>
           :
+         <div className='grid gap-5'>
           <NoCardAdded /> 
+          <AddNweCard  wording='Add new card'/>
+         </div>
           }
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
-        </TabPanel>
-        <div className='text-BLUE_201 font16SB w-full flex items-center place-content-center py-[30px]' onClick={()=>router.push('/deposit/cardDetails')}>
-          Add new Card
-        </div>
 
+        <TabPanel value={value} index={1} dir={theme.direction}>
+        {haveUpi ?
+          <div className='grid gap-5'>
+         {upis?.map((upi)=>(
+            <div className={`${selectedUpiId === upi.id  ? 'border-[1px] border-BLUE_201 rounded-[10px]' :''}`} onClick={()=>handleUpiClick(upi)}>
+                     <CardComponent upi={true} name={upi?.name} logo={upi?.cardType} email={upi?.email} logo={upi?.cardType}  background={true}/>
+            </div>
+         ))}
+         <AddNweCard  wording='Add new UPI ID'/>
+          </div>
+          :
+        
+         <div className='grid gap-5'>
+         <NoCardAdded /> 
+          <AddNweCard wording='Add new UPI ID' />
+         </div>
+         
+          }
+        </TabPanel>
+
+        <TabPanel value={value} index={2} dir={theme.direction}>
+        <div className='grid gap-5'>
+          <NetBankingComponent />
+          <AddNweCard wording='Proceed with Net Banking ' />
+          </div>
+        </TabPanel>
     </Box>
+
+<div className='mt-[30px]'>
+<DepositButton buttonText='Next' onClick={()=>router.push('amount')} width='431px' mobileWidth='100%' onClick={handleNextButtonClick}/>
+</div>
+</>
   );
 }

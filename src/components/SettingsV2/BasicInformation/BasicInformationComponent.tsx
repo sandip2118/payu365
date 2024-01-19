@@ -5,7 +5,7 @@ import BasicInfoPartThree from './BasicInfoPartThree'
 
 function BasicInformationComponent() {
   return (
-    <div className='grid gap-[35px] md:mx-[20px] md:mb-[120px] mb-[200px]'>
+    <div className='grid gap-[35px] md:mx-[20px] mb-[60px] '>
  <BasicInfoPartOne />
  <BasicInfoPartTwo />
 <BasicInfoPartThree />

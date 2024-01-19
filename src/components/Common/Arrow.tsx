@@ -1,8 +1,4 @@
-import { IconButton } from "@mui/material"
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { memo } from "react";
-import { colors } from '../../themes';
 import Icons from '@/assets/icon';
 
 const Arrow = ({ sortKey, _sortData, sortData }: any) => {

@@ -63,7 +63,7 @@ function RecentTrans() {
                 {column.map((key, index) => (
                   <TableCell
                     key={index}
-                    className="text-white border-none market-table capitalize"
+                    className="text-white border-none market-table capitalize min-w-[160px]"
                   >
                     {index < 4 ? (
                       <TableSortLabel

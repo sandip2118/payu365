@@ -30,7 +30,7 @@ const stepStyle = {
 
 
 
-const StepComponent = ({ activeStep, _activeStep }: any) => {
+const StepComponent = ({ steps, activeStep, _activeStep }: any) => {
   const QontoStepIconRoot = styled('div')<{ ownerState: { active?: boolean, completed: boolean } }>(
     ({ theme, ownerState }: any) => (() => {
       return {
@@ -54,13 +54,12 @@ const StepComponent = ({ activeStep, _activeStep }: any) => {
           color: '#fff',
           background: colors.GREEN_02,
           border: '2px solid #23C38E',
-
         }),
       }
     }),
   );
-
   const Connector = styled(StepConnector)((props: any) => ({
+
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
       left: 'calc(-50% + 10px)',
       right: 'calc(50% + 10px)',
@@ -68,7 +67,12 @@ const StepComponent = ({ activeStep, _activeStep }: any) => {
     },
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        borderColor: props.color,
+        borderColor: colors.GREEN_02,
+      },
+    },
+    [`&.${stepConnectorClasses.completed}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        borderColor: colors.GREEN_02,
       },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -77,14 +81,7 @@ const StepComponent = ({ activeStep, _activeStep }: any) => {
   }));
 
 
-  // const [IsNew, setStep] = useState(steps)
   const [completed, _completed] = useState<any>([]);
-
-  const steps = [
-    { id: 1, name: 'Details & Amount' },
-    { id: 2, name: 'Review' },
-    { id: 3, name: 'Pay' },
-  ]
 
   function StepIcon(props: any) {
     const { active, completed, className, icon } = props;
@@ -101,8 +98,12 @@ const StepComponent = ({ activeStep, _activeStep }: any) => {
   }
 
   useEffect(() => {
-    _completed([...completed, activeStep])
+    if (activeStep === 0) {
+      _completed([])
+    } else {
+      _completed([...completed, activeStep])
 
+    }
   }, [activeStep])
 
   // const handleNext = () => {
@@ -116,7 +117,6 @@ const StepComponent = ({ activeStep, _activeStep }: any) => {
             <Step key={label} completed={completed[index + 1]} sx={stepStyle} className='relative'>
               <StepLabel icon={index + 1} StepIconComponent={(props: any) => {
                 return (
-
                   <div className='flex items-center justify-center'>
                     <Icons.DownArrow w={10} h={7} color={activeStep == index && colors.GREEN_02} className='absolute -top-4' />
                     <StepIcon {...props} />

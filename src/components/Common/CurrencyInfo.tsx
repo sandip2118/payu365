@@ -54,7 +54,6 @@ const CurrencyInfo = ({ onSelect, menuStyle, RenderMenuBtn, bank, width }: prop)
         </MenuItem>
       </div>
     </Menu>
-
   )
 }
 

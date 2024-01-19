@@ -4,12 +4,12 @@ import BasicInfoHeader from '../SettingsCommons/BasicInfoHeader';
 import Image from 'next/image'
 import InputField from '../../Common/InputField'
 
-const EmailVerification:React.FC<EmailVerificationProps> =({title,description,lastDate,buttonColor,borderColor,buttonIcon,buttonText})=> {
+const EmailVerification:React.FC<EmailVerificationProps> =({title,description,lastDate,buttonColor,borderColor,buttonIcon,buttonText,onClick})=> {
   const [email, setEmail] = useState<string | undefined>('');
 
   return (
     <div>
-    <BasicInfoHeader title={title} description={description} buttonColor={buttonColor} buttonText='Edit' />
+    <BasicInfoHeader title={title} description={description} buttonColor={buttonColor} buttonText='Edit'  onClick={onClick}/>
     <div className='grid'>
    <div className='flex justify-between items-center pt-5 w-[100%] pb-2.5  gap-5  md:gap-0'>
         <div className='w-full md:w-1/2 '>

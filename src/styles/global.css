@@ -145,7 +145,7 @@ body {
 .font10R {
   font-size: 10px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 .font10RB {
@@ -179,6 +179,12 @@ body {
   font-weight: 400;
   line-height: normal;
 }
+.font11SB {
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
 .font12SB {
   font-size: 12px;
   font-style: normal;
@@ -206,7 +212,7 @@ body {
 .font14700 {
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
 }
 .font16SB {
@@ -251,7 +257,12 @@ body {
   font-weight: 600;
   line-height: normal;
 }
-
+.font24700 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 .font12SMB {
   font-size: 12px;
   font-style: normal;
@@ -260,6 +271,18 @@ body {
 }
 .font16SMB {
   font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.font18SMB {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.font24SMB {
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -339,7 +362,7 @@ body {
   padding-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: #1C1C24;
+  background-color: #1c1c24;
 }
 .order-table tbody tr:first-child td {
   padding-top: 18px !important;
@@ -355,7 +378,7 @@ body {
   padding-bottom: 10px;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: #1C1C24;
+  background-color: #1c1c24;
 }
 .open-order-table tbody tr td {
   padding-left: 0px;
@@ -363,21 +386,57 @@ body {
   font-size: 11px;
 }
 
-.permanently-delete-modal{
+.permanently-delete-modal {
   border-radius: 5px;
-  background: rgba(250, 108, 76, 0.20);
+  background: rgba(250, 108, 76, 0.2);
   padding: 20px;
   gap: 20px;
   width:470px;
+  backdrop-filter: blur(17px);
 }
+.security-modal-screen {
+  width: 467px;
+  /* flex: 1 0 0; */
+  border-radius: 10px;
+  background: var(--Dark-Secondary, #1c1c24);
+  box-shadow:
+    0px 30px 60px 0px rgba(1, 2, 9, 0.2),
+    0px 16px 30px 0px rgba(33, 25, 25, 0.17);
+}
+
+.otp-input {
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.otp-input:focus {
+  border: 1px solid #267ff5;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
 @media (max-width: 768px) {
-  .permanently-delete-modal{
-    width:70%;
+  .permanently-delete-modal {
+    width: 70%;
+  }
+  .security-modal-screen {
+    width: 70%;
   }
 }
 @media (max-width: 520px) {
-  .permanently-delete-modal{
-    width:80%;
+  .permanently-delete-modal {
+    width: 80%;
+  }
+  .security-modal-screen {
+    width: 90%;
   }
 }
 
@@ -388,19 +447,146 @@ body {
 }
 @media screen and (min-width: 1293px) {
   .referral-text {
-    overflow: visible; 
+    overflow: visible;
     text-overflow: clip;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1292px) {
   .referral-text {
-    max-width: 100px; 
+    max-width: 100px;
   }
 }
 .apexcharts-tooltip,
 .apexcharts-menu {
   background: #ffffff;
   color: #252930;
+}
+
+/* ========= Date Range Picker Customization ========= */
+
+.transactions-date-range-picker .rs-picker-toggle-textbox,
+.transactions-date-range-picker .rs-picker-toggle.rs-btn-default {
+  background: none !important;
+  color: #777e90 !important;
+  border-radius: 0;
+  border: none !important;
+}
+
+.transactions-date-range-picker:hover,
+.transactions-date-range-picker .rs-picker-toggle.rs-btn-default:hover {
+  border: none !important;
+}
+
+@media screen and (min-width: 320px) and (max-width: 820px) {
+  .rs-picker-daterange-panel {
+    min-width: auto !important;
+  }
+  .rs-picker-daterange-calendar-group {
+    min-width: auto !important;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+}
+
+.rs-input {
+  background-color: transparent !important;
+}
+
+.rs-input-group {
+  border: none !important;
+}
+
+.rs-picker-toggle-value {
+  color: #777e90 !important;
+  font-size: 12px;
+}
+
+.rs-picker-daterange-header {
+  display: none;
+}
+
+.rs-picker-menu {
+  background-color: #292932 !important;
+  border-radius: 7px;
+}
+
+.rs-btn-xs {
+  font-size: 16px !important;
+  color: #ffffff !important;
+}
+.rs-picker-daterange-menu .rs-calendar:first-child {
+  border: none !important;
+}
+.rs-picker-toolbar {
+  border: none !important;
+}
+.rs-picker-menu .rs-calendar-body {
+  padding-left: 5px;
+  padding-right: 3px;
+  padding-bottom: 0 !important;
+}
+.rs-calendar-table-cell-content {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+}
+.rs-picker-menu .rs-picker-toolbar {
+  display: flex;
+  justify-content: end !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+}
+.rs-calendar-header-has-month:not(.rs-calendar-header-has-time)
+  .rs-calendar-header-backward {
+  background: no-repeat url('../../public/assets/images/prev_datepicker.svg');
+  height: 25px;
+  width: 25px;
+}
+.rs-calendar-header-has-month:not(.rs-calendar-header-has-time)
+  .rs-calendar-header-forward {
+  background: no-repeat url('../../public/assets/images/next_datepicker.svg');
+  height: 25px;
+  width: 25px;
+}
+
+.rs-btn-icon > .rs-icon {
+  opacity: 0;
+}
+.rs-calendar-body .rs-calendar-table-cell-in-range:before {
+  background-color: #44444f;
+}
+.rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
+  background-color: #267ff5 !important;
+}
+
+.rs-calendar-month-dropdown-row:not(:last-child) {
+  border-bottom: 1px dashed #292932 !important;
+}
+.rs-calendar-month-dropdown-row {
+  background-color: #292932 !important;
+  color: #ffffff;
+}
+.rs-calendar-btn-close {
+  background-color: #292932 !important;
+  color: #ffffff;
+}
+.rs-btn-subtle:focus,
+.rs-btn-subtle:hover {
+  background-color: #292932 !important;
+}
+
+.rs-picker-toolbar-right > .rs-btn {
+  background-color: #f59d31 !important;
+  width: 4.625rem;
+  height: 1.75rem;
+  border-radius: 5px !important;
+  position: relative;
+}
+.rs-picker-toolbar-right > .rs-btn::before {
+  content: 'Save';
+  color: #ffffff;
+  position: absolute;
+  background-color: #f59d31;
 }
 
 /* trade-history-table */
@@ -419,22 +605,22 @@ body {
 /* Add these styles to customize the next and prev buttons */
 .slick-arrow.slick-prev,
 .slick-arrow.slick-prev:hover {
-  background-color: white; 
-  color: white; 
+  background-color: white;
+  color: white;
   height: 17px;
   width: 17px;
-  border-radius: 50%; 
+  border-radius: 50%;
   left: 0;
   z-index: 99;
 }
 
 .slick-arrow.slick-next,
 .slick-arrow.slick-next:hover {
-  background-color: white; 
-  color: white; 
+  background-color: white;
+  color: white;
   height: 17px;
   width: 17px;
-  border-radius: 50%; 
+  border-radius: 50%;
   right: 0;
   z-index: 99;
 }
@@ -452,7 +638,63 @@ body {
   top: -1px;
 }
 
-.slick-arrow.slick-prev:hover:before ,
+.slick-arrow.slick-prev:hover:before,
 .slick-arrow.slick-next:hover:before {
-  opacity: .75 !important;
+  opacity: 0.75 !important;
+}
+
+.react-calendar {
+  background-color: #44444f !important;
+  border: none !important;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  width: 100% !important;
+  padding: 5px !important;
+}
+
+.react-calendar__tile {
+  color: black; 
+  padding:10px !important;
+}
+
+.react-calendar__tile--now {
+  background: none !important;
+  color: none !important;
+}
+
+.react-calendar__tile--active {
+  background: #292932 !important;
+  border-radius: 5px;
+  color: white;
+}
+
+.react-calendar__navigation {
+  color: black;
+  background: #292932 !important;
+  border-radius: 5px !important;
+}
+
+.react-calendar__decade-view__years__year {
+  color: white;
+}
+
+.react-calendar__navigation button {
+  background-color: #292932 !important; 
+  border-radius: 5px; 
+  color: black; 
+}
+
+.react-calendar__navigation button:hover {
+  background: #292932 !important;
+  border-radius: 5px;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+}
+
+.sidebar-ui li a:hover ,
+.sidebar-ui li a:focus ,
+.sidebar-ui li a:active {
+  text-decoration: none;
 }

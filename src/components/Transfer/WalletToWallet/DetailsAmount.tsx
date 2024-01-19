@@ -33,26 +33,12 @@ function DetailsAmount({ activeStep, _activeStep }: any) {
     "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAYAAACaq43EAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowMEUwNDkwQzE3N0QxMUUyODY3Q0FBOTFCQzlGNjlDRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowMEUwNDkwRDE3N0QxMUUyODY3Q0FBOTFCQzlGNjlDRiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAwRTA0OTBBMTc3RDExRTI4NjdDQUE5MUJDOUY2OUNGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAwRTA0OTBCMTc3RDExRTI4NjdDQUE5MUJDOUY2OUNGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+OIHw6AAAAPlJREFUeNpi/D/T+D/DAAAmhgECoxYPf4sZ/wPBQFn8CUjzEqvh7cffDAtX32Xg4WZhYGJkZHj/8SdDTLAKg6QIGyn2fiY5qGdN38/A8OU5g5k2F4OxBicD59+3DHNm7CXZxyykKL548TGDmCgHg6mpMoObWz/Dr19/GHbvLmS4desZWE5fX5Y2Fv/794+BhYWR4e/ff0BLfwPxX4Y/f0BiTAz///+jbRy3te5gEBTgYrCyVgY65D/DuXOPGJ49/cBQW+9FUhyTbPGnt78Z9qx7wiAozMnAyMTI8OblVwYnfxkGIQk2ki0emOwk3MExWjuNWjy8LAYIMADBumJ9k9IhVwAAAABJRU5ErkJggg=="
   });
   const handleClick = () => {
-    // switch (true) {
-    //   case !selecteCurrency:
-    //     return toast.error('Select bank currency')
-    //   case !selecteBank:
-    //     return toast.error('Enter bank')
-    //   case !acHolderName:
-    //     return toast.error('Enter account holder name')
-    //   case phone?.length <= 9:
-    //     return toast.error('Please Enter valid phone number')
-    //   case !accountNo:
-    //     return toast.error('Enter account number')
-    //   case !accountAccountNo:
-    //     return toast.error('Enter confirm account number')
-    //   case accountNo !== accountAccountNo:
-    //     return toast.error('Your account number does not match with confirm account number')
-    //   case !branchName:
-    //     return toast.error('Enter branch name')
-    // }
+    switch (true) {
+      case !walletID:
+        return toast.error('Enter yout wallet ID')
+    }
     _activeStep(activeStep + 1)
-    // toast.success('Add details and amountsuccessfully')
+    toast.success('Add details and amount successfully')
   }
 
   return (
@@ -130,10 +116,10 @@ function DetailsAmount({ activeStep, _activeStep }: any) {
         </div>
 
         <div className="w-full mb-[20px]">
-          <p className="font12RB text-white  mb-[10px]">
+          <p className="font12RB text-white mb-[10px]">
             Select Currency
           </p>
-          <div className='bg-BLACK_304 h-[48px] mb-[10px] w-full rounded-[5px]'>
+          <div className='bg-BLACK_304 h-[48px] mb-[10px] w-full rounded-[5px] px-[10px]'>
             <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
               width={'w-full'}
               menuStyle='w-[250px] sm:w-[300px]'
@@ -161,7 +147,7 @@ function DetailsAmount({ activeStep, _activeStep }: any) {
             </p>
             <div className='flex'>
               <Icons.CurrencyRevert />
-              <p className="font12RB text-white mb-[10px]">
+              <p className="font12RB text-white mb-[10px] ml-[5px]">
                 {selecteCurrency?.currency?.symbol} ({selecteCurrency?.currency?.code})
               </p>
             </div>
@@ -174,7 +160,7 @@ function DetailsAmount({ activeStep, _activeStep }: any) {
               <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
                 menuStyle='w-[250px] sm:w-[300px]'
                 RenderMenuBtn={
-                  <div className={`flex bg-BLACK_304 pl-3 rounded-lg items-center justify-center w-[150px] h-[48px]`}>
+                  <div className={`flex bg-BLACK_304 px-5 rounded-lg items-center justify-end w-[150px] h-[48px]`}>
                     <div className='w-[20px] h-[15px]'>
                       <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
                     </div>

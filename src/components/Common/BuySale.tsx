@@ -24,7 +24,7 @@ const BuySale: React.FC<BuySaleProps> = ({ type, onClick, className }) => {
   return (
     <div className={`bg-BLACK_301 w-full rounded-[10px] ${className}`}>
       <div className="">
-        <ul className="flex w-full -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+        <ul className="flex w-full -mb-px text-sm font-medium text-center text-gray-500">
           <li className="me-2 w-1/2">
             <button
               className={`${selectedTab === BS_TABS.BUY

@@ -22,7 +22,7 @@ function RecentDevices() {
 
 
   return (
-    <div className='bg-[#1C1C24] px-4 md:rounded-[5px] pb-[20px] md:mx-[20px] grid gap-[20px] mb-[120px] rounded-[5px]'>
+    <div className='bg-[#1C1C24] px-4 md:rounded-[5px] pb-[20px] md:mx-[20px] grid gap-[20px] rounded-[5px]  mb-[60px]'>
       <div className='border-b-[1px] border-[#44444F] '>
         <Header title='Your devices' description='You’re signed in on these devices or have been in the last 28 days. There might be multiple activity sessions from the same device.' />
       </div>

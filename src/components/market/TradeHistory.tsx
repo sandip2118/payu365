@@ -101,7 +101,7 @@ const TradeHistory = () => {
                   <FormControlLabel
                     control={<Checkbox />}
                     label="Hide Other Pairs"
-                    className="leading-6 text-GRAY_101 text-[11px]"
+                    className="!leading-6 text-GRAY_101 text-[11px]"
                   />
                 </div>
               </div>

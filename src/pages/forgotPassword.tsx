@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import Icons from '@/assets/icon'
-import { OrDivider } from './../components/Common/OrDivider'
-import { EnterOTP } from './../components/Login/EnterOTP'
-import PhoneWithCountryCode from './../components/Login/PhoneWithCountryCode'
-import { TEXT } from './../Constants'
-import PasswordInput from './../components/Common/PasswordInput'
+
+import { OrDivider } from '../components/Common/OrDivider'
+import PasswordInput from '../components/Common/PasswordInput'
+import { EnterOTP } from '../components/Login/EnterOTP'
+import PhoneWithCountryCode from '../components/Login/PhoneWithCountryCode'
+import { TEXT } from '../Constants'
 
 const ForgotPassword = () => {
   const router = useRouter()
@@ -39,7 +40,8 @@ const ForgotPassword = () => {
   ): { hasNumber: boolean; hasLetter: boolean; isLengthValid: boolean } => {
     const hasNumber = /\d/.test(value)
     const hasLetter = /[a-zA-Z]/.test(value)
-    const isLengthValid = value.length >= 7
+    const isLengthValid = value.length >= 8
+
     return { hasNumber, hasLetter, isLengthValid }
   }
 
@@ -63,6 +65,10 @@ const ForgotPassword = () => {
 
   const _resetPass = () => {
     switch (true) {
+      case passwordValidation?.hasNumber == false ||
+        passwordValidation?.hasLetter == false ||
+        passwordValidation?.isLengthValid == false:
+        return toast.error('Your password is weak')
       case !password:
         return toast.error('Enter password')
       case !confirmPassword:
@@ -70,7 +76,7 @@ const ForgotPassword = () => {
       case password !== confirmPassword:
         return toast.error('Your password does not match with confirm password')
       default:
-        setIsSuccess(true)
+      // setIsSuccess(true)
     }
   }
 
@@ -90,20 +96,20 @@ const ForgotPassword = () => {
           backgroundImage: 'url(/assets/images/nasa.png)',
           backgroundSize: 'cover',
         }}
-        className={`m-auto flex shrink-0 mix-blend-screen overflow-y-auto h-screen`}
+        className={`m-auto flex h-screen shrink-0 overflow-y-auto mix-blend-screen`}
       >
         {!isSuccess ? (
           <>
             {flag === 'email' ? (
-              <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center sm:rounded-[10px] rounded-[24px] bg-BLACK_303 px-[20px] sm:py-[50px] py-[32px] sm:m-auto sm:px-[61px]">
+              <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center rounded-[24px] bg-BLACK_303 px-[20px] py-[32px] sm:m-auto sm:rounded-[10px] sm:px-[61px] sm:py-[50px]">
                 <div className=" md:bg-inherit flex-col items-start rounded-3xl bg-BLACK_303 md:w-full md:rounded-none md:backdrop-blur-none">
-                  <p className="text-center text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+                  <p className="text-center text-2xl font-bold not-italic !leading-[normal] text-[color:var(--Pure-White,#FFF)]">
                     {TEXT.CREATE_NEW_PASSWORD}
                   </p>
-                  <p className="font14RB mt-[15px] text-center leading-[22px] text-GRAY_101">
+                  <p className="font14RB mt-[15px] text-center !leading-[22px] text-GRAY_101">
                     {TEXT.YOUR_NEW_PASS}
                   </p>
-                  <p className="font14RB mt-[5px] text-center leading-[22px] text-GRAY_101">
+                  <p className="font14RB mt-[5px] text-center !leading-[22px] text-GRAY_101">
                     {TEXT.PREVIOUS_USER}
                   </p>
 
@@ -119,31 +125,34 @@ const ForgotPassword = () => {
                   </p>
                   <ul className="list-disc py-[5px] text-xs">
                     <li
-                      className={`${passwordValidation.hasNumber
-                        ? 'text-[#29CC6A]'
-                        : 'text-GRAY_101'
-                        } font12R flex items-center py-[5px]`}
+                      className={`${
+                        passwordValidation.hasNumber
+                          ? 'text-[#29CC6A]'
+                          : 'text-GRAY_101'
+                      } font12R flex items-center py-[5px]`}
                     >
                       <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />{' '}
                       Contains 1 or more numbers (0-9)
                     </li>
                     <li
-                      className={`${passwordValidation.hasLetter
-                        ? 'text-[#29CC6A]'
-                        : 'text-GRAY_101'
-                        } font12R flex items-center py-[5px]`}
+                      className={`${
+                        passwordValidation.hasLetter
+                          ? 'text-[#29CC6A]'
+                          : 'text-GRAY_101'
+                      } font12R flex items-center py-[5px]`}
                     >
                       <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />
                       Contains 1 or more letters (a-z, A-Z)
                     </li>
                     <li
-                      className={`${passwordValidation.isLengthValid
-                        ? 'text-[#29CC6A]'
-                        : 'text-GRAY_101'
-                        } font12R flex items-center py-[5px]`}
+                      className={`${
+                        passwordValidation.isLengthValid
+                          ? 'text-[#29CC6A]'
+                          : 'text-GRAY_101'
+                      } font12R flex items-center py-[5px]`}
                     >
                       <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />
-                      Is 7 or more characters
+                      Is 8 or more characters
                     </li>
                   </ul>
 
@@ -169,28 +178,32 @@ const ForgotPassword = () => {
 
                   <button
                     onClick={() => setFlag('')}
-                    className="font16RB mt-[25px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
+                    className="font16RB mt-[25px] w-full text-center text-base font-medium not-italic !leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
                   >
                     {TEXT.BACK_SIGN_IN}
                   </button>
                 </div>
               </div>
             ) : flag === 'phone' ? (
-              <div className=" mx-[20px] my-auto flex sm:py-[60px] py-[32px] w-[527px] items-center justify-center sm:rounded-[10px] rounded-[24px] bg-BLACK_303 px-[20px] sm:m-auto sm:px-[61px]">
+              <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center rounded-[24px] bg-BLACK_303 px-[20px] py-[32px] sm:m-auto sm:rounded-[10px] sm:px-[61px] sm:py-[60px]">
                 <div className=" md:bg-inherit flex-col items-start rounded-3xl bg-BLACK_303 md:w-full md:rounded-none md:backdrop-blur-none">
-                  <p className="sm:text-center text-left text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+                  <p className="text-left text-2xl font-bold not-italic !leading-[normal] text-[color:var(--Pure-White,#FFF)] sm:text-center">
                     {TEXT.ENTER_OTP_VERIFICATION}
                   </p>
-                  <div className='block sm:hidden'>
-                    <p className="font14RB mt-[13px] sm:text-center text-left !leading-[22px] text-GRAY_101 sm:mx-[20%] mx-0">
-                      {TEXT.WE_SENT_4_DIGIT} your given phone number <span className='text-white'> +91 *********97 / Email</span>
+                  <div className="block sm:hidden">
+                    <p className="font14RB mx-0 mt-[13px] text-left !leading-[22px] text-GRAY_101 sm:mx-[20%] sm:text-center">
+                      {TEXT.WE_SENT_4_DIGIT} your given phone number{' '}
+                      <span className="text-white">
+                        {' '}
+                        +91 *********97 / Email
+                      </span>
                     </p>
                   </div>
-                  <div className='sm:block hidden'>
-                    <p className="font14RB mt-[15px] text-center leading-[22px] text-GRAY_101 sm:mx-[20%] mx-0">
+                  <div className="hidden sm:block">
+                    <p className="font14RB mx-0 mt-[15px] text-center !leading-[22px] text-GRAY_101 sm:mx-[20%]">
                       {TEXT.WE_SENT_4_DIGIT} your given phone number
                     </p>
-                    <p className="font14RB mt-[5px] text-center leading-[22px] text-white">
+                    <p className="font14RB mt-[5px] text-center !leading-[22px] text-white">
                       +91 *********97 / Email
                     </p>
                   </div>
@@ -210,8 +223,10 @@ const ForgotPassword = () => {
                   <p className="font12RB mt-[30px] w-full text-center text-[13px] not-italic text-GRAY_101">
                     Didn’t receive code?{' '}
                     <span
-                      onClick={() => {router.push('')}}
-                      className="font13SB cursor-pointer !font-semibold leading-[normal] text-BLUE_201"
+                      onClick={() => {
+                        router.push('')
+                      }}
+                      className="font13SB cursor-pointer !font-semibold !leading-[normal] text-BLUE_201"
                     >
                       Resend
                     </span>
@@ -219,19 +234,19 @@ const ForgotPassword = () => {
 
                   <button
                     onClick={() => router.back()}
-                    className="font16RB mt-[30px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
+                    className="font16RB mt-[30px] w-full text-center text-base font-medium not-italic !leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
                   >
                     {TEXT.BACK_SIGN_IN}
                   </button>
                 </div>
               </div>
             ) : (
-              <div className=" w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] my-auto max-w-[527px] sm:m-auto">
-                <div className="md:bg-inherit flex-col sm:mx-0 mx-5 px-5 py-[64px] sm:px-[61px] rounded-[10px] items-center justify-center bg-BLACK_303 md:w-full md:backdrop-blur-none">
-                  <p className="text-center text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+              <div className=" my-auto w-[100%] max-w-[527px] sm:m-auto lg:w-[80%] xl:w-[70%] 2xl:w-[60%]">
+                <div className="md:bg-inherit mx-5 flex-col items-center justify-center rounded-[10px] bg-BLACK_303 px-5 py-[64px] sm:mx-0 sm:px-[61px] md:w-full md:backdrop-blur-none">
+                  <p className="text-center text-2xl font-bold not-italic !leading-[normal] text-[color:var(--Pure-White,#FFF)]">
                     {TEXT.FORGOT_PASSWORD}
                   </p>
-                  <p className="font14RB mt-[13px] text-center leading-[22px] text-GRAY_101">
+                  <p className="font14RB mt-[13px] text-center !leading-[22px] text-GRAY_101">
                     {TEXT.ENTER_EMAIL_OR_PHONE}.
                   </p>
 
@@ -249,7 +264,7 @@ const ForgotPassword = () => {
                     />
                   </div>
                   <OrDivider />
-                  <div className='w-full mt-[30px]'>
+                  <div className="mt-[30px] w-full">
                     <PhoneWithCountryCode
                       value={phone}
                       onChange={(e) => {
@@ -269,7 +284,7 @@ const ForgotPassword = () => {
 
                   <button
                     onClick={() => router.back()}
-                    className="font16RB mt-[30px] w-full text-center text-base font-medium not-italic leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
+                    className="font16RB mt-[30px] w-full text-center text-base font-medium not-italic !leading-[normal] text-[color:var(--Secondary-Color,#F59C26)]"
                   >
                     {TEXT.BACK_SIGN_IN}
                   </button>
@@ -278,25 +293,25 @@ const ForgotPassword = () => {
             )}
           </>
         ) : (
-          <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center sm:rounded-[10px] rounded-[24px] bg-BLACK_303 px-[20px] sm:py-[50px] py-[32px] sm:m-auto sm:px-[61px]">
+          <div className=" mx-[20px] my-auto flex w-[527px] items-center justify-center rounded-[24px] bg-BLACK_303 px-[20px] py-[32px] sm:m-auto sm:rounded-[10px] sm:px-[61px] sm:py-[50px]">
             <div className=" md:bg-inherit flex-col items-center rounded-3xl bg-BLACK_303 md:w-full md:rounded-none md:backdrop-blur-none">
-              <div className="sm:mb-[20px] mb-[40px] flex w-full justify-center">
+              <div className="mb-[40px] flex w-full justify-center sm:mb-[20px]">
                 <Icons.SuccessfullyIcon />
               </div>
-              <p className="text-center text-[22px] font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+              <p className="text-center text-[22px] font-bold not-italic !leading-[normal] text-[color:var(--Pure-White,#FFF)]">
                 {TEXT.SUCCESS_RESTE_PASS}
               </p>
-              <p className="font14RB sm:mt-[20px] mt-[10px] text-center leading-[22px] text-GRAY_101">
+              <p className="font14RB mt-[10px] text-center !leading-[22px] text-GRAY_101 sm:mt-[20px]">
                 {TEXT.YOU_CAN_NOW}
               </p>
-              <p className="font14RB mt-[5px] text-center leading-[22px] text-GRAY_101">
+              <p className="font14RB mt-[5px] text-center !leading-[22px] text-GRAY_101">
                 {TEXT.LOGIN_INTO_YOUR_ACCOUNT}
               </p>
 
               <div>
                 <button
                   onClick={() => router.push('/Login')}
-                  className="font14SB sm:mt-[30px] mt-[20px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white"
+                  className="font14SB mt-[20px] flex h-[48px] w-full items-center justify-center gap-2.5 self-stretch rounded-[5px] bg-BLUE_201 font-semibold text-white sm:mt-[30px]"
                 >
                   {TEXT.LOGIN}
                 </button>

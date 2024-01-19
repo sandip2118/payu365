@@ -5,7 +5,7 @@ export type CardProps = {
   className?: string;
   children?: any;
   isBorder?: boolean;
-  onclick?: () => void;
+  onClick?: () => void;
 }
 
 export type PageProps = {
@@ -36,20 +36,19 @@ export type OutlinedButtonProps = {
 }
 
 export type DropDownProps = {
-  w?: string;
-  selectLabel?: string;
-  inputLabel?: string;
-  inputLabelColor?: string;
-  data: { id: number, label: string, value: string }[] | undefined;
+  data: { label: string, value: string | any }[] | undefined;
+  classNames?: string;
+  placeholder?: string;
+  width?: string;
+  label?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  selectRangeLabel?: any
 }
 
 export type TabsProps = {
-  data: {
-    id: string;
-    label: string;
-    value: string;
-    content: React.ReactNode;
-  }[] | undefined;
+  data?: any | undefined;
+  value?: any | undefined; 
+  onChange?: any | undefined; 
 };
 
 export type NextBreadcrumbsProps = {
@@ -61,20 +60,25 @@ export type InputTypeProps = {
   placeholder?: string;
   disabled?: boolean;
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  labelName?: string;
+  labelClassName?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type PasswordInputProps = {
   placeholder?: string;
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  border?:boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isValid?: boolean;
 }
 
 export type InputProps = {
-  w?: string;
+  width?: string;
+  value?: string;
   placeholder?: string;
+  classes?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type TableCardProps = {
@@ -84,7 +88,8 @@ export type TableCardProps = {
 export type SearchBarProps = {
   placeholder?: string;
   searchValue?: string;
-  setSearchValue?: any;
+  handleSearch?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
 export type BuySaleProps = {
@@ -98,4 +103,18 @@ export type ContainedButtonProps = {
   className?: string;
   padding?: string;
   onClick?: () => void;
+}
+
+export  type ModalProps = {
+  activeModal?: boolean;
+  onClose?: () => void;
+  noFade?: boolean;
+  className?: string; 
+  children?: any;
+  footerContent?: any; 
+  centered?: boolean;
+  scrollContent?: boolean;
+  closeIcon?: boolean;
+  title?: any;
+  titleClassName?: string; 
 }

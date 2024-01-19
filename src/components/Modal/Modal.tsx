@@ -30,7 +30,7 @@ const handleContentClick = (e: React.MouseEvent) => {
   return (
     <div className={`fixed inset-0 z-50 ${isModalOpen ? 'block' : 'hidden'}`}   onClick={handleClose}>
       <div
-        className="fixed inset-0 bg-black opacity-50"
+        className="fixed inset-0 bg-BLACK_302 opacity-80"
         aria-hidden="true"
       ></div>
       <div className="fixed inset-0 flex items-center justify-center">

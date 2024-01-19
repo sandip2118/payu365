@@ -129,7 +129,7 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
   const SuccessModalContent = () => {
     return (
       <div className="flex flex-col items-center">
-        <div className="flex flex-col items-center text-[22px] text-center mb-4 w-10/12">
+        <div className="flex flex-col items-center text-[22px] text-center text-white mb-4 w-10/12">
           <Icons.SuccessfullyIcon />
           <p className='mt-5'>Successfully Open a trade From USD to INR </p>
         </div>
@@ -153,7 +153,7 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
                 </div>
               </div>
             </div>
-            <p className="flex items-end text-sm ml-5">USD/INR</p>
+            <p className="flex items-end text-sm text-white ml-5">USD/INR</p>
             <div className="ml-3.5">
               <Icons.Envelope />
             </div>
@@ -179,6 +179,8 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
     newOpenOrdersRows.splice(index, 1);
     setOpenOrdersRows(newOpenOrdersRows);
   };
+
+  const handleClose = () => setModalOpen(false)
 
   return (
     <>
@@ -297,13 +299,13 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
                         <TableCell className="text-xs capitalize border-b-GRAY_104 border-b border-solid">
                           <p className="text-GRAY_104">Time</p>
                         </TableCell>
-                        <TableCell className=" leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
+                        <TableCell className=" !leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
                           <p className="text-GRAY_104">
                             Filled Vol
                             <p className="text-[8px]">Total Vol</p>
                           </p>
                         </TableCell>
-                        <TableCell className="leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
+                        <TableCell className="!leading-normal text-xs capitalize border-b-GRAY_104 border-b border-solid">
                           <p className="text-GRAY_104">
                             Rate
                             <p className="text-[8px]">per USD</p>
@@ -379,7 +381,11 @@ const MarketTrade: React.FC<MarketTradeProps> = ({ handleViewHistory, handleBact
           </div>
         </div>
       </Page>
-      <ModalCommon modalOpen={modalOpen} setModalOpen={setModalOpen}>
+      <ModalCommon 
+        activeModal={modalOpen}
+        onClose={handleClose}
+        className="bg-BLACK_301 p-[30px] rounded-[10px]"
+      >
         {SuccessModalContent()}
       </ModalCommon>
     </>

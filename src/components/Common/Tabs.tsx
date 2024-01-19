@@ -1,66 +1,25 @@
-import React, { useState } from 'react'
-import { Box, Tab, Tabs, Typography } from '@mui/material';
-// import Tab from '@mui/material/Tab';
-// import Box from '@mui/material/Box';
+import React from 'react'
+import { Box, Tab, Tabs } from '@mui/material';
 import { TabsProps } from './type';
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+const ColorTabs: React.FC<TabsProps> = ({ data, value, onChange }) => {  
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-const ColorTabs: React.FC<TabsProps> = ({ data }) => {
-
-  const [value, setValue] = useState(data[0]?.value);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
-  function a11yProps(index: number) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
-
-  return (
-    <Box sx={{ width: '100%' }}>
-      <Box >
+      <Box className="w-full xl:w-auto border-GRAY_101 xl:border-b-0 border-b mb-6 xl:mb-0 lg:mb-0 md:mb-0 sm:mb-0">
         <Tabs
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
           textColor="orange"
           indicatorColor="primary"
           aria-label="secondary tabs"
+          variant="scrollable"
+          scrollButtons={false}
         >
           {data && data.map((tab: any) => (
             <Tab
               key={tab.id}
-              value={tab.value}
               label={tab.label}
-              className='text-GRAY_101 pb-6 leading-4 text-sm'
+              className='text-GRAY_101 !leading-4 text-sm'
               sx={{
                 textTransform: 'capitalize',
                 padding: "12px 0px",
@@ -70,7 +29,6 @@ const ColorTabs: React.FC<TabsProps> = ({ data }) => {
           ))}
           </Tabs>
       </Box>
-    </Box>
   );
 }
 

@@ -13,7 +13,7 @@ import dayjs from 'dayjs';
 import { Chart, ArcElement } from 'chart.js'
 Chart.register(ArcElement);
 
-const changetheme = createTheme({
+export const changetheme = createTheme({
   typography: {
     fontFamily: "Inter",
   },

@@ -18,7 +18,7 @@ const ImgBoxComp = ({ icon, heading, subTitle, buttonTitle, type, onClick, class
         {icon}
       </div>
       {heading}
-      <p className="font12R mt-[5px] text-GRAY_101 leading-[22px] text-center">
+      <p className="font12R mt-[5px] text-GRAY_101 !leading-[22px] text-center">
         {subTitle}
       </p>
 

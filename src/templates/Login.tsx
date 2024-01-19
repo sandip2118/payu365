@@ -34,11 +34,11 @@ const Login = () => {
               className={`shrink-0 mix-blend-screen h-[80%]`}
             >
               <div className="flex w-full flex-col items-center gap-8 px-[50px]">
-                <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-center md:text-4xl lg:text-[55px] not-italic font-extrabold leading-[120.023%]">
+                <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-center md:text-4xl lg:text-[55px] not-italic font-extrabold !leading-[120.023%]">
                   Step into a world of secure Step nto a world of secure.
                 </p>
                 <div className="flex items-center gap-2">
-                  <p className="overflow-hidden text-[color:var(--Pure-White,#FFF)] text-ellipsis text-sm not-italic font-medium leading-[22px]">
+                  <p className="overflow-hidden text-[color:var(--Pure-White,#FFF)] text-ellipsis text-sm not-italic font-medium !leading-[22px]">
                     Your journey begins here.
                   </p>
                   <img src="/assets/images/arrow_right.svg" className="w-6 h-6" />
@@ -59,9 +59,9 @@ const Login = () => {
         >
           {login === 0 || login === 2 ?
             <div className="flex w-full flex-col items-center px-[30px] pt-[80px] md:hidden sm:block ">
-              <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-center text-[47px] not-italic font-extrabold leading-[120.023%]">Step into a world of secure transactions.</p>
+              <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-center text-[47px] not-italic font-extrabold !leading-[120.023%]">Step into a world of secure transactions.</p>
               <div className="flex items-center mt-[33px]">
-                <p className="overflow-hidden text-[color:var(--Pure-White,#FFF)] text-ellipsis text-sm not-italic font-medium leading-[22px]">
+                <p className="overflow-hidden text-[color:var(--Pure-White,#FFF)] text-ellipsis text-sm not-italic font-medium !leading-[22px]">
                   Your journey begins here.
                 </p>
                 <img src="/assets/images/arrow_right.svg" className="w-6 h-6" />

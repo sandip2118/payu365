@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { Icons, toast } from 'react-toastify'
-import PhoneWithCountryCode from '../Login/PhoneWithCountryCode'
-import PasswordInput from '../Common/PasswordInput'
+import { toast } from 'react-toastify'
+
 import InputField from '../Common/InputField'
-import Image from 'next/image'
+import PasswordInput from '../Common/PasswordInput'
+import PhoneWithCountryCode from '../Login/PhoneWithCountryCode'
 
 type SignupFormProps = {
   onSubmit: (email: string, password: string) => void
@@ -25,7 +25,7 @@ const SignupForm = (props: SignupFormProps) => {
   ): { hasNumber: boolean; hasLetter: boolean; isLengthValid: boolean } => {
     const hasNumber = /\d/.test(value)
     const hasLetter = /[a-zA-Z]/.test(value)
-    const isLengthValid = value.length >= 7
+    const isLengthValid = value.length >= 8
     return { hasNumber, hasLetter, isLengthValid }
   }
 
@@ -41,6 +41,10 @@ const SignupForm = (props: SignupFormProps) => {
         return toast.error('Please Enter valid phone number')
       case email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email):
         return toast.error('Enter valid email')
+      case passwordValidation?.hasNumber == false ||
+        passwordValidation?.hasLetter == false ||
+        passwordValidation?.isLengthValid == false:
+        return toast.error('Your password is weak')
       case !password:
         return toast.error('Enter password')
       case !confirmPassword:
@@ -54,17 +58,17 @@ const SignupForm = (props: SignupFormProps) => {
 
   return (
     <div className=" w-[100%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%]">
-      <div className="h-screen mx-5 md:mx-0 ">
-        <div className="md:bg-inherit mt-[61px] rounded-3xl md:rounded-none bg-BLACK_303 flex-col items-start px-5  pt-[32px] pb-8 md:mt-[111px] md:w-full md:backdrop-blur-none">
-          <p className="text-2xl font-bold not-italic leading-[normal] text-[color:var(--Pure-White,#FFF)]">
+      <div className="mx-5 h-screen md:mx-0 ">
+        <div className="md:bg-inherit mt-[61px] flex-col items-start rounded-3xl bg-BLACK_303 px-5 pb-8  pt-[32px] md:mt-[111px] md:w-full md:rounded-none md:backdrop-blur-none">
+          <p className="text-2xl font-bold not-italic !leading-[normal] text-[color:var(--Pure-White,#FFF)]">
             Sign up
           </p>
-          <p className="mt-[15px] self-stretch text-sm font-medium not-italic leading-[22px] text-GRAY_101">
+          <p className="mt-[15px] self-stretch text-sm font-medium not-italic !leading-[22px] text-GRAY_101">
             Enter details to create your account
           </p>
 
           <div className="">
-            <div className="w-full mt-[40px]">
+            <div className="mt-[40px] w-full">
               <div className="mb-[20px] flex gap-2">
                 <div className="group w-1/2">
                   <label
@@ -141,31 +145,34 @@ const SignupForm = (props: SignupFormProps) => {
                 </p>
                 <ul className="list-disc py-[5px] text-xs">
                   <li
-                    className={`${passwordValidation.hasNumber
-                      ? 'text-[#29CC6A]'
-                      : 'text-GRAY_101'
-                      } font12R flex items-center py-[5px]`}
+                    className={`${
+                      passwordValidation.hasNumber
+                        ? 'text-[#29CC6A]'
+                        : 'text-GRAY_101'
+                    } font12R flex items-center py-[5px]`}
                   >
                     <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />{' '}
                     Contains 1 or more numbers (0-9)
                   </li>
                   <li
-                    className={`${passwordValidation.hasLetter
-                      ? 'text-[#29CC6A]'
-                      : 'text-GRAY_101'
-                      } font12R flex items-center py-[5px]`}
+                    className={`${
+                      passwordValidation.hasLetter
+                        ? 'text-[#29CC6A]'
+                        : 'text-GRAY_101'
+                    } font12R flex items-center py-[5px]`}
                   >
                     <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />
                     Contains 1 or more letters (a-z, A-Z)
                   </li>
                   <li
-                    className={`${passwordValidation.isLengthValid
-                      ? 'text-[#29CC6A]'
-                      : 'text-GRAY_101'
-                      } font12R flex items-center py-[5px]`}
+                    className={`${
+                      passwordValidation.isLengthValid
+                        ? 'text-[#29CC6A]'
+                        : 'text-GRAY_101'
+                    } font12R flex items-center py-[5px]`}
                   >
                     <div className="mr-[11px] h-[6px] w-[6px] rounded-full bg-GRAY_101" />
-                    Is 7 or more characters
+                    Is 8 or more characters
                   </li>
                 </ul>
               </div>
@@ -181,7 +188,6 @@ const SignupForm = (props: SignupFormProps) => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-
               </div>
               <div>
                 <button

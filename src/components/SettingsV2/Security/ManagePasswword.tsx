@@ -2,11 +2,23 @@ import React, { useState } from 'react'
 import CardWrapper from '../SettingsCommons/CardWrapper'
 import Image from 'next/image'
 import PasswordInput from '../../Common/PasswordInput'
+import { Modal } from '@/components/Modal/Modal';
+import Successful from './Modals/Successful';
 
 function ManagePasswword() {
+  const [currentPassword,setCurrentPassword] = useState<string>('asdfghjkl3');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [matched, setMatched] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onOpenModal =()=>{
+    setIsModalOpen(true)
+  };
+
+  const handleClose = () => {
+  console.log('should close');
+  setIsModalOpen(!isModalOpen); 
+};
 
   const validatePassword = (
     value: string
@@ -18,11 +30,8 @@ function ManagePasswword() {
   }
 
   const passwordValidation = validatePassword(password)
-  console.log(passwordValidation)
 
-  const updatePassword = () => {
-    console.log(password, 'password updated')
-  }
+
 
   return (
     <div className='md:mx-5 mb-[100px]'>
@@ -36,13 +45,13 @@ function ManagePasswword() {
 
           <div className='mt-[25px] w-full md:w-[85%] grid gap-[20px] mx-auto'>
 
-            {(password === confirmPassword) ? <div>
-              <PasswordInput placeholder='••••••••••' value={password} onChange={(e) => setPassword(e.target.value)} border={true} />
+            {(password === currentPassword && password !== '') ? <div>
+              <PasswordInput placeholder='••••••••••' value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} border={true} />
               <label className='font12R text-GREEN_02'>Password matched</label>
             </div>
               :
               <div>
-                <PasswordInput placeholder='••••••••••' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <PasswordInput placeholder='••••••••••' value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} border={false} />
                 <label className='font12R text-BLACK_305'>Password matched</label>
               </div>}
 
@@ -90,14 +99,18 @@ function ManagePasswword() {
             <div className='mt-2.5'>
               <button
                 className='w-full rounded-[5px] py-[15px] flex place-content-center items-center font14SB bg-BLUE_201  border-none text-white capitalize'
-                onClick={updatePassword}
+                onClick={onOpenModal}
                 sx={{ padding: '0' }}
-              >
+                 >
                 Update New Password
               </button>
             </div>
           </div>
         </div>
+
+        <Modal isOpen={isModalOpen} onClose={handleClose} modalClass="security-modal-screen">
+     <Successful title='Successfully reset Password' description='You can now use your newPassword to Login to your account . ' route='Login' buttonText='Login'/>
+          </Modal>
       </CardWrapper>
     </div>
 

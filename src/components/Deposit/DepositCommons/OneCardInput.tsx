@@ -4,8 +4,9 @@ import React from 'react'
 import { CardDetailsInputProps } from '../types'
 
 
-
 function OneCardInput({label,icon,iconString,placeholder}:CardDetailsInputProps) {
+ 
+
   return (
     <div className='w-full'>
      
@@ -76,4 +77,5 @@ function OneCardInput({label,icon,iconString,placeholder}:CardDetailsInputProps)
   )
 }
 
-export default OneCardInput
+export default OneCardInput;
+

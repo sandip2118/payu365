@@ -150,7 +150,7 @@ function MarketRate() {
     {
       title: 'Transfer',
       icon: <Icons.TransferIcon color={colors.GRAY_101} />,
-      route: ROUTE.TRANSFER
+      route: ROUTE.WALLET_TO_WALLET
     },
     {
       title: 'Deposit',
@@ -164,7 +164,7 @@ function MarketRate() {
     <Card title={'Market Rate'} cardTopBtnName={'View All'} onclick={() => router.push(ROUTE.MARKET)}>
 
       <div className="border-b border-BLACK_306 mt-[20px]">
-        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400 gap-5">
+        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 gap-5">
           <li>
             <button className={`${selectedTab === MR_TABS.My_ASSETS ? 'border-b-[3px] border-BLUE_201 text-BLUE_201' : 'text-GRAY_101 border-transparent'} font16RB inline-flex items-center justify-center p-2  border-transparent rounded-t-lg hover:text-gray-600 group`}
               onClick={() => { setSelectedTab(MR_TABS.My_ASSETS) }}
@@ -189,23 +189,24 @@ function MarketRate() {
           </li>
         </ul>
       </div>
-
-      <div className='justify-end grid my-[20px] relative'>
-        <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
-          menuStyle='w-[250px] sm:w-[300px]'
-          RenderMenuBtn={
-            <div className={`flex bg-BLACK_304 px-3 rounded-lg items-center justify-center w-[130px] h-[30px]`}>
-              <div className='w-[20px] h-[15px]'>
-                <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
+      {selectedTab === MR_TABS.My_ASSETS &&
+        <div className='justify-end grid my-[20px] relative'>
+          <CurrencyInfo onSelect={(val) => setSelecteCurrency(val)}
+            menuStyle='w-[250px] sm:w-[300px]'
+            RenderMenuBtn={
+              <div className={`flex bg-BLACK_304 px-3 rounded-lg items-center justify-center w-[130px] h-[30px]`}>
+                <div className='w-[20px] h-[15px]'>
+                  <Image src={selecteCurrency?.flag} alt="Flag" width={20} height={15} className='w-[20px] h-[15px]' />
+                </div>
+                <p className="font12R mx-[5px]">
+                  {selecteCurrency?.currency?.symbol} ({selecteCurrency?.currency?.code})
+                </p>
+                <Icons.DownArrow />
               </div>
-              <p className="font12R mx-[5px]">
-                {selecteCurrency?.currency?.symbol} ({selecteCurrency?.currency?.code})
-              </p>
-              <Icons.DownArrow />
-            </div>
-          }
-        />
-      </div>
+            }
+          />
+        </div>
+      }
 
       <div className='mt-5 relative'>
         {selectedTab === MR_TABS.My_ASSETS &&
@@ -216,7 +217,7 @@ function MarketRate() {
                   {column.map((key, index) => (
                     <TableCell
                       key={index}
-                      className="text-white border-none market-table capitalize"
+                      className="text-white border-none market-table capitalize min-w-[160px]"
                     >
                       {index < 3 ? (
                         <TableSortLabel
@@ -341,7 +342,7 @@ function MarketRate() {
                   {columnHT.map((key, index) => (
                     <TableCell
                       key={index}
-                      className="text-white border-none market-table capitalize"
+                      className="text-white border-none market-table capitalize min-w-[160px]"
                     >
                       {index < 2 ? (
                         <TableSortLabel
@@ -357,7 +358,7 @@ function MarketRate() {
                           IconComponent={() => null}
                         >
                           {index === 2 &&
-                            <div className='w-[45px] z-50'>
+                            <div className='w-[45px]'>
                               <Menu
                                 transition
                                 menuStyle={{ borderRadius: '7px', marginRight: '4px' }}
@@ -399,7 +400,7 @@ function MarketRate() {
                   ))}
                   <TableCell
                     align="center"
-                    className=" w-[172px] border-none"
+                    className=" w-[100px] border-none"
                   >
                     <p className='font12RB text-white'>
                       Actions
@@ -417,7 +418,7 @@ function MarketRate() {
                       scope="row"
                       className="border-b border-GRAY_101 dark:border-gray-700"
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center">
                         {row.currency === "USD" &&
                           <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
@@ -453,7 +454,12 @@ function MarketRate() {
                     </TableCell>
                     <TableCell className="border-b border-GRAY_101 border-solid">
                       <p className={`${i === 1 ? 'text-GREEN_01' : 'text-RED_01'} flex font14RB items-center`}>
-                        {row.changes} <Icons.ArrowTop color={i === 1 ? colors.GREEN_01 : colors.RED_01} className={`${i === 1 ? 'rotate-0' : 'rotate-180'}`} />
+                        {row.changes}
+                        {i === 1 ?
+                          <Icons.ArrowTop color={i === 1 ? colors.GREEN_01 : colors.RED_01} />
+                          :
+                          <Icons.ArrowDown color={i === 1 ? colors.GREEN_01 : colors.RED_01} />
+                        }
                       </p>
                     </TableCell>
                     <TableCell
@@ -507,7 +513,7 @@ function MarketRate() {
                   {columnFAV.map((key, index) => (
                     <TableCell
                       key={index}
-                      className="text-white border-none market-table capitalize"
+                      className="text-white border-none market-table capitalize min-w-[160px]"
                     >
                       {index < 2 ? (
                         <TableSortLabel
@@ -523,7 +529,7 @@ function MarketRate() {
                           IconComponent={() => null}
                         >
                           {index === 2 &&
-                            <div className='w-[45px] z-50'>
+                            <div className='w-[45px]'>
                               <Menu
                                 transition
                                 menuStyle={{ borderRadius: '7px', marginRight: '4px' }}
@@ -565,7 +571,7 @@ function MarketRate() {
                   ))}
                   <TableCell
                     align="center"
-                    className=" w-[172px] border-none"
+                    className=" w-[100px] border-none"
                   >
                     <p className='font12RB text-white'>
                       Actions
@@ -583,7 +589,7 @@ function MarketRate() {
                       scope="row"
                       className="border-b border-GRAY_101 dark:border-gray-700"
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center">
                         {i === 0 &&
                           <img src={'/assets/images/us.png'} alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' />
                         }
@@ -619,7 +625,12 @@ function MarketRate() {
                     </TableCell>
                     <TableCell className="border-b border-GRAY_101 border-solid">
                       <p className={`${i === 1 ? 'text-GREEN_01' : 'text-RED_01'} flex font14RB items-center`}>
-                        {row.changes} <Icons.ArrowTop color={i === 1 ? colors.GREEN_01 : colors.RED_01} className={`${i === 1 ? 'rotate-0' : 'rotate-180'}`} />
+                        {row.changes}
+                        {i === 1 ?
+                          <Icons.ArrowTop color={i === 1 ? colors.GREEN_01 : colors.RED_01} />
+                          :
+                          <Icons.ArrowDown color={i === 1 ? colors.GREEN_01 : colors.RED_01} />
+                        }
                       </p>
                     </TableCell>
                     <TableCell

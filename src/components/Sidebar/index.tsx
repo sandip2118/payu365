@@ -52,6 +52,8 @@ function SideBar() {
     setActiveComponent(component);
     setActiveItemId(itemId);
   };
+  const router = useRouter();
+  const isSettingsPath = router.asPath.includes('/settings');
 
   const isActive = (route: string) => {
     return pathname.includes(route) ?
@@ -68,8 +70,9 @@ function SideBar() {
   };
 
   return (
-    <div className={`${!context.sidebarOpen ? 'md:block hidden' : 'block md:hidden'} bg-BLACK_301 relative h-[100%] border-r border-[#292932]`}>
-      <ul className={`menu w-56 rounded-box font-[600] pl-[10px] pr-[16px] overflow-y-auto h-[calc(100%-50px)] `}>
+    // <div className={`${!context.sidebarOpen ? 'md:block hidden' : 'block md:hidden'} bg-BLACK_301 relative h-[100%] border-r border-[#292932]`}>
+    <div className={`${!context.sidebarOpen ? (isSettingsPath ? 'lg:block hidden' : 'md:block hidden') : (isSettingsPath ? 'block lg:hidden' : 'block md:hidden')} bg-BLACK_301 relative h-[100vh] border-r border-BLACK_304`}>
+      <ul className={`sidebar-ui menu w-56 rounded-box font-[600] pl-[10px] pr-[16px] overflow-y-auto h-[calc(100%-50px)] `}>
         <div className='flex h-[48px] items-center my-[20px]'>
           <Icons.Logo />
         </div>
@@ -170,7 +173,7 @@ function SideBar() {
           </Link>
         </li>
       </ul>
-      <ul className={`menu w-56 rounded-box font-[600] px-3 border-r border-[#292932] absolute bottom-0`}>
+      <ul className={`sidebar-ui menu w-56 rounded-box font-[600] px-3 border-r border-BLACK_304 absolute bottom-0`}>
         <li>
           <Link href="/Login">
             <div className={`flex gap-[15px] items-center h-[57px] px-3 bg-BLACK_301 rounded-[8px font13SB`}>

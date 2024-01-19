@@ -6,6 +6,7 @@ module.exports = {
   GRAY_103: '#B7BDC6',
   GRAY_104: '#848E9C',
   GRAY_105: '#959EAE',
+  GRAY_106: '#42424c',
 
   BLUE_201: '#267FF5',
 

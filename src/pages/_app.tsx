@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { ThemeProvider } from '@mui/material';
 import theme from '@/themes/theme'
+import "rsuite/dist/rsuite.min.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ThemeProvider theme={theme}>

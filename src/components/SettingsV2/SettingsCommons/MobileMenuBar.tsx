@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import { SettingsSideBarProps, settingsTabItem } from '../types';
 import { settingsTabs } from '../SettingsTabs';
-import Icons from '../../../assets/icon';
-import { colors } from '../../../themes';
+// import Icons from '../../../assets/icon';
+// import { colors } from '../../../themes';
 import { AppContext } from '@/context/AppProvider';
 import { useRouter } from 'next/router';
 
@@ -13,7 +13,7 @@ function MobileMenuBar({ activeTab, setActiveTab }: SettingsSideBarProps) {
 
   const handleMenuClick = (tab: settingsTabItem) => {
     setActiveTab(tab);
-    router.push('/settings');
+    router.push(`/settings/${tab.title}`)
   };
 
   const getIconSrc = (iconName: string, tabId: number) => {
@@ -30,7 +30,7 @@ function MobileMenuBar({ activeTab, setActiveTab }: SettingsSideBarProps) {
 
   return (
    
-     <div className={` ${!context.mobileMenuOpen ? 'md:block hidden' : 'block md:hidden'} pt-5 bg-[#1C1C24] w-[75%] md:hidden grid cursor-pointer right-0 px-2.5 absolute h-[89vh] border-r border-[#292932] z-50`}>
+     <div className={` ${!context.mobileMenuOpen ? 'lg:block hidden' : 'block lg:hidden'} pt-5 bg-[#1C1C24] w-[75%] md:w-[50%] lg:hidden grid cursor-pointer right-0 px-2.5 absolute h-[93vh] border-r border-[#292932] z-50`}>
     <div className='h-[80svh] overflow-y-auto'>
       {settingsTabs.map((tab) => (
         <div 
@@ -39,7 +39,7 @@ function MobileMenuBar({ activeTab, setActiveTab }: SettingsSideBarProps) {
         onClick={() => handleMenuClick(tab)}>
           <Image src={getIconSrc(tab.icon, tab.itemId)} width={17} height={17} alt='img' style={{ marginLeft: activeTab.itemId === tab.itemId ? '0px' : '0' }}/>
           
-              <p className={tab.title === 'Deactivate A/C' ? 'text-[#FA6C4C] font13SB' : (activeTab.itemId === tab.itemId ? 'text-white' : 'text-GRAY_101 font13SB')}>{tab.title}</p>
+              <p className={tab.title === 'DeactivateAcc' ? 'text-[#FA6C4C] font13SB' : (activeTab.itemId === tab.itemId ? 'text-white' : 'text-GRAY_101 font13SB')}>{tab.titleOnBar}</p>
         </div>
       ))}
     </div>

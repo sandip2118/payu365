@@ -10,6 +10,7 @@ export  type DepositeaderProps ={
 export type DepositButtonProps={
   buttonText:string;
   width:string;
+  mobileWidth?:string;
   onClick?:()=>void;
 }
 export type AmountInputProps ={
@@ -45,10 +46,22 @@ export type CardDetailsInputProps ={
 
 }
 export type CardDetailsProps ={
-  cardNumber :number;
-  expiryDate:string;
-  cvv:number;
-  cardHolderName:string;
+  id:number;
+  email?:string;
+  name?:string;
+  cardNumber? :number;
+  accountNumber?:string;
+  expiryDate ?:string;
+  cvv?:boolean;
+  cvvNo?:number;
+  cardHolderName?:string;
   saveCard?:boolean;
+  cardType?:string;
+  upi?:boolean;
+}
 
+export type DepositBreadCrumbsProps ={
+  first?:string;
+  second?:string;
+  third?:string;
 }

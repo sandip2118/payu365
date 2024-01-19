@@ -6,7 +6,7 @@ import PartFour from './PartFour'
 
 function Security() {
   return (
-    <div className='grid gap-[20px] md:mx-[20px] pb-[200px] md:pb-[140px]'>
+    <div className='grid gap-[20px] md:mx-[20px] mb-[60px] '>
       <PartOne />
       <PartTwo />
       <PartThree />

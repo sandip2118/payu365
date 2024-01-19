@@ -5,16 +5,16 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import TableRowCard from './TableRowCard';
 import { colors } from '../../themes';
 import Icons from '@/assets/icon'
 import { MR_TABS } from '@/Constants';
 import { TableSortLabel, Box } from '@mui/material';
-import { CopyAllRounded } from '@mui/icons-material';
+import CopyAllRounded from '@mui/icons-material/CopyAllRounded';
 import PersonIcon from '@mui/icons-material/Person';
 import { Menu, MenuButton, MenuItem } from '@szhsin/react-menu';
+import { TableProps } from './type';
 
-const TransactionTable = ({rows}:any) => {
+const TransactionTable: React.FC<TableProps> = ({ rows, open, setOpen, onClick }) => {
 
   const [selectedTab, setSelectedTab] = useState<string>(MR_TABS.My_ASSETS);
   const [selecteCurrency, setSelecteCurrency] = useState({
@@ -31,7 +31,7 @@ const TransactionTable = ({rows}:any) => {
     "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAYAAACaq43EAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowMEUwNDkwQzE3N0QxMUUyODY3Q0FBOTFCQzlGNjlDRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowMEUwNDkwRDE3N0QxMUUyODY3Q0FBOTFCQzlGNjlDRiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAwRTA0OTBBMTc3RDExRTI4NjdDQUE5MUJDOUY2OUNGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAwRTA0OTBCMTc3RDExRTI4NjdDQUE5MUJDOUY2OUNGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+OIHw6AAAAPlJREFUeNpi/D/T+D/DAAAmhgECoxYPf4sZ/wPBQFn8CUjzEqvh7cffDAtX32Xg4WZhYGJkZHj/8SdDTLAKg6QIGyn2fiY5qGdN38/A8OU5g5k2F4OxBicD59+3DHNm7CXZxyykKL548TGDmCgHg6mpMoObWz/Dr19/GHbvLmS4desZWE5fX5Y2Fv/794+BhYWR4e/ff0BLfwPxX4Y/f0BiTAz///+jbRy3te5gEBTgYrCyVgY65D/DuXOPGJ49/cBQW+9FUhyTbPGnt78Z9qx7wiAozMnAyMTI8OblVwYnfxkGIQk2ki0emOwk3MExWjuNWjy8LAYIMADBumJ9k9IhVwAAAABJRU5ErkJggg=="
   });
 
-  
+
   const column = ["name", "Transection Id", "Date", "Amount", "TX Status"]
 
   const sortedRows = rows.sort((a: any, b: any) => {
@@ -59,7 +59,20 @@ const TransactionTable = ({rows}:any) => {
         <Table aria-label="simple table">
           <TableHead>
 
-            <TableRow className='bChange'>
+            <TableRow className='bChange bg-BLACK_304'
+              sx={{
+                "& .MuiTableCell-root.MuiTableCell-head": {
+                  padding: "15px 0px !important",
+                },
+                "& .MuiTableCell-root.MuiTableCell-head:first-child": {
+                  paddingLeft: "20px !important",
+                  borderTopLeftRadius: "20px !important"
+                },
+                "& .MuiTableCell-root.MuiTableCell-head:last-child": {
+                  borderTopRightRadius: "20px !important"
+                }
+              }}
+            >
               {column.map((key, index) => (
                 <TableCell
                   key={index}
@@ -73,7 +86,7 @@ const TransactionTable = ({rows}:any) => {
                       {key} <Icons.TBArrowIcon />
                     </TableSortLabel>
                   ) : (
-                    key
+                    <p className="text-white border-none market-table capitalize"> {key} </p>
                   )}
                 </TableCell>
               ))}
@@ -87,7 +100,13 @@ const TransactionTable = ({rows}:any) => {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody
+            sx={{
+              "& .MuiTableCell-root.MuiTableCell-body:first-child": {
+                paddingLeft: "20px !important",
+              }
+            }}
+          >
             {sortedRows.map((row, i) => (
               <TableRow key={row.Name}
                 className={` ${rows?.length == i + 1 ? 'border-[0px]' : 'border-b'} bChange border-BLACK_306 bChange`}
@@ -98,7 +117,6 @@ const TransactionTable = ({rows}:any) => {
                   className="border-b border-GRAY_101 dark:border-gray-700"
                 >
                   <div className="flex items-center gap-2">
-                    {/* <img src='' alt='profile' className='w-[32px] h-[24px] bg-GRAY_101' /> */}
                     <PersonIcon color='orange' />
                     <Box className='ml-[7px]'>
                       <p className='font14RB text-white'>
@@ -152,10 +170,7 @@ const TransactionTable = ({rows}:any) => {
                     transition
                     menuStyle={{ borderRadius: '7px' }}
                     menuButton={
-                      <MenuButton
-                        className=""
-                        onClick={() => { }}
-                      >
+                      <MenuButton>
                         <div className="flex">
                           <Icons.VerticalMore />
                         </div>
@@ -163,18 +178,30 @@ const TransactionTable = ({rows}:any) => {
                     }
                   >
                     <div className="bg-[#292932] cursor-pointer py-[20px] px-[24px] w-[200px] rounded-[7px]">
-                      {PopupMenu?.map((d) => {
-                        return (
-                          <MenuItem className="p-0">
-                            <div className=" flex items-center h-[48px]">
-                              {d.icon}
-                              <p className="text-[13px] font-medium text-GRAY_101 ml-[15px]">
-                                {d.title}
-                              </p>
-                            </div>
-                          </MenuItem>
-                        )
-                      })}
+                      <MenuItem className="p-0">
+                        <div className="flex items-center h-[48px]" onClick={onClick}>
+                          <Icons.List color={colors.GRAY_101} />
+                          <p className="text-[13px] font-medium text-GRAY_101 ml-[15px]">
+                            View Details
+                          </p>
+                        </div>
+                      </MenuItem>
+                      <MenuItem className="p-0">
+                        <div className="flex items-center h-[48px]">
+                          <Icons.Receiver color={colors.GRAY_101} />
+                          <p className="text-[13px] font-medium text-GRAY_101 ml-[15px]">
+                            Contact for Query
+                          </p>
+                        </div>
+                      </MenuItem>
+                      <MenuItem className="p-0">
+                        <div className="flex items-center h-[48px]">
+                          <Icons.Download color={colors.GRAY_101} />
+                          <p className="text-[13px] font-medium text-GRAY_101 ml-[15px]">
+                            Download Receipt
+                          </p>
+                        </div>
+                      </MenuItem>
                     </div>
                   </Menu>
                 </TableCell>

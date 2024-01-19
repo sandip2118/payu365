@@ -32,10 +32,10 @@ const LoginWithPhone: React.FC<LoginWithPhoneProps> = (props) => {
   return (
     <div className='2xl:w-[60%] xl:w-[70%] lg:w-[80%] w-[100%] sm:mx-5 mx-0'>
       <div className="flex bg-BLACK_303 md:bg-inherit md:w-full mx-5 sm:mx-0 flex-col items-start md:backdrop-blur-none px-5 py-8 rounded-3xl md:rounded-none">
-        <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-2xl not-italic font-semibold leading-[normal]">
+        <p className="self-stretch text-[color:var(--Pure-White,#FFF)] text-2xl not-italic font-semibold !leading-[normal]">
           Hi, Welcome back
         </p>
-        <p className="mt-[15px] self-stretch text-[color:var(--Secondary-Text,#777E90)] text-sm not-italic font-medium leading-[normal]">
+        <p className="mt-[15px] self-stretch text-[color:var(--Secondary-Text,#777E90)] text-sm not-italic font-medium !leading-[normal]">
           You're just a step away from seamless transactions.
         </p>
         <div className='w-full mt-[40px] md:mt-[50px]'>

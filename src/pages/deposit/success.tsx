@@ -1,9 +1,12 @@
+import Success from '@/components/Deposit/Success'
 import React from 'react'
 
-function success() {
+function Index() {
   return (
-    <div>success</div>
+    <div>
+<Success />
+    </div>
   )
 }
 
-export default success
+export default Index

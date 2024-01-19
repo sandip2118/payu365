@@ -41,10 +41,10 @@ const EnterLoginEmail = (props: EnterLoginEmailProps) => {
   return (
     <div className="2xl:w-[60%] xl:w-[70%] lg:w-[80%] w-[100%] sm:mx-5 mx-0">
       <div className="flex bg-BLACK_303 md:bg-inherit md:w-full mx-5 sm:mx-0 flex-col items-start md:backdrop-blur-none px-5 py-8 rounded-3xl md:rounded-none">
-        <p className="text-[color:var(--Pure-White,#FFF)] text-2xl not-italic font-bold leading-[normal]">
+        <p className="text-[color:var(--Pure-White,#FFF)] text-2xl not-italic font-bold !leading-[normal]">
           Hi, Welcome back
         </p>
-        <p className="self-stretch mt-[15px] text-[#777E90] text-sm not-italic font-medium leading-[22px]">
+        <p className="self-stretch mt-[15px] text-[#777E90] text-sm not-italic font-medium !leading-[22px]">
           {`You're just a step away from seamless transactions.`}
         </p>
 
@@ -80,7 +80,7 @@ const EnterLoginEmail = (props: EnterLoginEmailProps) => {
                 <input
                   type="checkbox"
                   id="rememberMe"
-                  className="mr-2 leading-tight"
+                  className="mr-2 !leading-tight"
                 />
                 <label htmlFor="rememberMe" className="text-[12px] text-white">
                   Remember me

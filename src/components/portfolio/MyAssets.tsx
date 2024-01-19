@@ -52,7 +52,7 @@ function MyAssets() {
     {
       title: 'Transfer',
       icon: <Icons.TransferIcon color={colors.GRAY_101} />,
-      route: ROUTE.TRANSFER
+      route: ROUTE.WALLET_TO_WALLET
     },
     {
       title: 'Deposit',
@@ -60,6 +60,7 @@ function MyAssets() {
       route: ''
     },
   ]
+  console.log('selectedTab', selectedTab);
 
   return (
     <div className='bg-BLACK_301 w-full rounded-[10px] px-5 mt-5 py-5'>
@@ -73,7 +74,7 @@ function MyAssets() {
       </div>
 
       <div className="border-b border-GRAY_101 dark:border-gray-700">
-        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400 gap-5">
+        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 gap-5">
           <li>
             <button className={`${selectedTab === PR_MA_TABS.My_ASSETS ? 'border-b-[3px] border-BLUE_201 text-BLUE_201' : 'text-GRAY_101 border-transparent'} font16RB inline-flex items-center justify-center p-2  border-transparent rounded-t-lg hover:text-gray-600 group`}
               onClick={() => { setSelectedTab(PR_MA_TABS.My_ASSETS) }}
@@ -86,13 +87,14 @@ function MyAssets() {
             <button className={`${selectedTab === PR_MA_TABS.WALLET_VIEW ? 'border-b-[3px] border-BLUE_201 text-BLUE_201' : 'text-GRAY_101'} font16RB inline-flex items-center justify-center p-2 border-transparent rounded-t-lg hover:text-gray-600 group`} aria-current="page"
               onClick={() => { setSelectedTab(PR_MA_TABS.WALLET_VIEW) }}
             >
-              <Icons.Hot color={selectedTab === PR_MA_TABS.WALLET_VIEW ? colors.BLUE_201 : colors.GRAY_101} className='mr-[10px]' />Wallet View
+              <Icons.Hot color={selectedTab === PR_MA_TABS.WALLET_VIEW ? colors.BLUE_201 : colors.GRAY_101} className='mr-[10px]' />
+              Wallet View
             </button>
           </li>
         </ul>
       </div>
 
-      <div className='mt-5 relative'>
+      <div className='mt-5'>
         {selectedTab === PR_MA_TABS.My_ASSETS &&
           <TableContainer className="mt-5">
             <Table aria-label="simple table">
@@ -101,7 +103,7 @@ function MyAssets() {
                   {column.map((key, index) => (
                     <TableCell
                       key={index}
-                      className="text-white border-none market-table capitalize"
+                      className="text-white border-none market-table capitalize min-w-[160px]"
                     >
                       {index < 3 ? (
                         <TableSortLabel
@@ -158,7 +160,7 @@ function MyAssets() {
                     </TableCell>
                     <TableCell className="border-b border-GRAY_101 border-solid">
                       <p className='font14RB text-RED_01 flex'>
-                        {row.ratio} <Icons.ArrowTop color={colors.RED_01} className='rotate-180' />
+                        {row.ratio} <Icons.ArrowDown color={colors.RED_01} />
                       </p>
                     </TableCell>
                     <TableCell
@@ -184,6 +186,7 @@ function MyAssets() {
                             return (
                               <MenuItem className="!p-0">
                                 <div className=" flex items-center h-[48px]"
+                                  onClick={() => router.push(d.route)}
                                 >
                                   {d.icon}
                                   <p className="font14R text-GRAY_101 ml-[15px]">
@@ -211,7 +214,7 @@ function MyAssets() {
                   {columnW.map((key, index) => (
                     <TableCell
                       key={index}
-                      className="text-white border-none market-table capitalize"
+                      className="text-white border-none market-table capitalize min-w-[160px]"
                     >
                       {index < 3 ? (
                         <TableSortLabel
@@ -268,7 +271,7 @@ function MyAssets() {
                     </TableCell>
                     <TableCell className="border-b border-GRAY_101 border-solid">
                       <p className='font14RB text-RED_01 flex'>
-                        {row.ratio} <Icons.ArrowTop color={colors.RED_01} className='rotate-180' />
+                        {row.ratio} <Icons.ArrowDown color={colors.RED_01} />
                       </p>
                     </TableCell>
                     <TableCell

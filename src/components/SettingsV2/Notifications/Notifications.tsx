@@ -4,7 +4,7 @@ import PushNotifications from './PushNotifications'
 
 function Notifications() {
   return (
-    <div className='grid gap-[20px]'>
+    <div className='grid gap-[20px] mb-[60px]'>
       <EmailNotifications />
       <PushNotifications />
     </div>

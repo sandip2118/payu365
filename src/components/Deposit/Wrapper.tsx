@@ -6,16 +6,18 @@ import DepositFooter from './DepositCommons/DepositFooter';
 import Image from 'next/image';
 import DepositButton from './DepositCommons/DepositButton';
 import { useRouter } from 'next/router';
+import DepositBreadCrumbs from './DepositCommons/DepositBreadCrumbs';
 
 function Wrapper() {
   const router = useRouter();
   
 
   return (
-    <Page title={'Deposit'} isBreadcrumbs balance='₹0 INR'>
+    <Page title={'Deposit'} balance='₹0 INR'>
+    <DepositBreadCrumbs  />
     <CardWrapper >
   <DepositHeader  title='Deposit Money' description='Save your card to easily add money to your PayU365 wallet.All major cards accepted'/>
-  <div className='bg-BLACK_306 rounded-[20px]  p-[30px] mx-auto  grid gap-[15px] mt-[30px]'>
+  <div className=' rounded-[20px]  p-[30px] mx-auto  grid gap-[15px] mt-[30px]'   style={{ backgroundImage: `url('/assets/images/depositBackground.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
 
     <div className='flex gap-[9px] items-start'>
       <Image  src='/assets/icons/depositTick.svg' alt='' width={17} height={17}/>

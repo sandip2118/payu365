@@ -16,11 +16,11 @@ function Index() {
     <div className='grid md:flex bg-[#13131A] md:w-full w-screen min-h-screen  '>
     <SettingsSideBar  activeTab={activeTab} setActiveTab={setActiveTab} />
     <MobileMenuBar   activeTab={activeTab} setActiveTab={setActiveTab}/>
-    <div className='w-11/12 sm:w-10/12 mx-auto  md:mx-0 md:w-full  lg:mt-5 h-screen overflow-y-auto  pt-5 md:pt-0'>
+    <div className='w-11/12 sm:w-10/12 mx-auto  md:mx-0 md:w-full  md:mt-5 h-screen overflow-y-auto  pt-5 md:pt-0'>
 
-<div className='mb-5 hidden md:flex mx-[-20px] md:mx-0'>
+{/* <div className='mb-5 hidden  mx-[-20px] md:mx-0'>
 <Securitybreadcrumbs activeSubTab={title} title='Manage Email'  />
-</div>
+</div> */}
 
 <ManagePasswword />
 </div>
